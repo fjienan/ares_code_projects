@@ -1,0 +1,526 @@
+[0.054s] DEBUG:colcon:Command line arguments: ['/usr/bin/colcon', 'build', '--symlink']
+[0.054s] DEBUG:colcon:Parsed command line arguments: Namespace(log_base=None, log_level=None, verb_name='build', build_base='build', install_base='install', merge_install=False, symlink_install=True, test_result_base=None, continue_on_error=False, executor='parallel', parallel_workers=16, event_handlers=None, ignore_user_meta=False, metas=['./colcon.meta'], base_paths=['.'], packages_ignore=None, packages_ignore_regex=None, paths=None, packages_up_to=None, packages_up_to_regex=None, packages_above=None, packages_above_and_dependencies=None, packages_above_depth=None, packages_select_by_dep=None, packages_skip_by_dep=None, packages_skip_up_to=None, packages_select_build_failed=False, packages_skip_build_finished=False, packages_select_test_failures=False, packages_skip_test_passed=False, packages_select=None, packages_skip=None, packages_select_regex=None, packages_skip_regex=None, packages_start=None, packages_end=None, allow_overriding=[], cmake_args=None, cmake_target=None, cmake_target_skip_unavailable=False, cmake_clean_cache=False, cmake_clean_first=False, cmake_force_configure=False, ament_cmake_args=None, catkin_cmake_args=None, catkin_skip_building_tests=False, verb_parser=<colcon_defaults.argument_parser.defaults.DefaultArgumentsDecorator object at 0x72f115d42890>, verb_extension=<colcon_core.verb.build.BuildVerb object at 0x72f115d423b0>, main=<bound method BuildVerb.main of <colcon_core.verb.build.BuildVerb object at 0x72f115d423b0>>)
+[0.144s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) check parameters
+[0.144s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) check parameters
+[0.144s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) check parameters
+[0.144s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) check parameters
+[0.144s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) discover
+[0.144s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) discover
+[0.144s] INFO:colcon.colcon_core.package_discovery:Crawling recursively for packages in '/home/ares/ares_code_projects/R2'
+[0.144s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ignore', 'ignore_ament_install']
+[0.144s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore'
+[0.144s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore_ament_install'
+[0.144s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_pkg']
+[0.144s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_pkg'
+[0.144s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_meta']
+[0.144s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_meta'
+[0.144s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ros']
+[0.144s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ros'
+[0.150s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['cmake', 'python']
+[0.150s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'cmake'
+[0.150s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python'
+[0.150s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['python_setup_py']
+[0.150s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python_setup_py'
+[0.150s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extensions ['ignore', 'ignore_ament_install']
+[0.150s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extension 'ignore'
+[0.150s] Level 1:colcon.colcon_core.package_identification:_identify(build) ignored
+[0.150s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extensions ['ignore', 'ignore_ament_install']
+[0.150s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extension 'ignore'
+[0.150s] Level 1:colcon.colcon_core.package_identification:_identify(install) ignored
+[0.150s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extensions ['ignore', 'ignore_ament_install']
+[0.150s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extension 'ignore'
+[0.150s] Level 1:colcon.colcon_core.package_identification:_identify(log) ignored
+[0.150s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ignore', 'ignore_ament_install']
+[0.151s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore'
+[0.151s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore_ament_install'
+[0.151s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_pkg']
+[0.151s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_pkg'
+[0.151s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_meta']
+[0.151s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_meta'
+[0.151s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ros']
+[0.151s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ros'
+[0.151s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['cmake', 'python']
+[0.151s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'cmake'
+[0.151s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python'
+[0.151s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['python_setup_py']
+[0.151s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python_setup_py'
+[0.151s] Level 1:colcon.colcon_core.package_identification:_identify(src/laser) by extensions ['ignore', 'ignore_ament_install']
+[0.151s] Level 1:colcon.colcon_core.package_identification:_identify(src/laser) by extension 'ignore'
+[0.151s] Level 1:colcon.colcon_core.package_identification:_identify(src/laser) by extension 'ignore_ament_install'
+[0.151s] Level 1:colcon.colcon_core.package_identification:_identify(src/laser) by extensions ['colcon_pkg']
+[0.151s] Level 1:colcon.colcon_core.package_identification:_identify(src/laser) by extension 'colcon_pkg'
+[0.151s] Level 1:colcon.colcon_core.package_identification:_identify(src/laser) by extensions ['colcon_meta']
+[0.151s] Level 1:colcon.colcon_core.package_identification:_identify(src/laser) by extension 'colcon_meta'
+[0.151s] Level 1:colcon.colcon_core.package_identification:_identify(src/laser) by extensions ['ros']
+[0.151s] Level 1:colcon.colcon_core.package_identification:_identify(src/laser) by extension 'ros'
+[0.152s] DEBUG:colcon.colcon_core.package_identification:Package 'src/laser' with type 'ros.ament_python' and name 'laser'
+[0.152s] Level 1:colcon.colcon_core.package_identification:_identify(src/my_robot_bringup) by extensions ['ignore', 'ignore_ament_install']
+[0.152s] Level 1:colcon.colcon_core.package_identification:_identify(src/my_robot_bringup) by extension 'ignore'
+[0.152s] Level 1:colcon.colcon_core.package_identification:_identify(src/my_robot_bringup) by extension 'ignore_ament_install'
+[0.152s] Level 1:colcon.colcon_core.package_identification:_identify(src/my_robot_bringup) by extensions ['colcon_pkg']
+[0.152s] Level 1:colcon.colcon_core.package_identification:_identify(src/my_robot_bringup) by extension 'colcon_pkg'
+[0.152s] Level 1:colcon.colcon_core.package_identification:_identify(src/my_robot_bringup) by extensions ['colcon_meta']
+[0.153s] Level 1:colcon.colcon_core.package_identification:_identify(src/my_robot_bringup) by extension 'colcon_meta'
+[0.153s] Level 1:colcon.colcon_core.package_identification:_identify(src/my_robot_bringup) by extensions ['ros']
+[0.153s] Level 1:colcon.colcon_core.package_identification:_identify(src/my_robot_bringup) by extension 'ros'
+[0.153s] DEBUG:colcon.colcon_core.package_identification:Package 'src/my_robot_bringup' with type 'ros.ament_cmake' and name 'my_robot_bringup'
+[0.153s] Level 1:colcon.colcon_core.package_identification:_identify(src/my_robot_description) by extensions ['ignore', 'ignore_ament_install']
+[0.153s] Level 1:colcon.colcon_core.package_identification:_identify(src/my_robot_description) by extension 'ignore'
+[0.153s] Level 1:colcon.colcon_core.package_identification:_identify(src/my_robot_description) by extension 'ignore_ament_install'
+[0.153s] Level 1:colcon.colcon_core.package_identification:_identify(src/my_robot_description) by extensions ['colcon_pkg']
+[0.153s] Level 1:colcon.colcon_core.package_identification:_identify(src/my_robot_description) by extension 'colcon_pkg'
+[0.153s] Level 1:colcon.colcon_core.package_identification:_identify(src/my_robot_description) by extensions ['colcon_meta']
+[0.153s] Level 1:colcon.colcon_core.package_identification:_identify(src/my_robot_description) by extension 'colcon_meta'
+[0.153s] Level 1:colcon.colcon_core.package_identification:_identify(src/my_robot_description) by extensions ['ros']
+[0.153s] Level 1:colcon.colcon_core.package_identification:_identify(src/my_robot_description) by extension 'ros'
+[0.153s] DEBUG:colcon.colcon_core.package_identification:Package 'src/my_robot_description' with type 'ros.ament_cmake' and name 'my_robot_description'
+[0.153s] Level 1:colcon.colcon_core.package_identification:_identify(src/myrobot_controller) by extensions ['ignore', 'ignore_ament_install']
+[0.153s] Level 1:colcon.colcon_core.package_identification:_identify(src/myrobot_controller) by extension 'ignore'
+[0.153s] Level 1:colcon.colcon_core.package_identification:_identify(src/myrobot_controller) by extension 'ignore_ament_install'
+[0.153s] Level 1:colcon.colcon_core.package_identification:_identify(src/myrobot_controller) by extensions ['colcon_pkg']
+[0.153s] Level 1:colcon.colcon_core.package_identification:_identify(src/myrobot_controller) by extension 'colcon_pkg'
+[0.153s] Level 1:colcon.colcon_core.package_identification:_identify(src/myrobot_controller) by extensions ['colcon_meta']
+[0.153s] Level 1:colcon.colcon_core.package_identification:_identify(src/myrobot_controller) by extension 'colcon_meta'
+[0.153s] Level 1:colcon.colcon_core.package_identification:_identify(src/myrobot_controller) by extensions ['ros']
+[0.154s] Level 1:colcon.colcon_core.package_identification:_identify(src/myrobot_controller) by extension 'ros'
+[0.154s] DEBUG:colcon.colcon_core.package_identification:Package 'src/myrobot_controller' with type 'ros.ament_cmake' and name 'myrobot_controller'
+[0.154s] Level 1:colcon.colcon_core.package_identification:_identify(src/omni_mpc_controller) by extensions ['ignore', 'ignore_ament_install']
+[0.155s] Level 1:colcon.colcon_core.package_identification:_identify(src/omni_mpc_controller) by extension 'ignore'
+[0.155s] Level 1:colcon.colcon_core.package_identification:_identify(src/omni_mpc_controller) by extension 'ignore_ament_install'
+[0.155s] Level 1:colcon.colcon_core.package_identification:_identify(src/omni_mpc_controller) by extensions ['colcon_pkg']
+[0.155s] Level 1:colcon.colcon_core.package_identification:_identify(src/omni_mpc_controller) by extension 'colcon_pkg'
+[0.155s] Level 1:colcon.colcon_core.package_identification:_identify(src/omni_mpc_controller) by extensions ['colcon_meta']
+[0.155s] Level 1:colcon.colcon_core.package_identification:_identify(src/omni_mpc_controller) by extension 'colcon_meta'
+[0.155s] Level 1:colcon.colcon_core.package_identification:_identify(src/omni_mpc_controller) by extensions ['ros']
+[0.155s] Level 1:colcon.colcon_core.package_identification:_identify(src/omni_mpc_controller) by extension 'ros'
+[0.155s] DEBUG:colcon.colcon_core.package_identification:Package 'src/omni_mpc_controller' with type 'ros.ament_python' and name 'omni_mpc_controller'
+[0.155s] Level 1:colcon.colcon_core.package_identification:_identify(src/sim_localization) by extensions ['ignore', 'ignore_ament_install']
+[0.155s] Level 1:colcon.colcon_core.package_identification:_identify(src/sim_localization) by extension 'ignore'
+[0.155s] Level 1:colcon.colcon_core.package_identification:_identify(src/sim_localization) by extension 'ignore_ament_install'
+[0.155s] Level 1:colcon.colcon_core.package_identification:_identify(src/sim_localization) by extensions ['colcon_pkg']
+[0.155s] Level 1:colcon.colcon_core.package_identification:_identify(src/sim_localization) by extension 'colcon_pkg'
+[0.155s] Level 1:colcon.colcon_core.package_identification:_identify(src/sim_localization) by extensions ['colcon_meta']
+[0.155s] Level 1:colcon.colcon_core.package_identification:_identify(src/sim_localization) by extension 'colcon_meta'
+[0.155s] Level 1:colcon.colcon_core.package_identification:_identify(src/sim_localization) by extensions ['ros']
+[0.155s] Level 1:colcon.colcon_core.package_identification:_identify(src/sim_localization) by extension 'ros'
+[0.155s] Level 1:colcon.colcon_core.package_identification:_identify(src/sim_localization) by extensions ['cmake', 'python']
+[0.155s] Level 1:colcon.colcon_core.package_identification:_identify(src/sim_localization) by extension 'cmake'
+[0.155s] Level 1:colcon.colcon_core.package_identification:_identify(src/sim_localization) by extension 'python'
+[0.155s] Level 1:colcon.colcon_core.package_identification:_identify(src/sim_localization) by extensions ['python_setup_py']
+[0.155s] Level 1:colcon.colcon_core.package_identification:_identify(src/sim_localization) by extension 'python_setup_py'
+[0.155s] Level 1:colcon.colcon_core.package_identification:_identify(src/sllidar_ros2) by extensions ['ignore', 'ignore_ament_install']
+[0.155s] Level 1:colcon.colcon_core.package_identification:_identify(src/sllidar_ros2) by extension 'ignore'
+[0.155s] Level 1:colcon.colcon_core.package_identification:_identify(src/sllidar_ros2) by extension 'ignore_ament_install'
+[0.156s] Level 1:colcon.colcon_core.package_identification:_identify(src/sllidar_ros2) by extensions ['colcon_pkg']
+[0.156s] Level 1:colcon.colcon_core.package_identification:_identify(src/sllidar_ros2) by extension 'colcon_pkg'
+[0.156s] Level 1:colcon.colcon_core.package_identification:_identify(src/sllidar_ros2) by extensions ['colcon_meta']
+[0.156s] Level 1:colcon.colcon_core.package_identification:_identify(src/sllidar_ros2) by extension 'colcon_meta'
+[0.156s] Level 1:colcon.colcon_core.package_identification:_identify(src/sllidar_ros2) by extensions ['ros']
+[0.156s] Level 1:colcon.colcon_core.package_identification:_identify(src/sllidar_ros2) by extension 'ros'
+[0.156s] DEBUG:colcon.colcon_core.package_identification:Package 'src/sllidar_ros2' with type 'ros.ament_cmake' and name 'sllidar_ros2'
+[0.156s] Level 1:colcon.colcon_core.package_identification:_identify(src/usb_bulk_node) by extensions ['ignore', 'ignore_ament_install']
+[0.156s] Level 1:colcon.colcon_core.package_identification:_identify(src/usb_bulk_node) by extension 'ignore'
+[0.156s] Level 1:colcon.colcon_core.package_identification:_identify(src/usb_bulk_node) by extension 'ignore_ament_install'
+[0.156s] Level 1:colcon.colcon_core.package_identification:_identify(src/usb_bulk_node) by extensions ['colcon_pkg']
+[0.156s] Level 1:colcon.colcon_core.package_identification:_identify(src/usb_bulk_node) by extension 'colcon_pkg'
+[0.156s] Level 1:colcon.colcon_core.package_identification:_identify(src/usb_bulk_node) by extensions ['colcon_meta']
+[0.156s] Level 1:colcon.colcon_core.package_identification:_identify(src/usb_bulk_node) by extension 'colcon_meta'
+[0.156s] Level 1:colcon.colcon_core.package_identification:_identify(src/usb_bulk_node) by extensions ['ros']
+[0.156s] Level 1:colcon.colcon_core.package_identification:_identify(src/usb_bulk_node) by extension 'ros'
+[0.156s] DEBUG:colcon.colcon_core.package_identification:Package 'src/usb_bulk_node' with type 'ros.ament_cmake' and name 'usb_bulk_node'
+[0.157s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) using defaults
+[0.157s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) discover
+[0.157s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) using defaults
+[0.157s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) discover
+[0.157s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) using defaults
+[0.171s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) check parameters
+[0.171s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) discover
+[0.172s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 7 installed packages in /home/ares/ares_code_projects/R1/install
+[0.173s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 5 installed packages in /home/ares/ros2_ws/install
+[0.173s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 297 installed packages in /opt/ros/humble
+[0.174s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) using defaults
+[0.192s] Level 5:colcon.colcon_core.verb:set package 'laser' build argument 'cmake_args' from command line to 'None'
+[0.192s] Level 5:colcon.colcon_core.verb:set package 'laser' build argument 'cmake_target' from command line to 'None'
+[0.192s] Level 5:colcon.colcon_core.verb:set package 'laser' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.192s] Level 5:colcon.colcon_core.verb:set package 'laser' build argument 'cmake_clean_cache' from command line to 'False'
+[0.192s] Level 5:colcon.colcon_core.verb:set package 'laser' build argument 'cmake_clean_first' from command line to 'False'
+[0.192s] Level 5:colcon.colcon_core.verb:set package 'laser' build argument 'cmake_force_configure' from command line to 'False'
+[0.192s] Level 5:colcon.colcon_core.verb:set package 'laser' build argument 'ament_cmake_args' from command line to 'None'
+[0.192s] Level 5:colcon.colcon_core.verb:set package 'laser' build argument 'catkin_cmake_args' from command line to 'None'
+[0.192s] Level 5:colcon.colcon_core.verb:set package 'laser' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.192s] DEBUG:colcon.colcon_core.verb:Building package 'laser' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/ares/ares_code_projects/R2/build/laser', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/ares/ares_code_projects/R2/install/laser', 'merge_install': False, 'path': '/home/ares/ares_code_projects/R2/src/laser', 'symlink_install': True, 'test_result_base': None}
+[0.192s] Level 5:colcon.colcon_core.verb:set package 'my_robot_description' build argument 'cmake_args' from command line to 'None'
+[0.192s] Level 5:colcon.colcon_core.verb:set package 'my_robot_description' build argument 'cmake_target' from command line to 'None'
+[0.192s] Level 5:colcon.colcon_core.verb:set package 'my_robot_description' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.192s] Level 5:colcon.colcon_core.verb:set package 'my_robot_description' build argument 'cmake_clean_cache' from command line to 'False'
+[0.192s] Level 5:colcon.colcon_core.verb:set package 'my_robot_description' build argument 'cmake_clean_first' from command line to 'False'
+[0.192s] Level 5:colcon.colcon_core.verb:set package 'my_robot_description' build argument 'cmake_force_configure' from command line to 'False'
+[0.192s] Level 5:colcon.colcon_core.verb:set package 'my_robot_description' build argument 'ament_cmake_args' from command line to 'None'
+[0.192s] Level 5:colcon.colcon_core.verb:set package 'my_robot_description' build argument 'catkin_cmake_args' from command line to 'None'
+[0.192s] Level 5:colcon.colcon_core.verb:set package 'my_robot_description' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.192s] DEBUG:colcon.colcon_core.verb:Building package 'my_robot_description' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/ares/ares_code_projects/R2/build/my_robot_description', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/ares/ares_code_projects/R2/install/my_robot_description', 'merge_install': False, 'path': '/home/ares/ares_code_projects/R2/src/my_robot_description', 'symlink_install': True, 'test_result_base': None}
+[0.192s] Level 5:colcon.colcon_core.verb:set package 'myrobot_controller' build argument 'cmake_args' from command line to 'None'
+[0.192s] Level 5:colcon.colcon_core.verb:set package 'myrobot_controller' build argument 'cmake_target' from command line to 'None'
+[0.192s] Level 5:colcon.colcon_core.verb:set package 'myrobot_controller' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.193s] Level 5:colcon.colcon_core.verb:set package 'myrobot_controller' build argument 'cmake_clean_cache' from command line to 'False'
+[0.193s] Level 5:colcon.colcon_core.verb:set package 'myrobot_controller' build argument 'cmake_clean_first' from command line to 'False'
+[0.193s] Level 5:colcon.colcon_core.verb:set package 'myrobot_controller' build argument 'cmake_force_configure' from command line to 'False'
+[0.193s] Level 5:colcon.colcon_core.verb:set package 'myrobot_controller' build argument 'ament_cmake_args' from command line to 'None'
+[0.193s] Level 5:colcon.colcon_core.verb:set package 'myrobot_controller' build argument 'catkin_cmake_args' from command line to 'None'
+[0.193s] Level 5:colcon.colcon_core.verb:set package 'myrobot_controller' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.193s] DEBUG:colcon.colcon_core.verb:Building package 'myrobot_controller' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/ares/ares_code_projects/R2/build/myrobot_controller', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/ares/ares_code_projects/R2/install/myrobot_controller', 'merge_install': False, 'path': '/home/ares/ares_code_projects/R2/src/myrobot_controller', 'symlink_install': True, 'test_result_base': None}
+[0.193s] Level 5:colcon.colcon_core.verb:set package 'omni_mpc_controller' build argument 'cmake_args' from command line to 'None'
+[0.193s] Level 5:colcon.colcon_core.verb:set package 'omni_mpc_controller' build argument 'cmake_target' from command line to 'None'
+[0.193s] Level 5:colcon.colcon_core.verb:set package 'omni_mpc_controller' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.193s] Level 5:colcon.colcon_core.verb:set package 'omni_mpc_controller' build argument 'cmake_clean_cache' from command line to 'False'
+[0.193s] Level 5:colcon.colcon_core.verb:set package 'omni_mpc_controller' build argument 'cmake_clean_first' from command line to 'False'
+[0.193s] Level 5:colcon.colcon_core.verb:set package 'omni_mpc_controller' build argument 'cmake_force_configure' from command line to 'False'
+[0.193s] Level 5:colcon.colcon_core.verb:set package 'omni_mpc_controller' build argument 'ament_cmake_args' from command line to 'None'
+[0.193s] Level 5:colcon.colcon_core.verb:set package 'omni_mpc_controller' build argument 'catkin_cmake_args' from command line to 'None'
+[0.193s] Level 5:colcon.colcon_core.verb:set package 'omni_mpc_controller' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.193s] DEBUG:colcon.colcon_core.verb:Building package 'omni_mpc_controller' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/ares/ares_code_projects/R2/build/omni_mpc_controller', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/ares/ares_code_projects/R2/install/omni_mpc_controller', 'merge_install': False, 'path': '/home/ares/ares_code_projects/R2/src/omni_mpc_controller', 'symlink_install': True, 'test_result_base': None}
+[0.193s] Level 5:colcon.colcon_core.verb:set package 'sllidar_ros2' build argument 'cmake_args' from command line to 'None'
+[0.193s] Level 5:colcon.colcon_core.verb:set package 'sllidar_ros2' build argument 'cmake_target' from command line to 'None'
+[0.193s] Level 5:colcon.colcon_core.verb:set package 'sllidar_ros2' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.193s] Level 5:colcon.colcon_core.verb:set package 'sllidar_ros2' build argument 'cmake_clean_cache' from command line to 'False'
+[0.193s] Level 5:colcon.colcon_core.verb:set package 'sllidar_ros2' build argument 'cmake_clean_first' from command line to 'False'
+[0.193s] Level 5:colcon.colcon_core.verb:set package 'sllidar_ros2' build argument 'cmake_force_configure' from command line to 'False'
+[0.193s] Level 5:colcon.colcon_core.verb:set package 'sllidar_ros2' build argument 'ament_cmake_args' from command line to 'None'
+[0.193s] Level 5:colcon.colcon_core.verb:set package 'sllidar_ros2' build argument 'catkin_cmake_args' from command line to 'None'
+[0.193s] Level 5:colcon.colcon_core.verb:set package 'sllidar_ros2' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.193s] DEBUG:colcon.colcon_core.verb:Building package 'sllidar_ros2' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/ares/ares_code_projects/R2/build/sllidar_ros2', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/ares/ares_code_projects/R2/install/sllidar_ros2', 'merge_install': False, 'path': '/home/ares/ares_code_projects/R2/src/sllidar_ros2', 'symlink_install': True, 'test_result_base': None}
+[0.193s] Level 5:colcon.colcon_core.verb:set package 'usb_bulk_node' build argument 'cmake_args' from command line to 'None'
+[0.193s] Level 5:colcon.colcon_core.verb:set package 'usb_bulk_node' build argument 'cmake_target' from command line to 'None'
+[0.193s] Level 5:colcon.colcon_core.verb:set package 'usb_bulk_node' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.193s] Level 5:colcon.colcon_core.verb:set package 'usb_bulk_node' build argument 'cmake_clean_cache' from command line to 'False'
+[0.193s] Level 5:colcon.colcon_core.verb:set package 'usb_bulk_node' build argument 'cmake_clean_first' from command line to 'False'
+[0.193s] Level 5:colcon.colcon_core.verb:set package 'usb_bulk_node' build argument 'cmake_force_configure' from command line to 'False'
+[0.193s] Level 5:colcon.colcon_core.verb:set package 'usb_bulk_node' build argument 'ament_cmake_args' from command line to 'None'
+[0.193s] Level 5:colcon.colcon_core.verb:set package 'usb_bulk_node' build argument 'catkin_cmake_args' from command line to 'None'
+[0.193s] Level 5:colcon.colcon_core.verb:set package 'usb_bulk_node' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.193s] DEBUG:colcon.colcon_core.verb:Building package 'usb_bulk_node' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/ares/ares_code_projects/R2/build/usb_bulk_node', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/ares/ares_code_projects/R2/install/usb_bulk_node', 'merge_install': False, 'path': '/home/ares/ares_code_projects/R2/src/usb_bulk_node', 'symlink_install': True, 'test_result_base': None}
+[0.193s] Level 5:colcon.colcon_core.verb:set package 'my_robot_bringup' build argument 'cmake_args' from command line to 'None'
+[0.193s] Level 5:colcon.colcon_core.verb:set package 'my_robot_bringup' build argument 'cmake_target' from command line to 'None'
+[0.193s] Level 5:colcon.colcon_core.verb:set package 'my_robot_bringup' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.193s] Level 5:colcon.colcon_core.verb:set package 'my_robot_bringup' build argument 'cmake_clean_cache' from command line to 'False'
+[0.193s] Level 5:colcon.colcon_core.verb:set package 'my_robot_bringup' build argument 'cmake_clean_first' from command line to 'False'
+[0.193s] Level 5:colcon.colcon_core.verb:set package 'my_robot_bringup' build argument 'cmake_force_configure' from command line to 'False'
+[0.194s] Level 5:colcon.colcon_core.verb:set package 'my_robot_bringup' build argument 'ament_cmake_args' from command line to 'None'
+[0.194s] Level 5:colcon.colcon_core.verb:set package 'my_robot_bringup' build argument 'catkin_cmake_args' from command line to 'None'
+[0.194s] Level 5:colcon.colcon_core.verb:set package 'my_robot_bringup' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.194s] DEBUG:colcon.colcon_core.verb:Building package 'my_robot_bringup' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/ares/ares_code_projects/R2/build/my_robot_bringup', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/ares/ares_code_projects/R2/install/my_robot_bringup', 'merge_install': False, 'path': '/home/ares/ares_code_projects/R2/src/my_robot_bringup', 'symlink_install': True, 'test_result_base': None}
+[0.194s] INFO:colcon.colcon_core.executor:Executing jobs using 'parallel' executor
+[0.194s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete
+[0.194s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/ares/ares_code_projects/R2/src/my_robot_description' with build type 'ament_cmake'
+[0.194s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/ares/ares_code_projects/R2/src/my_robot_description'
+[0.196s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_core.shell.bat': Not used on non-Windows systems
+[0.196s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.196s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.198s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/home/ares/ares_code_projects/R2/src/laser' with build type 'ament_python'
+[0.198s] Level 1:colcon.colcon_core.shell:create_environment_hook('laser', 'ament_prefix_path')
+[0.198s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/ares/ares_code_projects/R2/install/laser/share/laser/hook/ament_prefix_path.ps1'
+[0.198s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/ares/ares_code_projects/R2/install/laser/share/laser/hook/ament_prefix_path.dsv'
+[0.198s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/ares/ares_code_projects/R2/install/laser/share/laser/hook/ament_prefix_path.sh'
+[0.199s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.199s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.201s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/ares/ares_code_projects/R2/src/myrobot_controller' with build type 'ament_cmake'
+[0.201s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/ares/ares_code_projects/R2/src/myrobot_controller'
+[0.201s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.201s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.203s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/home/ares/ares_code_projects/R2/src/omni_mpc_controller' with build type 'ament_python'
+[0.203s] Level 1:colcon.colcon_core.shell:create_environment_hook('omni_mpc_controller', 'ament_prefix_path')
+[0.203s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/ares/ares_code_projects/R2/install/omni_mpc_controller/share/omni_mpc_controller/hook/ament_prefix_path.ps1'
+[0.203s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/ares/ares_code_projects/R2/install/omni_mpc_controller/share/omni_mpc_controller/hook/ament_prefix_path.dsv'
+[0.203s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/ares/ares_code_projects/R2/install/omni_mpc_controller/share/omni_mpc_controller/hook/ament_prefix_path.sh'
+[0.203s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.203s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.205s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/ares/ares_code_projects/R2/src/sllidar_ros2' with build type 'ament_cmake'
+[0.205s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/ares/ares_code_projects/R2/src/sllidar_ros2'
+[0.205s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.205s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.207s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/ares/ares_code_projects/R2/src/usb_bulk_node' with build type 'ament_cmake'
+[0.207s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/ares/ares_code_projects/R2/src/usb_bulk_node'
+[0.207s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.207s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.212s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/ares/ares_code_projects/R2/build/my_robot_description': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/ares/ares_code_projects/R1/install/omni_mpc_controller:/home/ares/ares_code_projects/R1/install/laser:/opt/ros/humble CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake /home/ares/ares_code_projects/R2/src/my_robot_description -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/ares/ares_code_projects/R2/install/my_robot_description
+[0.356s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/home/ares/ares_code_projects/R2/src/laser'
+[0.356s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.356s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.359s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/ares/ares_code_projects/R2/build/myrobot_controller': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/ares/ares_code_projects/R1/install/omni_mpc_controller:/home/ares/ares_code_projects/R1/install/laser:/opt/ros/humble CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake /home/ares/ares_code_projects/R2/src/myrobot_controller -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/ares/ares_code_projects/R2/install/myrobot_controller
+[0.497s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/home/ares/ares_code_projects/R2/src/omni_mpc_controller'
+[0.497s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.497s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.501s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/ares/ares_code_projects/R2/build/sllidar_ros2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/ares/ares_code_projects/R1/install/omni_mpc_controller:/home/ares/ares_code_projects/R1/install/laser:/opt/ros/humble CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake /home/ares/ares_code_projects/R2/src/sllidar_ros2 -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/ares/ares_code_projects/R2/install/sllidar_ros2
+[0.506s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/ares/ares_code_projects/R2/build/usb_bulk_node': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/ares/ares_code_projects/R1/install/omni_mpc_controller:/home/ares/ares_code_projects/R1/install/laser:/opt/ros/humble CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake /home/ares/ares_code_projects/R2/src/usb_bulk_node -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/ares/ares_code_projects/R2/install/usb_bulk_node
+[0.741s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/ares/ares_code_projects/R2/build/laser': CONDA_PROMPT_MODIFIER=(base) PYTHONPATH=/home/ares/ares_code_projects/R2/build/laser/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/ares/ares_code_projects/R2/install/laser/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/ares/ares_code_projects/R2/build/laser/build --no-deps symlink_data
+[0.745s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/ares/ares_code_projects/R2/build/omni_mpc_controller': CONDA_PROMPT_MODIFIER=(base) PYTHONPATH=/home/ares/ares_code_projects/R2/build/omni_mpc_controller/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/ares/ares_code_projects/R2/install/omni_mpc_controller/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/ares/ares_code_projects/R2/build/omni_mpc_controller/build --no-deps symlink_data
+[0.748s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/ares/ares_code_projects/R2/build/my_robot_description' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/ares/ares_code_projects/R1/install/omni_mpc_controller:/home/ares/ares_code_projects/R1/install/laser:/opt/ros/humble CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake /home/ares/ares_code_projects/R2/src/my_robot_description -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/ares/ares_code_projects/R2/install/my_robot_description
+[0.748s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/ares/ares_code_projects/R2/build/my_robot_description': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/ares/ares_code_projects/R1/install/omni_mpc_controller:/home/ares/ares_code_projects/R1/install/laser:/opt/ros/humble CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake --build /home/ares/ares_code_projects/R2/build/my_robot_description -- -j16 -l16
+[0.774s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/ares/ares_code_projects/R2/build/my_robot_description' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/ares/ares_code_projects/R1/install/omni_mpc_controller:/home/ares/ares_code_projects/R1/install/laser:/opt/ros/humble CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake --build /home/ares/ares_code_projects/R2/build/my_robot_description -- -j16 -l16
+[0.780s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/ares/ares_code_projects/R2/build/my_robot_description': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/ares/ares_code_projects/R1/install/omni_mpc_controller:/home/ares/ares_code_projects/R1/install/laser:/opt/ros/humble CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake --install /home/ares/ares_code_projects/R2/build/my_robot_description
+[1.029s] Level 1:colcon.colcon_core.shell:create_environment_hook('laser', 'pythonpath_develop')
+[1.029s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/ares/ares_code_projects/R2/build/laser/share/laser/hook/pythonpath_develop.ps1'
+[1.030s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/ares/ares_code_projects/R2/build/laser' returned '0': CONDA_PROMPT_MODIFIER=(base) PYTHONPATH=/home/ares/ares_code_projects/R2/build/laser/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/ares/ares_code_projects/R2/install/laser/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/ares/ares_code_projects/R2/build/laser/build --no-deps symlink_data
+[1.030s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/ares/ares_code_projects/R2/build/laser/share/laser/hook/pythonpath_develop.dsv'
+[1.030s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/ares/ares_code_projects/R2/build/laser/share/laser/hook/pythonpath_develop.sh'
+[1.032s] Level 1:colcon.colcon_core.environment:checking '/home/ares/ares_code_projects/R2/install/laser' for CMake module files
+[1.032s] Level 1:colcon.colcon_core.environment:checking '/home/ares/ares_code_projects/R2/install/laser' for CMake config files
+[1.033s] Level 1:colcon.colcon_core.environment:checking '/home/ares/ares_code_projects/R2/install/laser/lib'
+[1.033s] Level 1:colcon.colcon_core.environment:checking '/home/ares/ares_code_projects/R2/install/laser/bin'
+[1.033s] Level 1:colcon.colcon_core.environment:checking '/home/ares/ares_code_projects/R2/install/laser/lib/pkgconfig/laser.pc'
+[1.033s] Level 1:colcon.colcon_core.environment:checking '/home/ares/ares_code_projects/R2/install/laser/lib/python3.10/site-packages'
+[1.033s] Level 1:colcon.colcon_core.shell:create_environment_hook('laser', 'pythonpath')
+[1.033s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/ares/ares_code_projects/R2/install/laser/share/laser/hook/pythonpath.ps1'
+[1.034s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/ares/ares_code_projects/R2/install/laser/share/laser/hook/pythonpath.dsv'
+[1.034s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/ares/ares_code_projects/R2/install/laser/share/laser/hook/pythonpath.sh'
+[1.035s] Level 1:colcon.colcon_core.environment:checking '/home/ares/ares_code_projects/R2/install/laser/bin'
+[1.035s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(laser)
+[1.035s] INFO:colcon.colcon_core.shell:Creating package script '/home/ares/ares_code_projects/R2/install/laser/share/laser/package.ps1'
+[1.036s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/ares/ares_code_projects/R2/install/laser/share/laser/package.dsv'
+[1.036s] INFO:colcon.colcon_core.shell:Creating package script '/home/ares/ares_code_projects/R2/install/laser/share/laser/package.sh'
+[1.037s] INFO:colcon.colcon_core.shell:Creating package script '/home/ares/ares_code_projects/R2/install/laser/share/laser/package.bash'
+[1.038s] INFO:colcon.colcon_core.shell:Creating package script '/home/ares/ares_code_projects/R2/install/laser/share/laser/package.zsh'
+[1.038s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/ares/ares_code_projects/R2/install/laser/share/colcon-core/packages/laser)
+[1.039s] Level 1:colcon.colcon_core.shell:create_environment_hook('omni_mpc_controller', 'pythonpath_develop')
+[1.039s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/ares/ares_code_projects/R2/build/omni_mpc_controller/share/omni_mpc_controller/hook/pythonpath_develop.ps1'
+[1.040s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/ares/ares_code_projects/R2/build/omni_mpc_controller' returned '0': CONDA_PROMPT_MODIFIER=(base) PYTHONPATH=/home/ares/ares_code_projects/R2/build/omni_mpc_controller/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/ares/ares_code_projects/R2/install/omni_mpc_controller/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/ares/ares_code_projects/R2/build/omni_mpc_controller/build --no-deps symlink_data
+[1.040s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/ares/ares_code_projects/R2/build/omni_mpc_controller/share/omni_mpc_controller/hook/pythonpath_develop.dsv'
+[1.040s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/ares/ares_code_projects/R2/build/omni_mpc_controller/share/omni_mpc_controller/hook/pythonpath_develop.sh'
+[1.041s] Level 1:colcon.colcon_core.environment:checking '/home/ares/ares_code_projects/R2/install/omni_mpc_controller' for CMake module files
+[1.041s] Level 1:colcon.colcon_core.environment:checking '/home/ares/ares_code_projects/R2/install/omni_mpc_controller' for CMake config files
+[1.042s] Level 1:colcon.colcon_core.environment:checking '/home/ares/ares_code_projects/R2/install/omni_mpc_controller/lib'
+[1.042s] Level 1:colcon.colcon_core.environment:checking '/home/ares/ares_code_projects/R2/install/omni_mpc_controller/bin'
+[1.042s] Level 1:colcon.colcon_core.environment:checking '/home/ares/ares_code_projects/R2/install/omni_mpc_controller/lib/pkgconfig/omni_mpc_controller.pc'
+[1.042s] Level 1:colcon.colcon_core.environment:checking '/home/ares/ares_code_projects/R2/install/omni_mpc_controller/lib/python3.10/site-packages'
+[1.042s] Level 1:colcon.colcon_core.shell:create_environment_hook('omni_mpc_controller', 'pythonpath')
+[1.042s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/ares/ares_code_projects/R2/install/omni_mpc_controller/share/omni_mpc_controller/hook/pythonpath.ps1'
+[1.042s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/ares/ares_code_projects/R2/install/omni_mpc_controller/share/omni_mpc_controller/hook/pythonpath.dsv'
+[1.043s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/ares/ares_code_projects/R2/install/omni_mpc_controller/share/omni_mpc_controller/hook/pythonpath.sh'
+[1.043s] Level 1:colcon.colcon_core.environment:checking '/home/ares/ares_code_projects/R2/install/omni_mpc_controller/bin'
+[1.043s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(omni_mpc_controller)
+[1.043s] INFO:colcon.colcon_core.shell:Creating package script '/home/ares/ares_code_projects/R2/install/omni_mpc_controller/share/omni_mpc_controller/package.ps1'
+[1.043s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/ares/ares_code_projects/R2/install/omni_mpc_controller/share/omni_mpc_controller/package.dsv'
+[1.043s] INFO:colcon.colcon_core.shell:Creating package script '/home/ares/ares_code_projects/R2/install/omni_mpc_controller/share/omni_mpc_controller/package.sh'
+[1.044s] INFO:colcon.colcon_core.shell:Creating package script '/home/ares/ares_code_projects/R2/install/omni_mpc_controller/share/omni_mpc_controller/package.bash'
+[1.044s] INFO:colcon.colcon_core.shell:Creating package script '/home/ares/ares_code_projects/R2/install/omni_mpc_controller/share/omni_mpc_controller/package.zsh'
+[1.044s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/ares/ares_code_projects/R2/install/omni_mpc_controller/share/colcon-core/packages/omni_mpc_controller)
+[1.165s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(my_robot_description)
+[1.165s] Level 1:colcon.colcon_core.environment:checking '/home/ares/ares_code_projects/R2/install/my_robot_description' for CMake module files
+[1.166s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/ares/ares_code_projects/R2/build/my_robot_description' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/ares/ares_code_projects/R1/install/omni_mpc_controller:/home/ares/ares_code_projects/R1/install/laser:/opt/ros/humble CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake --install /home/ares/ares_code_projects/R2/build/my_robot_description
+[1.166s] Level 1:colcon.colcon_core.environment:checking '/home/ares/ares_code_projects/R2/install/my_robot_description' for CMake config files
+[1.166s] Level 1:colcon.colcon_core.shell:create_environment_hook('my_robot_description', 'cmake_prefix_path')
+[1.167s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/ares/ares_code_projects/R2/install/my_robot_description/share/my_robot_description/hook/cmake_prefix_path.ps1'
+[1.167s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/ares/ares_code_projects/R2/install/my_robot_description/share/my_robot_description/hook/cmake_prefix_path.dsv'
+[1.167s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/ares/ares_code_projects/R2/install/my_robot_description/share/my_robot_description/hook/cmake_prefix_path.sh'
+[1.167s] Level 1:colcon.colcon_core.environment:checking '/home/ares/ares_code_projects/R2/install/my_robot_description/bin'
+[1.167s] Level 1:colcon.colcon_core.environment:checking '/home/ares/ares_code_projects/R2/install/my_robot_description/lib/pkgconfig/my_robot_description.pc'
+[1.167s] Level 1:colcon.colcon_core.environment:checking '/home/ares/ares_code_projects/R2/install/my_robot_description/lib/python3.10/site-packages'
+[1.167s] Level 1:colcon.colcon_core.environment:checking '/home/ares/ares_code_projects/R2/install/my_robot_description/bin'
+[1.168s] INFO:colcon.colcon_core.shell:Creating package script '/home/ares/ares_code_projects/R2/install/my_robot_description/share/my_robot_description/package.ps1'
+[1.168s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/ares/ares_code_projects/R2/install/my_robot_description/share/my_robot_description/package.dsv'
+[1.168s] INFO:colcon.colcon_core.shell:Creating package script '/home/ares/ares_code_projects/R2/install/my_robot_description/share/my_robot_description/package.sh'
+[1.168s] INFO:colcon.colcon_core.shell:Creating package script '/home/ares/ares_code_projects/R2/install/my_robot_description/share/my_robot_description/package.bash'
+[1.168s] INFO:colcon.colcon_core.shell:Creating package script '/home/ares/ares_code_projects/R2/install/my_robot_description/share/my_robot_description/package.zsh'
+[1.168s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/ares/ares_code_projects/R2/install/my_robot_description/share/colcon-core/packages/my_robot_description)
+[1.169s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(my_robot_description)
+[1.169s] Level 1:colcon.colcon_core.environment:checking '/home/ares/ares_code_projects/R2/install/my_robot_description' for CMake module files
+[1.169s] Level 1:colcon.colcon_core.environment:checking '/home/ares/ares_code_projects/R2/install/my_robot_description' for CMake config files
+[1.169s] Level 1:colcon.colcon_core.shell:create_environment_hook('my_robot_description', 'cmake_prefix_path')
+[1.169s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/ares/ares_code_projects/R2/install/my_robot_description/share/my_robot_description/hook/cmake_prefix_path.ps1'
+[1.170s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/ares/ares_code_projects/R2/install/my_robot_description/share/my_robot_description/hook/cmake_prefix_path.dsv'
+[1.170s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/ares/ares_code_projects/R2/install/my_robot_description/share/my_robot_description/hook/cmake_prefix_path.sh'
+[1.170s] Level 1:colcon.colcon_core.environment:checking '/home/ares/ares_code_projects/R2/install/my_robot_description/bin'
+[1.170s] Level 1:colcon.colcon_core.environment:checking '/home/ares/ares_code_projects/R2/install/my_robot_description/lib/pkgconfig/my_robot_description.pc'
+[1.170s] Level 1:colcon.colcon_core.environment:checking '/home/ares/ares_code_projects/R2/install/my_robot_description/lib/python3.10/site-packages'
+[1.170s] Level 1:colcon.colcon_core.environment:checking '/home/ares/ares_code_projects/R2/install/my_robot_description/bin'
+[1.170s] INFO:colcon.colcon_core.shell:Creating package script '/home/ares/ares_code_projects/R2/install/my_robot_description/share/my_robot_description/package.ps1'
+[1.170s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/ares/ares_code_projects/R2/install/my_robot_description/share/my_robot_description/package.dsv'
+[1.171s] INFO:colcon.colcon_core.shell:Creating package script '/home/ares/ares_code_projects/R2/install/my_robot_description/share/my_robot_description/package.sh'
+[1.171s] INFO:colcon.colcon_core.shell:Creating package script '/home/ares/ares_code_projects/R2/install/my_robot_description/share/my_robot_description/package.bash'
+[1.171s] INFO:colcon.colcon_core.shell:Creating package script '/home/ares/ares_code_projects/R2/install/my_robot_description/share/my_robot_description/package.zsh'
+[1.171s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/ares/ares_code_projects/R2/install/my_robot_description/share/colcon-core/packages/my_robot_description)
+[1.172s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/ares/ares_code_projects/R2/src/my_robot_bringup' with build type 'ament_cmake'
+[1.172s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/ares/ares_code_projects/R2/src/my_robot_bringup'
+[1.172s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[1.172s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[1.177s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/ares/ares_code_projects/R2/build/my_robot_bringup': AMENT_PREFIX_PATH=/home/ares/ares_code_projects/R2/install/my_robot_description:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/ares/ares_code_projects/R2/install/my_robot_description:/home/ares/ares_code_projects/R1/install/usb_bulk_node:/home/ares/ares_code_projects/R1/install/sllidar_ros2:/home/ares/ares_code_projects/R1/install/myrobot_controller:/home/ares/ares_code_projects/R1/install/my_robot_bringup:/home/ares/ares_code_projects/R1/install/my_robot_description:/home/ares/ros2_ws/install/zed_ros2:/home/ares/ros2_ws/install/zed_wrapper:/home/ares/ros2_ws/install/zed_components:/home/ares/ros2_ws/install/hoop_detector:/home/ares/ros2_ws/install/hik_camera:/home/ares/ares_code_projects/R1/install/omni_mpc_controller:/home/ares/ares_code_projects/R1/install/laser:/opt/ros/humble CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake /home/ares/ares_code_projects/R2/src/my_robot_bringup -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/ares/ares_code_projects/R2/install/my_robot_bringup
+[1.298s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/ares/ares_code_projects/R2/build/myrobot_controller' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/ares/ares_code_projects/R1/install/omni_mpc_controller:/home/ares/ares_code_projects/R1/install/laser:/opt/ros/humble CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake /home/ares/ares_code_projects/R2/src/myrobot_controller -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/ares/ares_code_projects/R2/install/myrobot_controller
+[1.299s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/ares/ares_code_projects/R2/build/myrobot_controller': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/ares/ares_code_projects/R1/install/omni_mpc_controller:/home/ares/ares_code_projects/R1/install/laser:/opt/ros/humble CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake --build /home/ares/ares_code_projects/R2/build/myrobot_controller -- -j16 -l16
+[1.334s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/ares/ares_code_projects/R2/build/usb_bulk_node' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/ares/ares_code_projects/R1/install/omni_mpc_controller:/home/ares/ares_code_projects/R1/install/laser:/opt/ros/humble CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake /home/ares/ares_code_projects/R2/src/usb_bulk_node -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/ares/ares_code_projects/R2/install/usb_bulk_node
+[1.335s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/ares/ares_code_projects/R2/build/usb_bulk_node': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/ares/ares_code_projects/R1/install/omni_mpc_controller:/home/ares/ares_code_projects/R1/install/laser:/opt/ros/humble CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake --build /home/ares/ares_code_projects/R2/build/usb_bulk_node -- -j16 -l16
+[1.387s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/ares/ares_code_projects/R2/build/sllidar_ros2' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/ares/ares_code_projects/R1/install/omni_mpc_controller:/home/ares/ares_code_projects/R1/install/laser:/opt/ros/humble CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake /home/ares/ares_code_projects/R2/src/sllidar_ros2 -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/ares/ares_code_projects/R2/install/sllidar_ros2
+[1.389s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/ares/ares_code_projects/R2/build/sllidar_ros2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/ares/ares_code_projects/R1/install/omni_mpc_controller:/home/ares/ares_code_projects/R1/install/laser:/opt/ros/humble CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake --build /home/ares/ares_code_projects/R2/build/sllidar_ros2 -- -j16 -l16
+[2.234s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/ares/ares_code_projects/R2/build/my_robot_bringup' returned '0': AMENT_PREFIX_PATH=/home/ares/ares_code_projects/R2/install/my_robot_description:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/ares/ares_code_projects/R2/install/my_robot_description:/home/ares/ares_code_projects/R1/install/usb_bulk_node:/home/ares/ares_code_projects/R1/install/sllidar_ros2:/home/ares/ares_code_projects/R1/install/myrobot_controller:/home/ares/ares_code_projects/R1/install/my_robot_bringup:/home/ares/ares_code_projects/R1/install/my_robot_description:/home/ares/ros2_ws/install/zed_ros2:/home/ares/ros2_ws/install/zed_wrapper:/home/ares/ros2_ws/install/zed_components:/home/ares/ros2_ws/install/hoop_detector:/home/ares/ros2_ws/install/hik_camera:/home/ares/ares_code_projects/R1/install/omni_mpc_controller:/home/ares/ares_code_projects/R1/install/laser:/opt/ros/humble CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake /home/ares/ares_code_projects/R2/src/my_robot_bringup -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/ares/ares_code_projects/R2/install/my_robot_bringup
+[2.241s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/ares/ares_code_projects/R2/build/my_robot_bringup': AMENT_PREFIX_PATH=/home/ares/ares_code_projects/R2/install/my_robot_description:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/ares/ares_code_projects/R2/install/my_robot_description:/home/ares/ares_code_projects/R1/install/usb_bulk_node:/home/ares/ares_code_projects/R1/install/sllidar_ros2:/home/ares/ares_code_projects/R1/install/myrobot_controller:/home/ares/ares_code_projects/R1/install/my_robot_bringup:/home/ares/ares_code_projects/R1/install/my_robot_description:/home/ares/ros2_ws/install/zed_ros2:/home/ares/ros2_ws/install/zed_wrapper:/home/ares/ros2_ws/install/zed_components:/home/ares/ros2_ws/install/hoop_detector:/home/ares/ros2_ws/install/hik_camera:/home/ares/ares_code_projects/R1/install/omni_mpc_controller:/home/ares/ares_code_projects/R1/install/laser:/opt/ros/humble CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake --build /home/ares/ares_code_projects/R2/build/my_robot_bringup -- -j16 -l16
+[2.277s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/ares/ares_code_projects/R2/build/my_robot_bringup' returned '0': AMENT_PREFIX_PATH=/home/ares/ares_code_projects/R2/install/my_robot_description:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/ares/ares_code_projects/R2/install/my_robot_description:/home/ares/ares_code_projects/R1/install/usb_bulk_node:/home/ares/ares_code_projects/R1/install/sllidar_ros2:/home/ares/ares_code_projects/R1/install/myrobot_controller:/home/ares/ares_code_projects/R1/install/my_robot_bringup:/home/ares/ares_code_projects/R1/install/my_robot_description:/home/ares/ros2_ws/install/zed_ros2:/home/ares/ros2_ws/install/zed_wrapper:/home/ares/ros2_ws/install/zed_components:/home/ares/ros2_ws/install/hoop_detector:/home/ares/ros2_ws/install/hik_camera:/home/ares/ares_code_projects/R1/install/omni_mpc_controller:/home/ares/ares_code_projects/R1/install/laser:/opt/ros/humble CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake --build /home/ares/ares_code_projects/R2/build/my_robot_bringup -- -j16 -l16
+[2.277s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/ares/ares_code_projects/R2/build/my_robot_bringup': AMENT_PREFIX_PATH=/home/ares/ares_code_projects/R2/install/my_robot_description:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/ares/ares_code_projects/R2/install/my_robot_description:/home/ares/ares_code_projects/R1/install/usb_bulk_node:/home/ares/ares_code_projects/R1/install/sllidar_ros2:/home/ares/ares_code_projects/R1/install/myrobot_controller:/home/ares/ares_code_projects/R1/install/my_robot_bringup:/home/ares/ares_code_projects/R1/install/my_robot_description:/home/ares/ros2_ws/install/zed_ros2:/home/ares/ros2_ws/install/zed_wrapper:/home/ares/ros2_ws/install/zed_components:/home/ares/ros2_ws/install/hoop_detector:/home/ares/ros2_ws/install/hik_camera:/home/ares/ares_code_projects/R1/install/omni_mpc_controller:/home/ares/ares_code_projects/R1/install/laser:/opt/ros/humble CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake --install /home/ares/ares_code_projects/R2/build/my_robot_bringup
+[2.402s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(my_robot_bringup)
+[2.402s] Level 1:colcon.colcon_core.environment:checking '/home/ares/ares_code_projects/R2/install/my_robot_bringup' for CMake module files
+[2.402s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/ares/ares_code_projects/R2/build/my_robot_bringup' returned '0': AMENT_PREFIX_PATH=/home/ares/ares_code_projects/R2/install/my_robot_description:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/ares/ares_code_projects/R2/install/my_robot_description:/home/ares/ares_code_projects/R1/install/usb_bulk_node:/home/ares/ares_code_projects/R1/install/sllidar_ros2:/home/ares/ares_code_projects/R1/install/myrobot_controller:/home/ares/ares_code_projects/R1/install/my_robot_bringup:/home/ares/ares_code_projects/R1/install/my_robot_description:/home/ares/ros2_ws/install/zed_ros2:/home/ares/ros2_ws/install/zed_wrapper:/home/ares/ros2_ws/install/zed_components:/home/ares/ros2_ws/install/hoop_detector:/home/ares/ros2_ws/install/hik_camera:/home/ares/ares_code_projects/R1/install/omni_mpc_controller:/home/ares/ares_code_projects/R1/install/laser:/opt/ros/humble CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake --install /home/ares/ares_code_projects/R2/build/my_robot_bringup
+[2.402s] Level 1:colcon.colcon_core.environment:checking '/home/ares/ares_code_projects/R2/install/my_robot_bringup' for CMake config files
+[2.403s] Level 1:colcon.colcon_core.shell:create_environment_hook('my_robot_bringup', 'cmake_prefix_path')
+[2.403s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/ares/ares_code_projects/R2/install/my_robot_bringup/share/my_robot_bringup/hook/cmake_prefix_path.ps1'
+[2.403s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/ares/ares_code_projects/R2/install/my_robot_bringup/share/my_robot_bringup/hook/cmake_prefix_path.dsv'
+[2.403s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/ares/ares_code_projects/R2/install/my_robot_bringup/share/my_robot_bringup/hook/cmake_prefix_path.sh'
+[2.403s] Level 1:colcon.colcon_core.environment:checking '/home/ares/ares_code_projects/R2/install/my_robot_bringup/bin'
+[2.404s] Level 1:colcon.colcon_core.environment:checking '/home/ares/ares_code_projects/R2/install/my_robot_bringup/lib/pkgconfig/my_robot_bringup.pc'
+[2.404s] Level 1:colcon.colcon_core.environment:checking '/home/ares/ares_code_projects/R2/install/my_robot_bringup/lib/python3.10/site-packages'
+[2.404s] Level 1:colcon.colcon_core.environment:checking '/home/ares/ares_code_projects/R2/install/my_robot_bringup/bin'
+[2.404s] INFO:colcon.colcon_core.shell:Creating package script '/home/ares/ares_code_projects/R2/install/my_robot_bringup/share/my_robot_bringup/package.ps1'
+[2.404s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/ares/ares_code_projects/R2/install/my_robot_bringup/share/my_robot_bringup/package.dsv'
+[2.404s] INFO:colcon.colcon_core.shell:Creating package script '/home/ares/ares_code_projects/R2/install/my_robot_bringup/share/my_robot_bringup/package.sh'
+[2.405s] INFO:colcon.colcon_core.shell:Creating package script '/home/ares/ares_code_projects/R2/install/my_robot_bringup/share/my_robot_bringup/package.bash'
+[2.405s] INFO:colcon.colcon_core.shell:Creating package script '/home/ares/ares_code_projects/R2/install/my_robot_bringup/share/my_robot_bringup/package.zsh'
+[2.405s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/ares/ares_code_projects/R2/install/my_robot_bringup/share/colcon-core/packages/my_robot_bringup)
+[2.405s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(my_robot_bringup)
+[2.405s] Level 1:colcon.colcon_core.environment:checking '/home/ares/ares_code_projects/R2/install/my_robot_bringup' for CMake module files
+[2.405s] Level 1:colcon.colcon_core.environment:checking '/home/ares/ares_code_projects/R2/install/my_robot_bringup' for CMake config files
+[2.406s] Level 1:colcon.colcon_core.shell:create_environment_hook('my_robot_bringup', 'cmake_prefix_path')
+[2.406s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/ares/ares_code_projects/R2/install/my_robot_bringup/share/my_robot_bringup/hook/cmake_prefix_path.ps1'
+[2.406s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/ares/ares_code_projects/R2/install/my_robot_bringup/share/my_robot_bringup/hook/cmake_prefix_path.dsv'
+[2.406s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/ares/ares_code_projects/R2/install/my_robot_bringup/share/my_robot_bringup/hook/cmake_prefix_path.sh'
+[2.406s] Level 1:colcon.colcon_core.environment:checking '/home/ares/ares_code_projects/R2/install/my_robot_bringup/bin'
+[2.406s] Level 1:colcon.colcon_core.environment:checking '/home/ares/ares_code_projects/R2/install/my_robot_bringup/lib/pkgconfig/my_robot_bringup.pc'
+[2.407s] Level 1:colcon.colcon_core.environment:checking '/home/ares/ares_code_projects/R2/install/my_robot_bringup/lib/python3.10/site-packages'
+[2.407s] Level 1:colcon.colcon_core.environment:checking '/home/ares/ares_code_projects/R2/install/my_robot_bringup/bin'
+[2.407s] INFO:colcon.colcon_core.shell:Creating package script '/home/ares/ares_code_projects/R2/install/my_robot_bringup/share/my_robot_bringup/package.ps1'
+[2.407s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/ares/ares_code_projects/R2/install/my_robot_bringup/share/my_robot_bringup/package.dsv'
+[2.407s] INFO:colcon.colcon_core.shell:Creating package script '/home/ares/ares_code_projects/R2/install/my_robot_bringup/share/my_robot_bringup/package.sh'
+[2.407s] INFO:colcon.colcon_core.shell:Creating package script '/home/ares/ares_code_projects/R2/install/my_robot_bringup/share/my_robot_bringup/package.bash'
+[2.408s] INFO:colcon.colcon_core.shell:Creating package script '/home/ares/ares_code_projects/R2/install/my_robot_bringup/share/my_robot_bringup/package.zsh'
+[2.408s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/ares/ares_code_projects/R2/install/my_robot_bringup/share/colcon-core/packages/my_robot_bringup)
+[6.610s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/ares/ares_code_projects/R2/build/sllidar_ros2' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/ares/ares_code_projects/R1/install/omni_mpc_controller:/home/ares/ares_code_projects/R1/install/laser:/opt/ros/humble CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake --build /home/ares/ares_code_projects/R2/build/sllidar_ros2 -- -j16 -l16
+[6.611s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/ares/ares_code_projects/R2/build/sllidar_ros2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/ares/ares_code_projects/R1/install/omni_mpc_controller:/home/ares/ares_code_projects/R1/install/laser:/opt/ros/humble CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake --install /home/ares/ares_code_projects/R2/build/sllidar_ros2
+[6.850s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(sllidar_ros2)
+[6.850s] Level 1:colcon.colcon_core.environment:checking '/home/ares/ares_code_projects/R2/install/sllidar_ros2' for CMake module files
+[6.850s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/ares/ares_code_projects/R2/build/sllidar_ros2' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/ares/ares_code_projects/R1/install/omni_mpc_controller:/home/ares/ares_code_projects/R1/install/laser:/opt/ros/humble CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake --install /home/ares/ares_code_projects/R2/build/sllidar_ros2
+[6.850s] Level 1:colcon.colcon_core.environment:checking '/home/ares/ares_code_projects/R2/install/sllidar_ros2' for CMake config files
+[6.851s] Level 1:colcon.colcon_core.shell:create_environment_hook('sllidar_ros2', 'cmake_prefix_path')
+[6.851s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/ares/ares_code_projects/R2/install/sllidar_ros2/share/sllidar_ros2/hook/cmake_prefix_path.ps1'
+[6.851s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/ares/ares_code_projects/R2/install/sllidar_ros2/share/sllidar_ros2/hook/cmake_prefix_path.dsv'
+[6.851s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/ares/ares_code_projects/R2/install/sllidar_ros2/share/sllidar_ros2/hook/cmake_prefix_path.sh'
+[6.851s] Level 1:colcon.colcon_core.environment:checking '/home/ares/ares_code_projects/R2/install/sllidar_ros2/lib'
+[6.851s] Level 1:colcon.colcon_core.environment:checking '/home/ares/ares_code_projects/R2/install/sllidar_ros2/bin'
+[6.851s] Level 1:colcon.colcon_core.environment:checking '/home/ares/ares_code_projects/R2/install/sllidar_ros2/lib/pkgconfig/sllidar_ros2.pc'
+[6.852s] Level 1:colcon.colcon_core.environment:checking '/home/ares/ares_code_projects/R2/install/sllidar_ros2/lib/python3.10/site-packages'
+[6.852s] Level 1:colcon.colcon_core.environment:checking '/home/ares/ares_code_projects/R2/install/sllidar_ros2/bin'
+[6.852s] INFO:colcon.colcon_core.shell:Creating package script '/home/ares/ares_code_projects/R2/install/sllidar_ros2/share/sllidar_ros2/package.ps1'
+[6.852s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/ares/ares_code_projects/R2/install/sllidar_ros2/share/sllidar_ros2/package.dsv'
+[6.852s] INFO:colcon.colcon_core.shell:Creating package script '/home/ares/ares_code_projects/R2/install/sllidar_ros2/share/sllidar_ros2/package.sh'
+[6.852s] INFO:colcon.colcon_core.shell:Creating package script '/home/ares/ares_code_projects/R2/install/sllidar_ros2/share/sllidar_ros2/package.bash'
+[6.853s] INFO:colcon.colcon_core.shell:Creating package script '/home/ares/ares_code_projects/R2/install/sllidar_ros2/share/sllidar_ros2/package.zsh'
+[6.853s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/ares/ares_code_projects/R2/install/sllidar_ros2/share/colcon-core/packages/sllidar_ros2)
+[6.853s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(sllidar_ros2)
+[6.853s] Level 1:colcon.colcon_core.environment:checking '/home/ares/ares_code_projects/R2/install/sllidar_ros2' for CMake module files
+[6.853s] Level 1:colcon.colcon_core.environment:checking '/home/ares/ares_code_projects/R2/install/sllidar_ros2' for CMake config files
+[6.853s] Level 1:colcon.colcon_core.shell:create_environment_hook('sllidar_ros2', 'cmake_prefix_path')
+[6.854s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/ares/ares_code_projects/R2/install/sllidar_ros2/share/sllidar_ros2/hook/cmake_prefix_path.ps1'
+[6.854s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/ares/ares_code_projects/R2/install/sllidar_ros2/share/sllidar_ros2/hook/cmake_prefix_path.dsv'
+[6.854s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/ares/ares_code_projects/R2/install/sllidar_ros2/share/sllidar_ros2/hook/cmake_prefix_path.sh'
+[6.854s] Level 1:colcon.colcon_core.environment:checking '/home/ares/ares_code_projects/R2/install/sllidar_ros2/lib'
+[6.854s] Level 1:colcon.colcon_core.environment:checking '/home/ares/ares_code_projects/R2/install/sllidar_ros2/bin'
+[6.854s] Level 1:colcon.colcon_core.environment:checking '/home/ares/ares_code_projects/R2/install/sllidar_ros2/lib/pkgconfig/sllidar_ros2.pc'
+[6.854s] Level 1:colcon.colcon_core.environment:checking '/home/ares/ares_code_projects/R2/install/sllidar_ros2/lib/python3.10/site-packages'
+[6.854s] Level 1:colcon.colcon_core.environment:checking '/home/ares/ares_code_projects/R2/install/sllidar_ros2/bin'
+[6.855s] INFO:colcon.colcon_core.shell:Creating package script '/home/ares/ares_code_projects/R2/install/sllidar_ros2/share/sllidar_ros2/package.ps1'
+[6.855s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/ares/ares_code_projects/R2/install/sllidar_ros2/share/sllidar_ros2/package.dsv'
+[6.855s] INFO:colcon.colcon_core.shell:Creating package script '/home/ares/ares_code_projects/R2/install/sllidar_ros2/share/sllidar_ros2/package.sh'
+[6.855s] INFO:colcon.colcon_core.shell:Creating package script '/home/ares/ares_code_projects/R2/install/sllidar_ros2/share/sllidar_ros2/package.bash'
+[6.856s] INFO:colcon.colcon_core.shell:Creating package script '/home/ares/ares_code_projects/R2/install/sllidar_ros2/share/sllidar_ros2/package.zsh'
+[6.856s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/ares/ares_code_projects/R2/install/sllidar_ros2/share/colcon-core/packages/sllidar_ros2)
+[6.938s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/ares/ares_code_projects/R2/build/usb_bulk_node' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/ares/ares_code_projects/R1/install/omni_mpc_controller:/home/ares/ares_code_projects/R1/install/laser:/opt/ros/humble CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake --build /home/ares/ares_code_projects/R2/build/usb_bulk_node -- -j16 -l16
+[6.940s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/ares/ares_code_projects/R2/build/usb_bulk_node': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/ares/ares_code_projects/R1/install/omni_mpc_controller:/home/ares/ares_code_projects/R1/install/laser:/opt/ros/humble CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake --install /home/ares/ares_code_projects/R2/build/usb_bulk_node
+[7.022s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(usb_bulk_node)
+[7.022s] Level 1:colcon.colcon_core.environment:checking '/home/ares/ares_code_projects/R2/install/usb_bulk_node' for CMake module files
+[7.023s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/ares/ares_code_projects/R2/build/usb_bulk_node' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/ares/ares_code_projects/R1/install/omni_mpc_controller:/home/ares/ares_code_projects/R1/install/laser:/opt/ros/humble CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake --install /home/ares/ares_code_projects/R2/build/usb_bulk_node
+[7.023s] Level 1:colcon.colcon_core.environment:checking '/home/ares/ares_code_projects/R2/install/usb_bulk_node' for CMake config files
+[7.023s] Level 1:colcon.colcon_core.shell:create_environment_hook('usb_bulk_node', 'cmake_prefix_path')
+[7.023s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/ares/ares_code_projects/R2/install/usb_bulk_node/share/usb_bulk_node/hook/cmake_prefix_path.ps1'
+[7.023s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/ares/ares_code_projects/R2/install/usb_bulk_node/share/usb_bulk_node/hook/cmake_prefix_path.dsv'
+[7.023s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/ares/ares_code_projects/R2/install/usb_bulk_node/share/usb_bulk_node/hook/cmake_prefix_path.sh'
+[7.024s] Level 1:colcon.colcon_core.environment:checking '/home/ares/ares_code_projects/R2/install/usb_bulk_node/lib'
+[7.024s] Level 1:colcon.colcon_core.environment:checking '/home/ares/ares_code_projects/R2/install/usb_bulk_node/bin'
+[7.024s] Level 1:colcon.colcon_core.environment:checking '/home/ares/ares_code_projects/R2/install/usb_bulk_node/lib/pkgconfig/usb_bulk_node.pc'
+[7.024s] Level 1:colcon.colcon_core.environment:checking '/home/ares/ares_code_projects/R2/install/usb_bulk_node/lib/python3.10/site-packages'
+[7.024s] Level 1:colcon.colcon_core.environment:checking '/home/ares/ares_code_projects/R2/install/usb_bulk_node/bin'
+[7.024s] INFO:colcon.colcon_core.shell:Creating package script '/home/ares/ares_code_projects/R2/install/usb_bulk_node/share/usb_bulk_node/package.ps1'
+[7.024s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/ares/ares_code_projects/R2/install/usb_bulk_node/share/usb_bulk_node/package.dsv'
+[7.025s] INFO:colcon.colcon_core.shell:Creating package script '/home/ares/ares_code_projects/R2/install/usb_bulk_node/share/usb_bulk_node/package.sh'
+[7.025s] INFO:colcon.colcon_core.shell:Creating package script '/home/ares/ares_code_projects/R2/install/usb_bulk_node/share/usb_bulk_node/package.bash'
+[7.025s] INFO:colcon.colcon_core.shell:Creating package script '/home/ares/ares_code_projects/R2/install/usb_bulk_node/share/usb_bulk_node/package.zsh'
+[7.025s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/ares/ares_code_projects/R2/install/usb_bulk_node/share/colcon-core/packages/usb_bulk_node)
+[7.025s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(usb_bulk_node)
+[7.025s] Level 1:colcon.colcon_core.environment:checking '/home/ares/ares_code_projects/R2/install/usb_bulk_node' for CMake module files
+[7.026s] Level 1:colcon.colcon_core.environment:checking '/home/ares/ares_code_projects/R2/install/usb_bulk_node' for CMake config files
+[7.026s] Level 1:colcon.colcon_core.shell:create_environment_hook('usb_bulk_node', 'cmake_prefix_path')
+[7.026s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/ares/ares_code_projects/R2/install/usb_bulk_node/share/usb_bulk_node/hook/cmake_prefix_path.ps1'
+[7.026s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/ares/ares_code_projects/R2/install/usb_bulk_node/share/usb_bulk_node/hook/cmake_prefix_path.dsv'
+[7.026s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/ares/ares_code_projects/R2/install/usb_bulk_node/share/usb_bulk_node/hook/cmake_prefix_path.sh'
+[7.026s] Level 1:colcon.colcon_core.environment:checking '/home/ares/ares_code_projects/R2/install/usb_bulk_node/lib'
+[7.027s] Level 1:colcon.colcon_core.environment:checking '/home/ares/ares_code_projects/R2/install/usb_bulk_node/bin'
+[7.027s] Level 1:colcon.colcon_core.environment:checking '/home/ares/ares_code_projects/R2/install/usb_bulk_node/lib/pkgconfig/usb_bulk_node.pc'
+[7.027s] Level 1:colcon.colcon_core.environment:checking '/home/ares/ares_code_projects/R2/install/usb_bulk_node/lib/python3.10/site-packages'
+[7.027s] Level 1:colcon.colcon_core.environment:checking '/home/ares/ares_code_projects/R2/install/usb_bulk_node/bin'
+[7.027s] INFO:colcon.colcon_core.shell:Creating package script '/home/ares/ares_code_projects/R2/install/usb_bulk_node/share/usb_bulk_node/package.ps1'
+[7.027s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/ares/ares_code_projects/R2/install/usb_bulk_node/share/usb_bulk_node/package.dsv'
+[7.027s] INFO:colcon.colcon_core.shell:Creating package script '/home/ares/ares_code_projects/R2/install/usb_bulk_node/share/usb_bulk_node/package.sh'
+[7.028s] INFO:colcon.colcon_core.shell:Creating package script '/home/ares/ares_code_projects/R2/install/usb_bulk_node/share/usb_bulk_node/package.bash'
+[7.028s] INFO:colcon.colcon_core.shell:Creating package script '/home/ares/ares_code_projects/R2/install/usb_bulk_node/share/usb_bulk_node/package.zsh'
+[7.028s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/ares/ares_code_projects/R2/install/usb_bulk_node/share/colcon-core/packages/usb_bulk_node)
+[7.068s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/ares/ares_code_projects/R2/build/myrobot_controller' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/ares/ares_code_projects/R1/install/omni_mpc_controller:/home/ares/ares_code_projects/R1/install/laser:/opt/ros/humble CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake --build /home/ares/ares_code_projects/R2/build/myrobot_controller -- -j16 -l16
+[7.069s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/ares/ares_code_projects/R2/build/myrobot_controller': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/ares/ares_code_projects/R1/install/omni_mpc_controller:/home/ares/ares_code_projects/R1/install/laser:/opt/ros/humble CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake --install /home/ares/ares_code_projects/R2/build/myrobot_controller
+[7.256s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(myrobot_controller)
+[7.256s] Level 1:colcon.colcon_core.environment:checking '/home/ares/ares_code_projects/R2/install/myrobot_controller' for CMake module files
+[7.256s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/ares/ares_code_projects/R2/build/myrobot_controller' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/ares/ares_code_projects/R1/install/omni_mpc_controller:/home/ares/ares_code_projects/R1/install/laser:/opt/ros/humble CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake --install /home/ares/ares_code_projects/R2/build/myrobot_controller
+[7.256s] Level 1:colcon.colcon_core.environment:checking '/home/ares/ares_code_projects/R2/install/myrobot_controller' for CMake config files
+[7.257s] Level 1:colcon.colcon_core.shell:create_environment_hook('myrobot_controller', 'cmake_prefix_path')
+[7.257s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/ares/ares_code_projects/R2/install/myrobot_controller/share/myrobot_controller/hook/cmake_prefix_path.ps1'
+[7.257s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/ares/ares_code_projects/R2/install/myrobot_controller/share/myrobot_controller/hook/cmake_prefix_path.dsv'
+[7.257s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/ares/ares_code_projects/R2/install/myrobot_controller/share/myrobot_controller/hook/cmake_prefix_path.sh'
+[7.257s] Level 1:colcon.colcon_core.environment:checking '/home/ares/ares_code_projects/R2/install/myrobot_controller/lib'
+[7.257s] Level 1:colcon.colcon_core.environment:checking '/home/ares/ares_code_projects/R2/install/myrobot_controller/bin'
+[7.257s] Level 1:colcon.colcon_core.environment:checking '/home/ares/ares_code_projects/R2/install/myrobot_controller/lib/pkgconfig/myrobot_controller.pc'
+[7.258s] Level 1:colcon.colcon_core.environment:checking '/home/ares/ares_code_projects/R2/install/myrobot_controller/lib/python3.10/site-packages'
+[7.258s] Level 1:colcon.colcon_core.environment:checking '/home/ares/ares_code_projects/R2/install/myrobot_controller/bin'
+[7.258s] INFO:colcon.colcon_core.shell:Creating package script '/home/ares/ares_code_projects/R2/install/myrobot_controller/share/myrobot_controller/package.ps1'
+[7.258s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/ares/ares_code_projects/R2/install/myrobot_controller/share/myrobot_controller/package.dsv'
+[7.258s] INFO:colcon.colcon_core.shell:Creating package script '/home/ares/ares_code_projects/R2/install/myrobot_controller/share/myrobot_controller/package.sh'
+[7.258s] INFO:colcon.colcon_core.shell:Creating package script '/home/ares/ares_code_projects/R2/install/myrobot_controller/share/myrobot_controller/package.bash'
+[7.259s] INFO:colcon.colcon_core.shell:Creating package script '/home/ares/ares_code_projects/R2/install/myrobot_controller/share/myrobot_controller/package.zsh'
+[7.259s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/ares/ares_code_projects/R2/install/myrobot_controller/share/colcon-core/packages/myrobot_controller)
+[7.259s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(myrobot_controller)
+[7.259s] Level 1:colcon.colcon_core.environment:checking '/home/ares/ares_code_projects/R2/install/myrobot_controller' for CMake module files
+[7.259s] Level 1:colcon.colcon_core.environment:checking '/home/ares/ares_code_projects/R2/install/myrobot_controller' for CMake config files
+[7.259s] Level 1:colcon.colcon_core.shell:create_environment_hook('myrobot_controller', 'cmake_prefix_path')
+[7.259s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/ares/ares_code_projects/R2/install/myrobot_controller/share/myrobot_controller/hook/cmake_prefix_path.ps1'
+[7.260s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/ares/ares_code_projects/R2/install/myrobot_controller/share/myrobot_controller/hook/cmake_prefix_path.dsv'
+[7.260s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/ares/ares_code_projects/R2/install/myrobot_controller/share/myrobot_controller/hook/cmake_prefix_path.sh'
+[7.260s] Level 1:colcon.colcon_core.environment:checking '/home/ares/ares_code_projects/R2/install/myrobot_controller/lib'
+[7.260s] Level 1:colcon.colcon_core.environment:checking '/home/ares/ares_code_projects/R2/install/myrobot_controller/bin'
+[7.260s] Level 1:colcon.colcon_core.environment:checking '/home/ares/ares_code_projects/R2/install/myrobot_controller/lib/pkgconfig/myrobot_controller.pc'
+[7.260s] Level 1:colcon.colcon_core.environment:checking '/home/ares/ares_code_projects/R2/install/myrobot_controller/lib/python3.10/site-packages'
+[7.261s] Level 1:colcon.colcon_core.environment:checking '/home/ares/ares_code_projects/R2/install/myrobot_controller/bin'
+[7.261s] INFO:colcon.colcon_core.shell:Creating package script '/home/ares/ares_code_projects/R2/install/myrobot_controller/share/myrobot_controller/package.ps1'
+[7.261s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/ares/ares_code_projects/R2/install/myrobot_controller/share/myrobot_controller/package.dsv'
+[7.261s] INFO:colcon.colcon_core.shell:Creating package script '/home/ares/ares_code_projects/R2/install/myrobot_controller/share/myrobot_controller/package.sh'
+[7.261s] INFO:colcon.colcon_core.shell:Creating package script '/home/ares/ares_code_projects/R2/install/myrobot_controller/share/myrobot_controller/package.bash'
+[7.261s] INFO:colcon.colcon_core.shell:Creating package script '/home/ares/ares_code_projects/R2/install/myrobot_controller/share/myrobot_controller/package.zsh'
+[7.262s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/ares/ares_code_projects/R2/install/myrobot_controller/share/colcon-core/packages/myrobot_controller)
+[7.262s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:closing loop
+[7.262s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:loop closed
+[7.262s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete finished with '0'
+[7.262s] DEBUG:colcon.colcon_core.event_reactor:joining thread
+[7.265s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.terminal_notifier': Not used on non-Darwin systems
+[7.265s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.win32': Not used on non-Windows systems
+[7.265s] INFO:colcon.colcon_notification.desktop_notification:Sending desktop notification using 'notify2'
+[7.273s] DEBUG:colcon.colcon_core.event_reactor:joined thread
+[7.273s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/ares/ares_code_projects/R2/install/local_setup.ps1'
+[7.273s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/ares/ares_code_projects/R2/install/_local_setup_util_ps1.py'
+[7.274s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/ares/ares_code_projects/R2/install/setup.ps1'
+[7.275s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/ares/ares_code_projects/R2/install/local_setup.sh'
+[7.275s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/ares/ares_code_projects/R2/install/_local_setup_util_sh.py'
+[7.275s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/ares/ares_code_projects/R2/install/setup.sh'
+[7.276s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/ares/ares_code_projects/R2/install/local_setup.bash'
+[7.276s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/ares/ares_code_projects/R2/install/setup.bash'
+[7.276s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/ares/ares_code_projects/R2/install/local_setup.zsh'
+[7.277s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/ares/ares_code_projects/R2/install/setup.zsh'

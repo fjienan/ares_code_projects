@@ -1,0 +1,1 @@
+/home/ares/ares_code_projects/R1/build/my_robot_bringup/ament_cmake_environment_hooks/local_setup.zsh
