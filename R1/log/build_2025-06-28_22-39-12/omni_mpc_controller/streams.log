@@ -1,0 +1,19 @@
+[0.566s] Invoking command in '/home/ares/ares_code_projects/R1/build/omni_mpc_controller': CONDA_PROMPT_MODIFIER=(base) PYTHONPATH=/home/ares/ares_code_projects/R1/build/omni_mpc_controller/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/ares/ares_code_projects/R1/install/omni_mpc_controller/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/ares/ares_code_projects/R1/build/omni_mpc_controller/build --no-deps symlink_data
+[0.711s] running develop
+[0.803s] running egg_info
+[0.803s] writing omni_mpc_controller.egg-info/PKG-INFO
+[0.803s] writing dependency_links to omni_mpc_controller.egg-info/dependency_links.txt
+[0.803s] writing entry points to omni_mpc_controller.egg-info/entry_points.txt
+[0.803s] writing requirements to omni_mpc_controller.egg-info/requires.txt
+[0.803s] writing top-level names to omni_mpc_controller.egg-info/top_level.txt
+[0.804s] reading manifest file 'omni_mpc_controller.egg-info/SOURCES.txt'
+[0.805s] writing manifest file 'omni_mpc_controller.egg-info/SOURCES.txt'
+[0.827s] running build_ext
+[0.827s] Creating /home/ares/ares_code_projects/R1/install/omni_mpc_controller/lib/python3.10/site-packages/omni-mpc-controller.egg-link (link to .)
+[0.828s] Installing MPC script to /home/ares/ares_code_projects/R1/install/omni_mpc_controller/lib/omni_mpc_controller
+[0.828s] Installing keyboard_control script to /home/ares/ares_code_projects/R1/install/omni_mpc_controller/lib/omni_mpc_controller
+[0.828s] Installing omni_mpc_controller_node script to /home/ares/ares_code_projects/R1/install/omni_mpc_controller/lib/omni_mpc_controller
+[0.828s] 
+[0.828s] Installed /home/ares/ares_code_projects/R1/build/omni_mpc_controller
+[0.828s] running symlink_data
+[0.848s] Invoked command in '/home/ares/ares_code_projects/R1/build/omni_mpc_controller' returned '0': CONDA_PROMPT_MODIFIER=(base) PYTHONPATH=/home/ares/ares_code_projects/R1/build/omni_mpc_controller/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/ares/ares_code_projects/R1/install/omni_mpc_controller/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/ares/ares_code_projects/R1/build/omni_mpc_controller/build --no-deps symlink_data

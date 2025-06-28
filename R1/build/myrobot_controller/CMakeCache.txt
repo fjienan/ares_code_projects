@@ -45,7 +45,7 @@ CMAKE_AR:FILEPATH=/usr/bin/ar
 
 //Choose the type of build, options are: None Debug Release RelWithDebInfo
 // MinSizeRel ...
-CMAKE_BUILD_TYPE:STRING=
+CMAKE_BUILD_TYPE:STRING=Release
 
 //Enable/Disable color output during build.
 CMAKE_COLOR_MAKEFILE:BOOL=ON
@@ -266,7 +266,7 @@ PKG_CONFIG_ARGN:STRING=
 PKG_CONFIG_EXECUTABLE:FILEPATH=/usr/bin/pkg-config
 
 //Path to a program.
-Python3_EXECUTABLE:FILEPATH=/home/ares/miniconda3/envs/test/bin/python3
+Python3_EXECUTABLE:FILEPATH=/home/ares/miniconda3/bin/python3
 
 //Name of the computer/site where compile is being run
 SITE:STRING=ares-MIX
@@ -383,7 +383,7 @@ fastrtps_DIR:PATH=/opt/ros/humble/share/fastrtps/cmake
 fastrtps_cmake_module_DIR:PATH=/opt/ros/humble/share/fastrtps_cmake_module/cmake
 
 //The directory containing a CMake configuration file for fmt.
-fmt_DIR:PATH=/usr/lib/x86_64-linux-gnu/cmake/fmt
+fmt_DIR:PATH=/home/ares/miniconda3/lib/cmake/fmt
 
 //The directory containing a CMake configuration file for foonathan_memory.
 foonathan_memory_DIR:PATH=/opt/ros/humble/lib/foonathan_memory/cmake
@@ -503,7 +503,7 @@ rosidl_typesupport_introspection_c_DIR:PATH=/opt/ros/humble/share/rosidl_typesup
 rosidl_typesupport_introspection_cpp_DIR:PATH=/opt/ros/humble/share/rosidl_typesupport_introspection_cpp/cmake
 
 //The directory containing a CMake configuration file for spdlog.
-spdlog_DIR:PATH=/usr/lib/x86_64-linux-gnu/cmake/spdlog
+spdlog_DIR:PATH=/home/ares/miniconda3/lib/cmake/spdlog
 
 //The directory containing a CMake configuration file for spdlog_vendor.
 spdlog_vendor_DIR:PATH=/opt/ros/humble/share/spdlog_vendor/cmake
@@ -518,7 +518,7 @@ std_msgs_DIR:PATH=/opt/ros/humble/share/std_msgs/cmake
 tracetools_DIR:PATH=/opt/ros/humble/share/tracetools/cmake
 
 //Path to a program.
-xmllint_BIN:FILEPATH=/home/ares/miniconda3/envs/test/bin/xmllint
+xmllint_BIN:FILEPATH=/home/ares/miniconda3/bin/xmllint
 
 //The directory containing a CMake configuration file for yaml.
 yaml_DIR:PATH=/opt/ros/humble/cmake
@@ -680,7 +680,7 @@ FIND_PACKAGE_MESSAGE_DETAILS_FastRTPS:INTERNAL=[/opt/ros/humble/include][/opt/ro
 //Details about finding OpenSSL
 FIND_PACKAGE_MESSAGE_DETAILS_OpenSSL:INTERNAL=[/usr/lib/x86_64-linux-gnu/libcrypto.so][/usr/include][c ][v3.0.2()]
 //Details about finding Python3
-FIND_PACKAGE_MESSAGE_DETAILS_Python3:INTERNAL=[/home/ares/miniconda3/envs/test/bin/python3][cfound components: Interpreter ][v3.10.18()]
+FIND_PACKAGE_MESSAGE_DETAILS_Python3:INTERNAL=[/home/ares/miniconda3/bin/python3][cfound components: Interpreter ][v3.13.2()]
 //Details about finding Threads
 FIND_PACKAGE_MESSAGE_DETAILS_Threads:INTERNAL=[TRUE][v()]
 //ADVANCED property for variable: OPENSSL_CRYPTO_LIBRARY
@@ -695,7 +695,7 @@ PKG_CONFIG_ARGN-ADVANCED:INTERNAL=1
 PKG_CONFIG_EXECUTABLE-ADVANCED:INTERNAL=1
 //The directory for Python library installation. This needs to
 // be in PYTHONPATH when 'setup.py install' is called.
-PYTHON_INSTALL_DIR:INTERNAL=lib/python3.10/site-packages
+PYTHON_INSTALL_DIR:INTERNAL=lib/python3.13/site-packages
 _OPENSSL_CFLAGS:INTERNAL=
 _OPENSSL_CFLAGS_I:INTERNAL=
 _OPENSSL_CFLAGS_OTHER:INTERNAL=
@@ -731,10 +731,10 @@ _OPENSSL_openssl_INCLUDEDIR:INTERNAL=
 _OPENSSL_openssl_LIBDIR:INTERNAL=
 _OPENSSL_openssl_PREFIX:INTERNAL=
 _OPENSSL_openssl_VERSION:INTERNAL=
-_Python3_EXECUTABLE:INTERNAL=/home/ares/miniconda3/envs/test/bin/python3
+_Python3_EXECUTABLE:INTERNAL=/home/ares/miniconda3/bin/python3
 //Python3 Properties
-_Python3_INTERPRETER_PROPERTIES:INTERNAL=Python;3;10;18;64;;cpython-310-x86_64-linux-gnu;/home/ares/miniconda3/envs/test/lib/python3.10;/home/ares/miniconda3/envs/test/lib/python3.10;/home/ares/miniconda3/envs/test/lib/python3.10/site-packages;/home/ares/miniconda3/envs/test/lib/python3.10/site-packages
-_Python3_INTERPRETER_SIGNATURE:INTERNAL=42fda0573740cc726a8f78a44d0fae0f
+_Python3_INTERPRETER_PROPERTIES:INTERNAL=Python;3;13;2;64;;cpython-313-x86_64-linux-gnu;/home/ares/miniconda3/lib/python3.13;/home/ares/miniconda3/lib/python3.13;/home/ares/miniconda3/lib/python3.13/site-packages;/home/ares/miniconda3/lib/python3.13/site-packages
+_Python3_INTERPRETER_SIGNATURE:INTERNAL=177a47feff01604cfe23003f5fe16f5a
 //Index for unique symlink install targets
 __AMENT_CMAKE_SYMLINK_INSTALL_TARGETS_INDEX:INTERNAL=1
 __pkg_config_arguments__OPENSSL:INTERNAL=QUIET;openssl

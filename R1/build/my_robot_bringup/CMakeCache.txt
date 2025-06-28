@@ -45,7 +45,7 @@ CMAKE_AR:FILEPATH=/usr/bin/ar
 
 //Choose the type of build, options are: None Debug Release RelWithDebInfo
 // MinSizeRel ...
-CMAKE_BUILD_TYPE:STRING=
+CMAKE_BUILD_TYPE:STRING=Release
 
 //Enable/Disable color output during build.
 CMAKE_COLOR_MAKEFILE:BOOL=ON
@@ -233,7 +233,7 @@ CMAKE_STRIP:FILEPATH=/usr/bin/strip
 CMAKE_VERBOSE_MAKEFILE:BOOL=FALSE
 
 //Path to a program.
-Python3_EXECUTABLE:FILEPATH=/home/ares/miniconda3/envs/test/bin/python3
+Python3_EXECUTABLE:FILEPATH=/home/ares/miniconda3/bin/python3
 
 //Name of the computer/site where compile is being run
 SITE:STRING=ares-MIX
@@ -447,11 +447,11 @@ CMAKE_UNAME:INTERNAL=/usr/bin/uname
 //ADVANCED property for variable: CMAKE_VERBOSE_MAKEFILE
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
 //Details about finding Python3
-FIND_PACKAGE_MESSAGE_DETAILS_Python3:INTERNAL=[/home/ares/miniconda3/envs/test/bin/python3][cfound components: Interpreter ][v3.10.18()]
-_Python3_EXECUTABLE:INTERNAL=/home/ares/miniconda3/envs/test/bin/python3
+FIND_PACKAGE_MESSAGE_DETAILS_Python3:INTERNAL=[/home/ares/miniconda3/bin/python3][cfound components: Interpreter ][v3.13.2()]
+_Python3_EXECUTABLE:INTERNAL=/home/ares/miniconda3/bin/python3
 //Python3 Properties
-_Python3_INTERPRETER_PROPERTIES:INTERNAL=Python;3;10;18;64;;cpython-310-x86_64-linux-gnu;/home/ares/miniconda3/envs/test/lib/python3.10;/home/ares/miniconda3/envs/test/lib/python3.10;/home/ares/miniconda3/envs/test/lib/python3.10/site-packages;/home/ares/miniconda3/envs/test/lib/python3.10/site-packages
-_Python3_INTERPRETER_SIGNATURE:INTERNAL=42fda0573740cc726a8f78a44d0fae0f
+_Python3_INTERPRETER_PROPERTIES:INTERNAL=Python;3;13;2;64;;cpython-313-x86_64-linux-gnu;/home/ares/miniconda3/lib/python3.13;/home/ares/miniconda3/lib/python3.13;/home/ares/miniconda3/lib/python3.13/site-packages;/home/ares/miniconda3/lib/python3.13/site-packages
+_Python3_INTERPRETER_SIGNATURE:INTERNAL=177a47feff01604cfe23003f5fe16f5a
 //Index for unique symlink install targets
 __AMENT_CMAKE_SYMLINK_INSTALL_TARGETS_INDEX:INTERNAL=0
 

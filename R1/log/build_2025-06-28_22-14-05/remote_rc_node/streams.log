@@ -1,0 +1,15 @@
+[0.305s] Invoking command in '/home/ares/ares_code_projects/R1/build/remote_rc_node': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/ares/Desktop/dog/install/omni_mpc_controller:/home/ares/Desktop/dog/install/laser:/home/ares/ares_code_projects/R1/install/omni_mpc_controller:/home/ares/ares_code_projects/R1/install/laser:/opt/ros/humble CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake --build /home/ares/ares_code_projects/R1/build/remote_rc_node -- -j16 -l16
+[0.328s] [35m[1mConsolidate compiler generated dependencies of target udp_joy_node[0m
+[0.344s] [ 50%] [32mBuilding CXX object CMakeFiles/udp_joy_node.dir/src/udp_joy_node.cpp.o[0m
+[1.644s] [01m[K/home/ares/ares_code_projects/R1/src/remote_rc_node/src/udp_joy_node.cpp:20:7:[m[K [01;31m[Kerror: [m[K‘[01m[Kstring[m[K’ does not name a type; did you mean ‘[01m[Kstdin[m[K’?
+[1.644s]    20 | const [01;31m[Kstring[m[K vel_node_name = "cmd_vel";
+[1.644s]       |       [01;31m[K^~~~~~[m[K
+[1.644s]       |       [32m[Kstdin[m[K
+[1.649s] [01m[K/home/ares/ares_code_projects/R1/src/remote_rc_node/src/udp_joy_node.cpp:[m[K In function ‘[01m[Kint main(int, char**)[m[K’:
+[1.649s] [01m[K/home/ares/ares_code_projects/R1/src/remote_rc_node/src/udp_joy_node.cpp:41:70:[m[K [01;31m[Kerror: [m[K‘[01m[Kvel_node_name[m[K’ was not declared in this scope
+[1.649s]    41 |   auto twist_pub = node->create_publisher<geometry_msgs::msg::Twist>([01;31m[Kvel_node_name[m[K, 10);
+[1.649s]       |                                                                      [01;31m[K^~~~~~~~~~~~~[m[K
+[2.494s] gmake[2]: *** [CMakeFiles/udp_joy_node.dir/build.make:76: CMakeFiles/udp_joy_node.dir/src/udp_joy_node.cpp.o] Error 1
+[2.495s] gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/udp_joy_node.dir/all] Error 2
+[2.495s] gmake: *** [Makefile:146: all] Error 2
+[2.496s] Invoked command in '/home/ares/ares_code_projects/R1/build/remote_rc_node' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/ares/Desktop/dog/install/omni_mpc_controller:/home/ares/Desktop/dog/install/laser:/home/ares/ares_code_projects/R1/install/omni_mpc_controller:/home/ares/ares_code_projects/R1/install/laser:/opt/ros/humble CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake --build /home/ares/ares_code_projects/R1/build/remote_rc_node -- -j16 -l16

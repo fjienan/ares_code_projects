@@ -1,0 +1,69 @@
+[0.296s] Invoking command in '/home/ares/ares_code_projects/R1/build/usb_bulk_node': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/ares/ares_code_projects/R1/install/omni_mpc_controller:/home/ares/ares_code_projects/R1/install/laser:/opt/ros/humble CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake /home/ares/ares_code_projects/R1/src/usb_bulk_node -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/ares/ares_code_projects/R1/install/usb_bulk_node
+[0.331s] -- The CXX compiler identification is GNU 11.4.0
+[0.335s] -- Detecting CXX compiler ABI info
+[0.379s] -- Detecting CXX compiler ABI info - done
+[0.384s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.384s] -- Detecting CXX compile features
+[0.385s] -- Detecting CXX compile features - done
+[0.385s] -- ===== 开始配置 =====
+[0.386s] -- Found ament_cmake: 1.3.11 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.641s] -- Found Python3: /home/ares/miniconda3/bin/python3 (found version "3.13.2") found components: Interpreter 
+[0.691s] -- Override CMake install command with custom implementation using symlinks instead of copying resources
+[0.708s] -- Found rclcpp: 16.0.12 (/opt/ros/humble/share/rclcpp/cmake)
+[0.735s] -- Found rosidl_generator_c: 3.1.6 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[0.738s] -- Found rosidl_adapter: 3.1.6 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[0.742s] -- Found rosidl_generator_cpp: 3.1.6 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[0.750s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.762s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.807s] -- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+[0.811s] -- Found rmw_fastrtps_cpp: 6.2.7 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+[0.879s] -- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.2")  
+[0.897s] -- Found FastRTPS: /opt/ros/humble/include  
+[0.922s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[0.931s] -- Looking for C++ include pthread.h
+[0.980s] -- Looking for C++ include pthread.h - found
+[0.981s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+[1.027s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+[1.028s] -- Found Threads: TRUE  
+[1.057s] -- Found geometry_msgs: 4.9.0 (/opt/ros/humble/share/geometry_msgs/cmake)
+[1.067s] -- Found PkgConfig: /usr/bin/pkg-config (found version "0.29.2") 
+[1.067s] -- Checking for module 'libusb-1.0'
+[1.075s] --   Found libusb-1.0, version 1.0.25
+[1.093s] -- Found ament_lint_auto: 0.12.12 (/opt/ros/humble/share/ament_lint_auto/cmake)
+[1.161s] -- Added test 'cppcheck' to perform static code analysis on C / C++ code
+[1.161s] -- Configured cppcheck include dirs: /home/ares/ares_code_projects/R1/src/usb_bulk_node/include/usb_bulk_node
+[1.161s] -- Configured cppcheck exclude dirs and/or files: 
+[1.162s] -- Added test 'lint_cmake' to check CMake code style
+[1.163s] -- Added test 'uncrustify' to check C / C++ code style
+[1.163s] -- Configured uncrustify additional arguments: 
+[1.164s] -- Added test 'xmllint' to check XML markup files
+[1.165s] -- Configuring done
+[1.169s] -- Generating done
+[1.171s] -- Build files have been written to: /home/ares/ares_code_projects/R1/build/usb_bulk_node
+[1.178s] Invoked command in '/home/ares/ares_code_projects/R1/build/usb_bulk_node' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/ares/ares_code_projects/R1/install/omni_mpc_controller:/home/ares/ares_code_projects/R1/install/laser:/opt/ros/humble CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake /home/ares/ares_code_projects/R1/src/usb_bulk_node -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/ares/ares_code_projects/R1/install/usb_bulk_node
+[1.179s] Invoking command in '/home/ares/ares_code_projects/R1/build/usb_bulk_node': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/ares/ares_code_projects/R1/install/omni_mpc_controller:/home/ares/ares_code_projects/R1/install/laser:/opt/ros/humble CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake --build /home/ares/ares_code_projects/R1/build/usb_bulk_node -- -j16 -l16
+[1.204s] [ 33%] [32mBuilding CXX object CMakeFiles/usb_bulk_node.dir/src/usb_bulk_node.cpp.o[0m
+[1.204s] [ 66%] [32mBuilding CXX object CMakeFiles/usb_bulk_node.dir/src/ares_protocol.cpp.o[0m
+[6.622s] [100%] [32m[1mLinking CXX executable usb_bulk_node[0m
+[6.863s] [100%] Built target usb_bulk_node
+[6.871s] Invoked command in '/home/ares/ares_code_projects/R1/build/usb_bulk_node' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/ares/ares_code_projects/R1/install/omni_mpc_controller:/home/ares/ares_code_projects/R1/install/laser:/opt/ros/humble CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake --build /home/ares/ares_code_projects/R1/build/usb_bulk_node -- -j16 -l16
+[6.873s] Invoking command in '/home/ares/ares_code_projects/R1/build/usb_bulk_node': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/ares/ares_code_projects/R1/install/omni_mpc_controller:/home/ares/ares_code_projects/R1/install/laser:/opt/ros/humble CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake --install /home/ares/ares_code_projects/R1/build/usb_bulk_node
+[6.876s] -- Install configuration: ""
+[6.876s] -- Execute custom install script
+[6.877s] -- Symlinking: /home/ares/ares_code_projects/R1/install/usb_bulk_node/lib/usb_bulk_node/usb_bulk_node
+[6.882s] -- Symlinking: /home/ares/ares_code_projects/R1/install/usb_bulk_node/share/ament_index/resource_index/package_run_dependencies/usb_bulk_node
+[6.887s] -- Symlinking: /home/ares/ares_code_projects/R1/install/usb_bulk_node/share/ament_index/resource_index/parent_prefix_path/usb_bulk_node
+[6.892s] -- Symlinking: /home/ares/ares_code_projects/R1/install/usb_bulk_node/share/usb_bulk_node/environment/ament_prefix_path.sh
+[6.898s] -- Symlinking: /home/ares/ares_code_projects/R1/install/usb_bulk_node/share/usb_bulk_node/environment/ament_prefix_path.dsv
+[6.904s] -- Symlinking: /home/ares/ares_code_projects/R1/install/usb_bulk_node/share/usb_bulk_node/environment/path.sh
+[6.908s] -- Symlinking: /home/ares/ares_code_projects/R1/install/usb_bulk_node/share/usb_bulk_node/environment/path.dsv
+[6.913s] -- Symlinking: /home/ares/ares_code_projects/R1/install/usb_bulk_node/share/usb_bulk_node/local_setup.bash
+[6.919s] -- Symlinking: /home/ares/ares_code_projects/R1/install/usb_bulk_node/share/usb_bulk_node/local_setup.sh
+[6.924s] -- Symlinking: /home/ares/ares_code_projects/R1/install/usb_bulk_node/share/usb_bulk_node/local_setup.zsh
+[6.931s] -- Symlinking: /home/ares/ares_code_projects/R1/install/usb_bulk_node/share/usb_bulk_node/local_setup.dsv
+[6.936s] -- Symlinking: /home/ares/ares_code_projects/R1/install/usb_bulk_node/share/usb_bulk_node/package.dsv
+[6.942s] -- Symlinking: /home/ares/ares_code_projects/R1/install/usb_bulk_node/share/ament_index/resource_index/packages/usb_bulk_node
+[6.948s] -- Symlinking: /home/ares/ares_code_projects/R1/install/usb_bulk_node/share/usb_bulk_node/cmake/usb_bulk_nodeConfig.cmake
+[6.953s] -- Symlinking: /home/ares/ares_code_projects/R1/install/usb_bulk_node/share/usb_bulk_node/cmake/usb_bulk_nodeConfig-version.cmake
+[6.958s] -- Symlinking: /home/ares/ares_code_projects/R1/install/usb_bulk_node/share/usb_bulk_node/package.xml
+[6.966s] Invoked command in '/home/ares/ares_code_projects/R1/build/usb_bulk_node' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/ares/ares_code_projects/R1/install/omni_mpc_controller:/home/ares/ares_code_projects/R1/install/laser:/opt/ros/humble CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake --install /home/ares/ares_code_projects/R1/build/usb_bulk_node

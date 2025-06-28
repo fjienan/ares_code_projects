@@ -1,5 +1,0 @@
-[console_scripts]
-MPC = omni_mpc_controller.MPC:main
-keyboard_control = omni_mpc_controller.keyboard_control:main
-omni_mpc_controller_node = omni_mpc_controller.omni_mpc_controller_node:main
-

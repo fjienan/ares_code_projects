@@ -67,7 +67,7 @@ include CMakeFiles/ament_cmake_python_build_myrobot_controller_egg.dir/compiler_
 include CMakeFiles/ament_cmake_python_build_myrobot_controller_egg.dir/progress.make
 
 CMakeFiles/ament_cmake_python_build_myrobot_controller_egg:
-	cd /home/ares/ares_code_projects/R1/build/myrobot_controller/ament_cmake_python/myrobot_controller && /home/ares/miniconda3/envs/test/bin/python3 setup.py egg_info
+	cd /home/ares/ares_code_projects/R1/build/myrobot_controller/ament_cmake_python/myrobot_controller && /home/ares/miniconda3/bin/python3 setup.py egg_info
 
 ament_cmake_python_build_myrobot_controller_egg: CMakeFiles/ament_cmake_python_build_myrobot_controller_egg
 ament_cmake_python_build_myrobot_controller_egg: CMakeFiles/ament_cmake_python_build_myrobot_controller_egg.dir/build.make

@@ -12,7 +12,7 @@ if(NOT DEFINED CMAKE_INSTALL_CONFIG_NAME)
     string(REGEX REPLACE "^[^A-Za-z0-9_]+" ""
            CMAKE_INSTALL_CONFIG_NAME "${BUILD_TYPE}")
   else()
-    set(CMAKE_INSTALL_CONFIG_NAME "")
+    set(CMAKE_INSTALL_CONFIG_NAME "Release")
   endif()
   message(STATUS "Install configuration: \"${CMAKE_INSTALL_CONFIG_NAME}\"")
 endif()
@@ -49,8 +49,8 @@ endif()
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   execute_process(
         COMMAND
-        "/home/ares/miniconda3/envs/test/bin/python3" "-m" "compileall"
-        "/home/ares/ares_code_projects/R1/install/myrobot_controller/lib/python3.10/site-packages/myrobot_controller"
+        "/home/ares/miniconda3/bin/python3" "-m" "compileall"
+        "/home/ares/ares_code_projects/R1/install/myrobot_controller/lib/python3.13/site-packages/myrobot_controller"
       )
 endif()
 

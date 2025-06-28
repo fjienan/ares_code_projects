@@ -1,0 +1,23 @@
+[0.297s] Invoking command in '/home/ares/ares_code_projects/R1/build/usb_bulk_node': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/ares/Desktop/dog/install/omni_mpc_controller:/home/ares/Desktop/dog/install/laser:/home/ares/ares_code_projects/R1/install/omni_mpc_controller:/home/ares/ares_code_projects/R1/install/laser:/opt/ros/humble CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake --build /home/ares/ares_code_projects/R1/build/usb_bulk_node -- -j16 -l16
+[0.327s] [100%] Built target usb_bulk_node
+[0.334s] Invoked command in '/home/ares/ares_code_projects/R1/build/usb_bulk_node' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/ares/Desktop/dog/install/omni_mpc_controller:/home/ares/Desktop/dog/install/laser:/home/ares/ares_code_projects/R1/install/omni_mpc_controller:/home/ares/ares_code_projects/R1/install/laser:/opt/ros/humble CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake --build /home/ares/ares_code_projects/R1/build/usb_bulk_node -- -j16 -l16
+[0.335s] Invoking command in '/home/ares/ares_code_projects/R1/build/usb_bulk_node': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/ares/Desktop/dog/install/omni_mpc_controller:/home/ares/Desktop/dog/install/laser:/home/ares/ares_code_projects/R1/install/omni_mpc_controller:/home/ares/ares_code_projects/R1/install/laser:/opt/ros/humble CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake --install /home/ares/ares_code_projects/R1/build/usb_bulk_node
+[0.341s] -- Install configuration: "Release"
+[0.341s] -- Execute custom install script
+[0.342s] -- Up-to-date symlink: /home/ares/ares_code_projects/R1/install/usb_bulk_node/lib/usb_bulk_node/usb_bulk_node
+[0.342s] -- Up-to-date symlink: /home/ares/ares_code_projects/R1/install/usb_bulk_node/share/ament_index/resource_index/package_run_dependencies/usb_bulk_node
+[0.343s] -- Up-to-date symlink: /home/ares/ares_code_projects/R1/install/usb_bulk_node/share/ament_index/resource_index/parent_prefix_path/usb_bulk_node
+[0.343s] -- Up-to-date symlink: /home/ares/ares_code_projects/R1/install/usb_bulk_node/share/usb_bulk_node/environment/ament_prefix_path.sh
+[0.343s] -- Up-to-date symlink: /home/ares/ares_code_projects/R1/install/usb_bulk_node/share/usb_bulk_node/environment/ament_prefix_path.dsv
+[0.343s] -- Up-to-date symlink: /home/ares/ares_code_projects/R1/install/usb_bulk_node/share/usb_bulk_node/environment/path.sh
+[0.343s] -- Up-to-date symlink: /home/ares/ares_code_projects/R1/install/usb_bulk_node/share/usb_bulk_node/environment/path.dsv
+[0.343s] -- Up-to-date symlink: /home/ares/ares_code_projects/R1/install/usb_bulk_node/share/usb_bulk_node/local_setup.bash
+[0.343s] -- Up-to-date symlink: /home/ares/ares_code_projects/R1/install/usb_bulk_node/share/usb_bulk_node/local_setup.sh
+[0.343s] -- Up-to-date symlink: /home/ares/ares_code_projects/R1/install/usb_bulk_node/share/usb_bulk_node/local_setup.zsh
+[0.343s] -- Up-to-date symlink: /home/ares/ares_code_projects/R1/install/usb_bulk_node/share/usb_bulk_node/local_setup.dsv
+[0.344s] -- Symlinking: /home/ares/ares_code_projects/R1/install/usb_bulk_node/share/usb_bulk_node/package.dsv
+[0.352s] -- Up-to-date symlink: /home/ares/ares_code_projects/R1/install/usb_bulk_node/share/ament_index/resource_index/packages/usb_bulk_node
+[0.352s] -- Up-to-date symlink: /home/ares/ares_code_projects/R1/install/usb_bulk_node/share/usb_bulk_node/cmake/usb_bulk_nodeConfig.cmake
+[0.352s] -- Up-to-date symlink: /home/ares/ares_code_projects/R1/install/usb_bulk_node/share/usb_bulk_node/cmake/usb_bulk_nodeConfig-version.cmake
+[0.352s] -- Up-to-date symlink: /home/ares/ares_code_projects/R1/install/usb_bulk_node/share/usb_bulk_node/package.xml
+[0.352s] Invoked command in '/home/ares/ares_code_projects/R1/build/usb_bulk_node' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/ares/Desktop/dog/install/omni_mpc_controller:/home/ares/Desktop/dog/install/laser:/home/ares/ares_code_projects/R1/install/omni_mpc_controller:/home/ares/ares_code_projects/R1/install/laser:/opt/ros/humble CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake --install /home/ares/ares_code_projects/R1/build/usb_bulk_node

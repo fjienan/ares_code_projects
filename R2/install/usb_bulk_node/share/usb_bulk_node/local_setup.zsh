@@ -1,1 +1,0 @@
-/home/ares/ares_code_projects/R2/build/usb_bulk_node/ament_cmake_environment_hooks/local_setup.zsh

@@ -1,0 +1,18 @@
+[0.547s] Invoking command in '/home/ares/ares_code_projects/R1/build/laser': CONDA_PROMPT_MODIFIER=(base) PYTHONPATH=/home/ares/ares_code_projects/R1/build/laser/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/ares/ares_code_projects/R1/install/laser/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/ares/ares_code_projects/R1/build/laser/build --no-deps symlink_data
+[0.690s] running develop
+[0.783s] running egg_info
+[0.783s] writing laser.egg-info/PKG-INFO
+[0.784s] writing dependency_links to laser.egg-info/dependency_links.txt
+[0.784s] writing entry points to laser.egg-info/entry_points.txt
+[0.784s] writing requirements to laser.egg-info/requires.txt
+[0.784s] writing top-level names to laser.egg-info/top_level.txt
+[0.785s] reading manifest file 'laser.egg-info/SOURCES.txt'
+[0.785s] writing manifest file 'laser.egg-info/SOURCES.txt'
+[0.808s] running build_ext
+[0.808s] Creating /home/ares/ares_code_projects/R1/install/laser/lib/python3.10/site-packages/laser.egg-link (link to .)
+[0.808s] Installing Real script to /home/ares/ares_code_projects/R1/install/laser/lib/laser
+[0.808s] Installing ros2publisher script to /home/ares/ares_code_projects/R1/install/laser/lib/laser
+[0.808s] 
+[0.808s] Installed /home/ares/ares_code_projects/R1/build/laser
+[0.809s] running symlink_data
+[0.827s] Invoked command in '/home/ares/ares_code_projects/R1/build/laser' returned '0': CONDA_PROMPT_MODIFIER=(base) PYTHONPATH=/home/ares/ares_code_projects/R1/build/laser/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/ares/ares_code_projects/R1/install/laser/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/ares/ares_code_projects/R1/build/laser/build --no-deps symlink_data

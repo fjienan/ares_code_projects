@@ -177,19 +177,19 @@ private:
             }
         }
         // 发布角速度
-        if(angular_vel_flag){
-            angular_vel_pub_->publish(angular_vel);
-        }
+        // if(angular_vel_flag){
+        //     angular_vel_pub_->publish(angular_vel);
+        // }
 
-        // 发布加速度
-        if(acceleration_flag){
-            acceleration_pub_->publish(acceleration);
-        }
+        // // 发布加速度
+        // if(acceleration_flag){
+        //     acceleration_pub_->publish(acceleration);
+        // }
 
-        // 发布四元数
-        if(quaternion_flag){
-            quaternion_pub_->publish(quaternion);
-        }
+        // // 发布四元数
+        // if(quaternion_flag){
+        //     quaternion_pub_->publish(quaternion);
+        // }
     }
 
     rclcpp::Subscription<geometry_msgs::msg::Twist>::SharedPtr subscription_;

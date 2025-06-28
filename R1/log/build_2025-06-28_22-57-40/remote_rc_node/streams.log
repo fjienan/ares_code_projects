@@ -1,0 +1,26 @@
+[0.305s] Invoking command in '/home/ares/ares_code_projects/R1/build/remote_rc_node': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/ares/Desktop/dog/install/omni_mpc_controller:/home/ares/Desktop/dog/install/laser:/home/ares/ares_code_projects/R1/install/omni_mpc_controller:/home/ares/ares_code_projects/R1/install/laser:/opt/ros/humble CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake --build /home/ares/ares_code_projects/R1/build/remote_rc_node -- -j16 -l16
+[0.330s] [35m[1mConsolidate compiler generated dependencies of target udp_joy_node[0m
+[0.342s] [ 50%] [32mBuilding CXX object CMakeFiles/udp_joy_node.dir/src/udp_joy_node.cpp.o[0m
+[4.931s] [100%] [32m[1mLinking CXX executable udp_joy_node[0m
+[5.001s] [100%] Built target udp_joy_node
+[5.008s] Invoked command in '/home/ares/ares_code_projects/R1/build/remote_rc_node' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/ares/Desktop/dog/install/omni_mpc_controller:/home/ares/Desktop/dog/install/laser:/home/ares/ares_code_projects/R1/install/omni_mpc_controller:/home/ares/ares_code_projects/R1/install/laser:/opt/ros/humble CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake --build /home/ares/ares_code_projects/R1/build/remote_rc_node -- -j16 -l16
+[5.009s] Invoking command in '/home/ares/ares_code_projects/R1/build/remote_rc_node': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/ares/Desktop/dog/install/omni_mpc_controller:/home/ares/Desktop/dog/install/laser:/home/ares/ares_code_projects/R1/install/omni_mpc_controller:/home/ares/ares_code_projects/R1/install/laser:/opt/ros/humble CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake --install /home/ares/ares_code_projects/R1/build/remote_rc_node
+[5.013s] -- Install configuration: "Release"
+[5.013s] -- Execute custom install script
+[5.013s] -- Up-to-date symlink: /home/ares/ares_code_projects/R1/install/remote_rc_node/lib/remote_rc_node/udp_joy_node
+[5.013s] -- Up-to-date symlink: /home/ares/ares_code_projects/R1/install/remote_rc_node/share/ament_index/resource_index/package_run_dependencies/remote_rc_node
+[5.013s] -- Up-to-date symlink: /home/ares/ares_code_projects/R1/install/remote_rc_node/share/ament_index/resource_index/parent_prefix_path/remote_rc_node
+[5.013s] -- Up-to-date symlink: /home/ares/ares_code_projects/R1/install/remote_rc_node/share/remote_rc_node/environment/ament_prefix_path.sh
+[5.013s] -- Up-to-date symlink: /home/ares/ares_code_projects/R1/install/remote_rc_node/share/remote_rc_node/environment/ament_prefix_path.dsv
+[5.013s] -- Up-to-date symlink: /home/ares/ares_code_projects/R1/install/remote_rc_node/share/remote_rc_node/environment/path.sh
+[5.013s] -- Up-to-date symlink: /home/ares/ares_code_projects/R1/install/remote_rc_node/share/remote_rc_node/environment/path.dsv
+[5.013s] -- Up-to-date symlink: /home/ares/ares_code_projects/R1/install/remote_rc_node/share/remote_rc_node/local_setup.bash
+[5.013s] -- Up-to-date symlink: /home/ares/ares_code_projects/R1/install/remote_rc_node/share/remote_rc_node/local_setup.sh
+[5.014s] -- Up-to-date symlink: /home/ares/ares_code_projects/R1/install/remote_rc_node/share/remote_rc_node/local_setup.zsh
+[5.014s] -- Up-to-date symlink: /home/ares/ares_code_projects/R1/install/remote_rc_node/share/remote_rc_node/local_setup.dsv
+[5.014s] -- Symlinking: /home/ares/ares_code_projects/R1/install/remote_rc_node/share/remote_rc_node/package.dsv
+[5.019s] -- Up-to-date symlink: /home/ares/ares_code_projects/R1/install/remote_rc_node/share/ament_index/resource_index/packages/remote_rc_node
+[5.019s] -- Up-to-date symlink: /home/ares/ares_code_projects/R1/install/remote_rc_node/share/remote_rc_node/cmake/remote_rc_nodeConfig.cmake
+[5.019s] -- Up-to-date symlink: /home/ares/ares_code_projects/R1/install/remote_rc_node/share/remote_rc_node/cmake/remote_rc_nodeConfig-version.cmake
+[5.019s] -- Up-to-date symlink: /home/ares/ares_code_projects/R1/install/remote_rc_node/share/remote_rc_node/package.xml
+[5.020s] Invoked command in '/home/ares/ares_code_projects/R1/build/remote_rc_node' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/ares/Desktop/dog/install/omni_mpc_controller:/home/ares/Desktop/dog/install/laser:/home/ares/ares_code_projects/R1/install/omni_mpc_controller:/home/ares/ares_code_projects/R1/install/laser:/opt/ros/humble CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake --install /home/ares/ares_code_projects/R1/build/remote_rc_node

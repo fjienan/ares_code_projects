@@ -9,6 +9,13 @@ from sklearn.cluster import DBSCAN
 from tf_transformations import euler_from_quaternion
 from scipy.optimize import linear_sum_assignment
 from scipy.optimize import minimize
+from visualization_msgs.msg import Marker, MarkerArray
+from builtin_interfaces.msg import Duration
+from std_msgs.msg import ColorRGBA
+"""
+坐标系
+       
+"""
 
 # 设置字体 (确保系统中有对应的字体，支持英文字符)
 # Set font (ensure corresponding font is in the system, supports English ]characters)
@@ -43,12 +50,57 @@ class CarController(Node):
             self.position_callback,
             10
         )
+
         self.keyboard_control = self.create_subscription(
             Point,
             '/input_coordinates',
             self.goal_callback,
             10
         )
+
+        self.controller_speed = self.create_subscription(
+            Twist,
+            '/cmd_vel_remote',
+            self.speed_callback,
+            10
+        )
+        
+        self.obstacle_pub = self.create_publisher(
+            MarkerArray,
+            '/visualization/obstacles',
+            10
+        )
+
+        self.scan_pub = self.create_publisher(
+            Marker,
+            '/visualization/filtered_scan',
+            10
+        )
+
+        self.trajectory_pub = self.create_publisher(
+            Marker,
+            '/visualization/mpc_trajectory',
+            10
+        )
+
+        self.goal_pub = self.create_publisher(
+            Marker,
+            '/visualization/goal',
+            10
+        )
+
+        self.obstacle_trajectory_pub = self.create_publisher(
+            MarkerArray,
+            '/visualization/obstacle_trajectories',
+            10
+        )
+
+        self.acceleration_pub = self.create_publisher(
+            Marker,
+            '/visualization/mpc_acceleration',
+            10
+        )
+
         self.declare_parameters(
             namespace='',
             parameters=[
@@ -110,7 +162,8 @@ class CarController(Node):
         self.vx_initial = 0.0
         self.vy_initial = 0.0
         self.theta = 0.0
-        self.goal = [0,0]
+        self.speed = [0,0]
+        self.goal = None
 
         self.get_logger().info(f"""
         dt: {self.dt}
@@ -142,21 +195,271 @@ class CarController(Node):
             '/mpc_decision',
             10
         )
+
+    def speed_callback(self,msg):
+        self.speed_x[0] = msg[0]
+        self.speed_y[1] = msg[1]
+
+
+
     def scan_callback(self, msg):
         """2D激光雷达数据回调函数"""
         # 获取激光雷达数据并且进行可视化，使用matplotlib
         # self.get_logger().info('Laser scan received')
         # 计算距离最近的障碍物距离
-        self.laser = msg.ranges 
 
-        if len(self.laser) != 0:
-            self.get_logger().info("--------------------------------Laser scan received--------------------------------")
-            for i in range(len(self.laser)):
-                if self.laser[i] == np.inf or self.laser[i] == np.nan:
-                    self.laser[i] = 1000000
+        self.laser = []
+        
+        if len(msg.ranges) != 0:
+            #self.get_logger().info("--------------------------------Laser scan received--------------------------------")
+            i = 0
+            for distance in msg.ranges:
+                if distance < 0.0 or distance == np.inf or distance == np.nan or (i > 1360 and i < 2450):
+                    self.laser.append(1000000)
+                    i += 1
+                else:
+                    self.laser.append(distance)
+                    i += 1
+
         else:
             self.get_logger().info("--------------------------------No No No No--------------------------------: No laser data")
+
+    def create_mpc_trajectory_marker(self):
+        marker = Marker()
+        marker.header.frame_id = "map"
+        marker.header.stamp = self.get_clock().now().to_msg()
+        marker.ns = "mpc_trajectory"
+        marker.id = 0
+        marker.type = Marker.LINE_STRIP
+        marker.action = Marker.ADD
+        marker.scale.x = 0.05  # 线宽
+        
+        # 设置颜色 (绿色)
+        marker.color = ColorRGBA()
+        marker.color.r = 0.0
+        marker.color.g = 1.0
+        marker.color.b = 0.0
+        marker.color.a = 1.0
+        
+        # 设置持续时间
+        duration = Duration()
+        duration.sec = 0
+        duration.nanosec = int(0.5 * 1e9)  # 0.5秒
+        marker.lifetime = duration
+        
+        # 添加轨迹点
+        if hasattr(self, 'mpc_trajectory') and self.mpc_trajectory:
+            for point in self.mpc_trajectory:
+                p = Point()
+                p.x = float(point[0])
+                p.y = float(point[1])
+                p.z = 0.0
+                marker.points.append(p)
+        
+        return marker
+
+    def create_goal_marker(self):
+        marker = Marker()
+        marker.header.frame_id = "map"
+        marker.header.stamp = self.get_clock().now().to_msg()
+        marker.ns = "goal"
+        marker.id = 0
+        marker.type = Marker.SPHERE
+        marker.action = Marker.ADD
+        
+        # 设置位置
+        marker.pose.position.x = float(self.goal[0])
+        marker.pose.position.y = float(self.goal[1])
+        marker.pose.position.z = 0.0
+        marker.pose.orientation.w = 1.0
+        
+        # 设置大小
+        marker.scale.x = 0.3
+        marker.scale.y = 0.3
+        marker.scale.z = 0.3
+        
+        # 设置颜色 (红色)
+        marker.color = ColorRGBA()
+        marker.color.r = 1.0
+        marker.color.g = 0.0
+        marker.color.b = 0.0
+        marker.color.a = 1.0
+        
+        # 设置持续时间
+        duration = Duration()
+        duration.sec = 0
+        duration.nanosec = int(1.0 * 1e9)  # 1秒
+        marker.lifetime = duration
+        
+        return marker        
+
+
+    def create_acceleration_marker(self, ax, ay):
+        """创建加速度向量可视化标记"""                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+        marker = Marker()
+        marker.header.frame_id = "map"
+        marker.header.stamp = self.get_clock().now().to_msg()
+        marker.ns = "mpc_acceleration"
+        marker.id = 0
+        marker.type = Marker.ARROW
+        marker.action = Marker.ADD
+        
+        # 设置起点为小车当前位置
+        start_point = Point()
+        start_point.x = float(self.x)
+        start_point.y = float(self.y)
+        start_point.z = 0.0
+        
+        # 设置终点为加速度向量末端位置
+        end_point = Point()
+        end_point.x = float(self.x + ax * 0.5)  # 缩放因子0.5使箭头长度适中
+        end_point.y = float(self.y + ay * 0.5)
+        end_point.z = 0.0
+        
+        marker.points.append(start_point)
+        marker.points.append(end_point)
+        
+        # 设置箭头样式
+        marker.scale.x = 0.1  # 箭头轴直径
+        marker.scale.y = 0.2  # 箭头头直径
+        marker.scale.z = 0.0  # 不使用
+        
+        # 设置颜色 (蓝色)
+        marker.color = ColorRGBA()
+        marker.color.r = 1.0
+        marker.color.g = 0.0
+        marker.color.b = 0.0
+        marker.color.a = 1.0
+        
+        # 设置持续时间
+        duration = Duration()
+        duration.sec = 0
+        duration.nanosec = int(0.1 * 1e9)  # 0.1秒
+        marker.lifetime = duration
+        
+        return marker
+
+
+    def create_obstacle_trajectory_markers(self):
+        marker_array = MarkerArray()
+        
+        for i, cluster in enumerate(self.obstacle_clusters):
+            # 障碍物当前位置标记
+            marker = Marker()
+            marker.header.frame_id = "map"
+            marker.header.stamp = self.get_clock().now().to_msg()
+            marker.ns = "obstacle_trajectories"
+            marker.id = i * 2  # 使用偶数ID表示障碍物当前位置
+            marker.type = Marker.SPHERE
+            marker.action = Marker.ADD
+            marker.pose.position.x = cluster['center'][0]
+            marker.pose.position.y = cluster['center'][1]
+            marker.pose.position.z = 0.0
+            marker.pose.orientation.w = 1.0
+            marker.scale.x = 0.3
+            marker.scale.y = 0.3
+            marker.scale.z = 0.1
+            marker.color.a = 1.0
+            marker.color.r = 0.0
+            marker.color.g = 0.0
+            marker.color.b = 1.0
+            duration = Duration()
+            duration.sec = 0
+            duration.nanosec = int(0.5 * 1e9)
+            marker.lifetime = duration
+            marker_array.markers.append(marker)
             
+            # 障碍物预测轨迹标记
+            if cluster['id'] in self.obstacle_history and len(self.obstacle_history[cluster['id']]) >= 2:
+                traj_marker = Marker()
+                traj_marker.header.frame_id = "map"
+                traj_marker.header.stamp = self.get_clock().now().to_msg()
+                traj_marker.ns = "obstacle_trajectories"
+                traj_marker.id = i * 2 + 1  # 使用奇数ID表示轨迹
+                traj_marker.type = Marker.LINE_STRIP
+                traj_marker.action = Marker.ADD
+                traj_marker.scale.x = 0.03
+                traj_marker.color.a = 0.7
+                traj_marker.color.r = 0.0
+                traj_marker.color.g = 0.5
+                traj_marker.color.b = 1.0
+                traj_marker.lifetime = duration
+                
+                # 添加历史点作为轨迹
+                for point in self.obstacle_history[cluster['id']]:
+                    p = Point()
+                    p.x = float(point[0])
+                    p.y = float(point[1])
+                    p.z = 0.0
+                    traj_marker.points.append(p)
+                
+                marker_array.markers.append(traj_marker)
+        
+        return marker_array
+    
+    def create_obstacle_markers(self):
+        marker_array = MarkerArray()
+        
+        for i, cluster in enumerate(self.obstacle_clusters):
+            marker = Marker()
+            marker.header.frame_id = "map"
+            marker.header.stamp = self.get_clock().now().to_msg()
+            marker.ns = "obstacles"
+            marker.id = i
+            marker.type = Marker.SPHERE
+            marker.action = Marker.ADD
+            marker.pose.position.x = cluster['center'][0]
+            marker.pose.position.y = cluster['center'][1]
+            marker.pose.position.z = 0.0
+            marker.pose.orientation.w = 1.0
+            marker.scale.x = 0.5
+            marker.scale.y = 0.5
+            marker.scale.z = 0.1
+            marker.color.a = 1.0
+            marker.color.r = 1.0
+            marker.color.g = 0.0
+            marker.color.b = 0.0
+            
+            # 修改这里：正确创建Duration对象
+            duration = Duration()
+            duration.sec = 0
+            duration.nanosec = int(0.5 * 1e9)  # 0.5秒转换为500000000纳秒
+            marker.lifetime = duration
+            
+            marker_array.markers.append(marker)
+        
+        return marker_array
+
+    def create_scan_marker(self):
+        marker = Marker()
+        marker.header.frame_id = "map"
+        marker.header.stamp = self.get_clock().now().to_msg()
+        marker.ns = "filtered_scan"
+        marker.id = 0
+        marker.type = Marker.POINTS
+        marker.action = Marker.ADD
+        marker.scale.x = 0.1
+        marker.scale.y = 0.1
+        marker.color.a = 1.0
+        marker.color.r = 0.0
+        marker.color.g = 1.0
+        marker.color.b = 0.0
+        
+        # 修改这里：正确创建Duration对象
+        duration = Duration()
+        duration.sec = 0
+        duration.nanosec = int(0.1 * 1e9)  # 0.1秒转换为100000000纳秒
+        marker.lifetime = duration
+        
+        for point in self.scan_points_for_plot:
+            p = Point()
+            p.x = float(point[0])
+            p.y = float(point[1])
+            p.z = 0.0
+            marker.points.append(p)
+        
+        return marker
+        
     def position_callback(self, msg):
         self.x = msg.pose.position.x
         self.y = msg.pose.position.y
@@ -167,13 +470,17 @@ class CarController(Node):
             msg.pose.orientation.w
         ]
         self.theta = euler_from_quaternion(quaternion)[2]
-        
+    
     def goal_callback(self, msg):
         self.goal[0] = msg.x
         self.goal[1] = msg.y
 
     def convert_polar_to_cartesian(self, angle_deg_relative, distance, car_x, car_y, car_theta_rad):
         """将相对于小车的极坐标点 (角度(度), 距离) 转换为世界坐标系的 (x, y)。"""
+        # 首先检查距离是否大于10，如果是则返回None
+        if distance > 10:
+            return None
+        
         # Converts a polar point (angle_deg, distance) relative to the car to world coordinates (x, y).
         # Use car's orientation to convert relative angle to world angle
         # car_theta_rad = math.radians(car_theta_deg)
@@ -183,52 +490,48 @@ class CarController(Node):
         
         #激光编号顺序为逆时针旋转
         world_x = car_x + distance * math.cos(angle_rad_world)
-        world_y = car_y - distance * math.sin(angle_rad_world)
+        world_y = car_y + distance * math.sin(angle_rad_world)
         return [world_x, world_y]
 
 
     def cluster_scan_points(self):
         """将原始雷达数据 (角度, 距离) 转换为世界坐标 (x, y) 点，并进行聚类。"""
-        # Converts raw radar data (angle, distance) to world coordinates (x, y) points and performs clustering.
-        # if not self.raw_scan_data:
-        #     # Store points for plotting
-        #     self.scan_points_for_plot = np.empty((0, 2))
-        #     return []
-
-        # # Convert raw scan data (angle, distance) to world coordinates (x, y)
-        # # 将原始雷达数据（角度，距离）转换为世界坐标（x，y）点
-        world_scan_points = [
-            self.convert_polar_to_cartesian(i - 180, self.laser[i], self.x, self.y, self.theta)
-            for i in range(len(self.laser))
-        ]
-        # # Store points for plotting
-        self.scan_points_for_plot = np.array(world_scan_points)
-
-        # # If not enough points for minimum samples, return empty list of centers
-        # if self.scan_points_for_plot.shape[0] < self.dbscan_min_samples:
-        #     return []
+        world_scan_points = []
+        
+        for i in range(len(self.laser)):
+            point = self.convert_polar_to_cartesian(i*360/3240, self.laser[i], self.x, self.y, self.theta)
+            if point is not None:  # 只添加非None的点
+                world_scan_points.append(point) 
+        
+        if world_scan_points:  # 确保列表不为空
+            self.scan_points_for_plot = np.array(world_scan_points)
+        else:
+            self.scan_points_for_plot = np.empty((0, 2))
+            return []
 
         # Perform DBSCAN clustering on the world coordinates
-        # DBSCAN类的实例，导入所需的参数如 eps（聚类半径）0.5 和 min_samples（最小样本数）为 3
-        dbscan = DBSCAN(eps=self.dbscan_eps, min_samples = self.dbscan_min_samples)
-        # fit_predict 输出每个点所属的簇的标签
+        dbscan = DBSCAN(eps=self.dbscan_eps, min_samples=self.dbscan_min_samples)
         clusters = dbscan.fit_predict(self.scan_points_for_plot)
-        # 将每个点所属的簇的标签作为键，将该点作为值，存储在字典中 c
+        
         clustered_points_map = {}
-        # 遍历每个点，如果该点所属的簇的标签不是 -1（-1 表示噪声点）
-        # 则将所有同一个标签的点存储在同一个键对应的列表中
         for i, label in enumerate(clusters):
             if label != -1: # Ignore noise points (-1)
                 if label not in clustered_points_map:
                     clustered_points_map[label] = []
-                # 将属于同一个簇的点存储在同一个键对应的列表中
                 clustered_points_map[label].append(self.scan_points_for_plot[i])
 
         obstacle_centers = []
-        # 获取每个簇的中心点，将其取平均之后作为该簇（障碍物）的位置
+        car_pos = np.array([self.x, self.y])
+        
         for label, points in clustered_points_map.items():
             center = np.mean(points, axis=0)
-            obstacle_centers.append(center)
+            # 计算障碍物中心点与小车的距离
+            dist_to_car = np.linalg.norm(center - car_pos)
+            # 只保留距离大于1米的障碍物
+            if dist_to_car >= 0.5:
+                obstacle_centers.append(center)
+        
+        #self.get_logger().info(f"障碍物中心点: {obstacle_centers}")    
 
         return obstacle_centers
 
@@ -493,7 +796,7 @@ class CarController(Node):
                 goal_or_manual_cost_step = dist_to_goal**2 # Quadratic penalty for distance
             else:
                 # If no goal is set, penalize deviation from the desired manual velocity
-                desired_velocity = self.control_vector * self.max_speed # Desired velocity vector
+                desired_velocity = (self.speed[0]**2+self.speed[1]**2)**0.5 * self.max_speed # Desired velocity vector
                 velocity_error_sq = np.sum((state[2:] - desired_velocity)**2) # Squared error in velocity vector components
                 goal_or_manual_cost_step = velocity_error_sq # Quadratic penalty for velocity error
 
@@ -661,14 +964,19 @@ class CarController(Node):
 
         if result.success:
             # If optimization succeeded, return the optimal control sequence
+            self.get_logger().info("succeeded")
             return result.x
         else:
             # If optimization failed, print a warning (optional) and return zero control inputs.
             # Returning zeros causes the vehicle to slow down due to resistance, effectively stopping it.
             # print(f"MPC Optimization failed: {result.message}") # Uncomment for debugging
             # Clear the MPC trajectory visualization as the planned path is not valid
+            self.get_logger().info("fail")
+        
             self.mpc_trajectory = []
             return np.zeros(self.prediction_horizon * 2) # Return zero control for all steps
+        
+
     def time_callback(self):
         
         self.obstacle_centers = self.cluster_scan_points()
@@ -693,14 +1001,39 @@ class CarController(Node):
 
         #发送数据到决策节点，其中消息类型需要根据需求进行修改
         msg = Twist()
+        self.get_logger().info(f"{u_flat[0],u_flat[1]}")
         commanded_vx = u_flat[0] * self.dt + self.vx_initial
         commanded_vy = u_flat[1] * self.dt + self.vy_initial
         self.vx_initial = commanded_vx
         self.vy_initial = commanded_vy 
-        msg.linear.x = commanded_vx
-        msg.linear.y = commanded_vy
+        msg.linear.x = u_flat[0]
+        msg.linear.y = u_flat[1]
         msg.angular.z = 0.0
         self.publisher_.publish(msg)
+
+
+                # 发布障碍物可视化
+        obstacle_markers = self.create_obstacle_markers()
+        self.obstacle_pub.publish(obstacle_markers)
+
+        # 发布过滤后的雷达数据可视化
+        if hasattr(self, 'scan_points_for_plot'):
+            scan_marker = self.create_scan_marker()
+            self.scan_pub.publish(scan_marker)
+
+        if hasattr(self, 'mpc_trajectory'):
+            trajectory_marker = self.create_mpc_trajectory_marker()
+            self.trajectory_pub.publish(trajectory_marker)
+
+        if self.goal is not None:
+            goal_marker = self.create_goal_marker()
+            self.goal_pub.publish(goal_marker)
+
+        obstacle_traj_markers = self.create_obstacle_trajectory_markers()
+        self.obstacle_trajectory_pub.publish(obstacle_traj_markers)        
+
+        acceleration_marker = self.create_acceleration_marker(u_flat[0], u_flat[1])
+        self.acceleration_pub.publish(acceleration_marker)    
 
 def main(args=None):
     rclpy.init(args=args)
@@ -711,7 +1044,6 @@ def main(args=None):
     
 if __name__ == '__main__':
     main()
-
 
 
 

@@ -1,1 +1,0 @@
-/home/ares/ares_code_projects/R2/src/sllidar_ros2/launch/sllidar_c1_launch.py

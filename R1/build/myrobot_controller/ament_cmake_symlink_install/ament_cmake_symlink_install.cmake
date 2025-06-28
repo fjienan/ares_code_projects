@@ -316,11 +316,11 @@ ament_cmake_symlink_install_files("/home/ares/ares_code_projects/R1/src/myrobot_
 # install(FILES "/home/ares/ares_code_projects/R1/build/myrobot_controller/ament_cmake_environment_hooks/pythonpath.dsv" "DESTINATION" "share/myrobot_controller/environment")
 ament_cmake_symlink_install_files("/home/ares/ares_code_projects/R1/src/myrobot_controller" FILES "/home/ares/ares_code_projects/R1/build/myrobot_controller/ament_cmake_environment_hooks/pythonpath.dsv" "DESTINATION" "share/myrobot_controller/environment")
 
-# install(DIRECTORY "/home/ares/ares_code_projects/R1/build/myrobot_controller/ament_cmake_python/myrobot_controller/myrobot_controller.egg-info/" "DESTINATION" "lib/python3.10/site-packages/myrobot_controller-0.0.0-py3.10.egg-info")
-ament_cmake_symlink_install_directory("/home/ares/ares_code_projects/R1/src/myrobot_controller" DIRECTORY "/home/ares/ares_code_projects/R1/build/myrobot_controller/ament_cmake_python/myrobot_controller/myrobot_controller.egg-info/" "DESTINATION" "lib/python3.10/site-packages/myrobot_controller-0.0.0-py3.10.egg-info")
+# install(DIRECTORY "/home/ares/ares_code_projects/R1/build/myrobot_controller/ament_cmake_python/myrobot_controller/myrobot_controller.egg-info/" "DESTINATION" "lib/python3.13/site-packages/myrobot_controller-0.0.0-py3.13.egg-info")
+ament_cmake_symlink_install_directory("/home/ares/ares_code_projects/R1/src/myrobot_controller" DIRECTORY "/home/ares/ares_code_projects/R1/build/myrobot_controller/ament_cmake_python/myrobot_controller/myrobot_controller.egg-info/" "DESTINATION" "lib/python3.13/site-packages/myrobot_controller-0.0.0-py3.13.egg-info")
 
-# install(DIRECTORY "/home/ares/ares_code_projects/R1/src/myrobot_controller/myrobot_controller/" "DESTINATION" "lib/python3.10/site-packages/myrobot_controller" "PATTERN_EXCLUDE" "*.pyc" "PATTERN_EXCLUDE" "__pycache__")
-ament_cmake_symlink_install_directory("/home/ares/ares_code_projects/R1/src/myrobot_controller" DIRECTORY "/home/ares/ares_code_projects/R1/src/myrobot_controller/myrobot_controller/" "DESTINATION" "lib/python3.10/site-packages/myrobot_controller" "PATTERN_EXCLUDE" "*.pyc" "PATTERN_EXCLUDE" "__pycache__")
+# install(DIRECTORY "/home/ares/ares_code_projects/R1/src/myrobot_controller/myrobot_controller/" "DESTINATION" "lib/python3.13/site-packages/myrobot_controller" "PATTERN_EXCLUDE" "*.pyc" "PATTERN_EXCLUDE" "__pycache__")
+ament_cmake_symlink_install_directory("/home/ares/ares_code_projects/R1/src/myrobot_controller" DIRECTORY "/home/ares/ares_code_projects/R1/src/myrobot_controller/myrobot_controller/" "DESTINATION" "lib/python3.13/site-packages/myrobot_controller" "PATTERN_EXCLUDE" "*.pyc" "PATTERN_EXCLUDE" "__pycache__")
 
 # install(DIRECTORY "include" "DESTINATION" "include")
 ament_cmake_symlink_install_directory("/home/ares/ares_code_projects/R1/src/myrobot_controller" DIRECTORY "include" "DESTINATION" "include")
