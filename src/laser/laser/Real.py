@@ -232,7 +232,7 @@ class Real(Node):
         # hasattr(self,"initial_angle")#判断是否有初始角度
         
 
-        self.publisher_=self.create_publisher(PoseStamped,'/laser_position',10)#发布激光位置数据，发布到/ally/robot1/laser_position，队列长度为10，发布的数据类型为LaserPosition，LaserPosition是自定义的数据类型
+        self.publisher_=self.create_publisher(PoseStamped,'/laser_position',10)#发布激光位置数据，发布到/laser_position，队列长度为10，发布的数据类型为LaserPosition，LaserPosition是自定义的数据类型
 
         self.declare_parameters(
             namespace='',
