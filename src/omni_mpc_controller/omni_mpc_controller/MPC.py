@@ -12,37 +12,6 @@ from visualization_msgs.msg import Marker, MarkerArray
 from builtin_interfaces.msg import Duration
 from std_msgs.msg import ColorRGBA
 
-class Transformation :
-    def __init__(self,angle,turn_over,dimension = 2):
-        """
-        1.angle: (rad) means rolling form the asix x(original) to x'(target).
-        Considering positive and negative direction
-        2.turn_over: (True/False) True means the transformation is a turn over along y axis.
-        3.dimension: (int) 2D or 3D transformation. Default is 2D.
-        """
-        self.angle = angle 
-        self.turn_over = turn_over
-        self.dimension = dimension
-        
-    def preparation(self):
-        # the transformation matrix is a rotation matrix
-        # considering the angle and the turn over
-        if self.dimension == 2:
-            T = np.matrix([[np.cos(self.angle), -np.sin(self.angle)],
-                           [np.sin(self.angle),  np.cos(self.angle)]])
-            if self.turn_over == True:
-                Q = np.matrix([[1, 0],
-                               [0,-1]])
-                T = Q * T
-            return T
-        
-    def transformation(self,point,dim):
-        if dim ==  2:
-            T = self.preparation()
-            point = T * point
-        return point
-
-transformation = Transformation(-np.pi/2,True,2)
 """
 坐标系
                                 ----------------
@@ -208,9 +177,9 @@ class CarController(Node):
         self.theta = 0.0
         self.speed = [0,0]
         self.goal = None
-        self.speed_1 = []
+        self.speed_1 = [0.0 ,0.0]
         self.angular_cmd = 0
-
+        
         self.get_logger().info(f"""
         dt: {self.dt}
         max_speed: {self.max_speed}
@@ -243,11 +212,9 @@ class CarController(Node):
         )
 
     def speed_callback(self,msg):
-        self.speed_1[0] = msg.linear.x
-        self.speed_1[1] = msg.linear.y
+        self.speed_1[0] = msg.linear.y
+        self.speed_1[1] = msg.linear.x
         self.angular_cmd = msg.angular.x
-        self.get_logger().info(f"{self.angular_cmd},{self.speed_1}")
-        self.speed_1 = transformation.transformation(self.speed_1)
 
     def scan_callback(self, msg):
         """2D激光雷达数据回调函数"""
@@ -1056,6 +1023,7 @@ class CarController(Node):
         msg.linear.x = u_flat[0]
         msg.linear.y = u_flat[1]
         msg.angular.z = 0.0
+        msg.angular.x = float(self.angular_cmd)
         self.publisher_.publish(msg)
 
 
