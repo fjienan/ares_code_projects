@@ -1,0 +1,11 @@
+In file included from [01m[K/home/ares/ares_code_projects/src/sllidar_ros2/./sdk/src/arch/linux/arch_linux.h:42[m[K,
+                 from [01m[K/home/ares/ares_code_projects/src/sllidar_ros2/./sdk/src/sdkcommon.h:41[m[K,
+                 from [01m[K/home/ares/ares_code_projects/src/sllidar_ros2/sdk/src/arch/linux/net_socket.cpp:10[m[K:
+[01m[K/home/ares/ares_code_projects/src/sllidar_ros2/sdk/src/arch/linux/net_socket.cpp:[m[K In member function ‘[01m[Kvirtual u_result rp::arch::net::DGramSocketImpl::sendTo(const rp::net::SocketAddress*, const void*, size_t)[m[K’:
+[01m[K/home/ares/ares_code_projects/src/sllidar_ros2/sdk/src/arch/linux/net_socket.cpp:733:24:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Ksize_t[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+  733 |             assert([01;35m[Kans == len[m[K);
+      |                    [01;35m[K~~~~^~~~~~[m[K
+[01m[K/home/ares/ares_code_projects/src/sllidar_ros2/sdk/src/arch/linux/net_serial.cpp:[m[K In member function ‘[01m[Kvirtual void rp::arch::net::raw_serial::cancelOperation()[m[K’:
+[01m[K/home/ares/ares_code_projects/src/sllidar_ros2/sdk/src/arch/linux/net_serial.cpp:427:5:[m[K [01;35m[Kwarning: [m[Kvalue computed is not used [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-value-Wunused-value]8;;[m[K]
+  427 |     [01;35m[K(int)::write(_selfpipe[1], "x", 1)[m[K;
+      |     [01;35m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K

@@ -1,1 +1,0 @@
-/home/ares/ares_code_projects/R1/src/myrobot_controller/launch/controller.launch.py

@@ -1,3 +1,0 @@
-[ 33%] [32mBuilding CXX object CMakeFiles/usb_bulk_node.dir/src/usb_bulk_node.cpp.o[0m
-[ 66%] [32m[1mLinking CXX executable usb_bulk_node[0m
-[100%] Built target usb_bulk_node

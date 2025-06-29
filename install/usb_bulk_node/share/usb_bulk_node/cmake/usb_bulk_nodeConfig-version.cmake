@@ -1,0 +1,1 @@
+/home/ares/ares_code_projects/build/usb_bulk_node/ament_cmake_core/usb_bulk_nodeConfig-version.cmake

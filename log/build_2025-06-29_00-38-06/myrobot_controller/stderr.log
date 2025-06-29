@@ -1,0 +1,4 @@
+[31mCMake Error at CMakeLists.txt:21 (message):
+  Must select one of the build configurations (R1 or R2)!
+
+[0m
