@@ -542,7 +542,7 @@ class CarController(Node):
             # 计算障碍物中心点与小车的距离
             dist_to_car = np.linalg.norm(center - car_pos)
             # 只保留距离大于1米的障碍物
-            if dist_to_car >= 0.5:
+            if dist_to_car >= 0.4:
                 obstacle_centers.append(center)
         
         #self.get_logger().info(f"障碍物中心点: {obstacle_centers}")    

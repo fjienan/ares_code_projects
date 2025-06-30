@@ -27,7 +27,8 @@ setup(
         'console_scripts': [
             # 确保Real.py作为可执行节点注册
             'ros2publisher = laser.ros2publisher:main',
-            'Real = laser.Real:main'
+            'Real = laser.Real:main',
+            'initialpose_tf_publisher = laser.initialpose_tf_publisher:main'
         ],
     },
 )

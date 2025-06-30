@@ -167,16 +167,8 @@ private:
         int err = this->proto.send_exec(0x1, arg1, arg2, arg3, 0x01);
         if (!err) {
             this->proto.connect();
-            std::cerr << "Failed to send Exec command: " << err << std::endl;
+            // std::cerr << "Failed to send Exec command: " << err << std::endl;
         }
-
-        // Debug output
-        printf("Original values (double): linear.x: %f, linear.y: %f, angular.x: %f\n", 
-            msg->linear.x, msg->linear.y, msg->angular.x);
-        printf("Float values: arg1_float: %f, arg2_float: %f, arg3_float: %f\n",
-            float_arg1, float_arg2, float_arg3);
-        printf("Binary representation (uint32_t): Arg1: 0x%08X, Arg2: 0x%08X, Arg3: 0x%08X\n", 
-            arg1, arg2, arg3);
 
         prev_exec = std::chrono::steady_clock::now();
     }

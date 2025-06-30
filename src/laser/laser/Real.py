@@ -13,10 +13,11 @@ from tf_transformations import euler_from_quaternion
 from tf_transformations import quaternion_from_euler
 from rclpy.executors import MultiThreadedExecutor
 from std_msgs.msg import Float32MultiArray
+from laser.transformation import Transformation
 
 LASER_data_flag = 1		# 是否有LASER	数据
 # FIELD_SIZE = [15, 8]           # 场地大小
-LASER_ANGLES = [np.deg2rad(60), np.deg2rad(132), np.deg2rad(204), np.deg2rad(276), np.deg2rad(348)]
+LASER_ANGLES = [np.deg2rad(0), np.deg2rad(72), np.deg2rad(144), np.deg2rad(216), np.deg2rad(288)]
 # self.real.precess_noise_std = [0.1, 0.1, 0.05],
 # self.real.measurement_noise_std=[0.5,0.5,0.1], 
 # self.real.START_POINT = [7.5, 4]       # 初始位置
@@ -40,7 +41,7 @@ class Real(Node):
             #Import the data from the 3D laser
             self.est_yaw = self.real.yaw
             self.est_pos = self.real.odo_position
-            self.real.get_logger().info(f"Laser: position (x: {self.est_pos[0]:.4f}, y: {self.est_pos[1]:.4f}), yaw: {self.est_yaw:.4f}")
+            # self.real.get_logger().info(f"Laser: position (x: {self.est_pos[0]:.4f}, y: {self.est_pos[1]:.4f}), yaw: {self.est_yaw:.4f}")
 
             global LASER_data_flag
             # Get the laser data
@@ -48,7 +49,7 @@ class Real(Node):
 
             # 过滤无效数据 (NaN/inf)
             laser_data = np.nan_to_num(laser_data, nan=-1, posinf=self.real.FIELD_SIZE[0], neginf=0.0)
-            laser_data = [7.5 - 0.1247,4.206 - 0.1247,6.805 - 0.1247,6.805 - 0.1247,4.206 - 0.1247]
+            # laser_data = [7.5 - 0.1247,4.206 - 0.1247,6.805 - 0.1247,6.805 - 0.1247,4.206 - 0.1247]
             # laser_data = [0.0, 0.0, 0.0, 0.0, 0.0]
             
             #Check whether the laser data is valid
@@ -74,20 +75,19 @@ class Real(Node):
                     flag[i] = 1
                     continue
                 laser_yaw = (LASER_ANGLES[i] + self.est_yaw) # % (2 * np.pi)
-                d_x = d_y = 1145141919810
                 if laser_yaw == 0: 		#当激光打在右边界上时
-                    thorey_length = d_x = self.real.FIELD_SIZE[0] - self.est_pos[0]
+                    thorey_length = self.real.FIELD_SIZE[0] - self.est_pos[0]
                 elif laser_yaw == np.pi: 		#当激光打在左边界上时
-                    thorey_length = d_x = self.est_pos[0]
+                    thorey_length  = self.est_pos[0]
                 elif laser_yaw == np.pi / 2: 		#当激光打在上边界上时
-                    thorey_length = d_y = self.real.FIELD_SIZE[1] - self.est_pos[1]
+                    thorey_length = self.real.FIELD_SIZE[1] - self.est_pos[1]
                 elif laser_yaw == -np.pi / 2:		 #当激光打在下边界上时
-                    thorey_length = d_y = self.est_pos[1]
+                    thorey_length = self.est_pos[1]
                 else: 		#当激光打在其他地方时
                     d_x = (self.real.FIELD_SIZE[0] - self.est_pos[0]) / np.cos(laser_yaw) if np.cos(laser_yaw) > 0 else -self.est_pos[0] / np.cos(laser_yaw)
                     d_y = (self.real.FIELD_SIZE[1] - self.est_pos[1]) / np.sin(laser_yaw) if np.sin(laser_yaw) > 0 else -self.est_pos[1] / np.sin(laser_yaw)
                     thorey_length = d_x if d_x < d_y else d_y
-                if abs(data[i] - thorey_length) <= self.real.LASER_ALLOWED_NOISE and d_x > d_y:
+                if abs(data[i] - thorey_length) <= self.real.LASER_ALLOWED_NOISE :
                     if np.sin(laser_yaw) > 0:
                         up_width.append([data[i], i])
                     else:
@@ -98,7 +98,7 @@ class Real(Node):
             
             # self.real.get_logger().info(f"Laser flag: {flag}, data: {data}")
             # self.real.get_logger().info(f"Theorey length: {theory_length_map}")
-            # self.real.get_logger().info(f"Up width: {up_width}, Down width: {down_width}")
+            self.real.get_logger().info(f"Up width: {up_width}, Down width: {down_width}")
 
             def func(angle): 	#求解方程
                 lengh_massure_1 = []	 #储存上激光的信息 
@@ -114,7 +114,7 @@ class Real(Node):
             laser_est_yaw = fsolve(func, x0=self.est_yaw)[0]  # x0 是浮点初始猜测
             # laser_est_yaw %= 2 * np.pi
 
-            # self.real.get_logger().info(f"func(0): {func(0)}, func(laser_est_yaw): {func(laser_est_yaw)}")
+            self.real.get_logger().info(f"func(0): {func(0)}, func(laser_est_yaw): {func(laser_est_yaw)}")
             
             for i in range(len(LASER_ANGLES)): #用求解出的角度计算出坐标
                 if flag[i] == 1: #数据无效
@@ -215,7 +215,7 @@ class Real(Node):
             self.odo_callback,
             10
         )
-
+        self.transformation = Transformation(-np.pi*2/3,True,2)
         # #接受IMU发送的四元数信息
         # self.create_subscription(
         #     Quaternion,
@@ -259,8 +259,9 @@ class Real(Node):
         self.DELTA_DISTANCE = self.get_parameter('DELTA_DISTANCE').get_parameter_value().double_value
         self.three_D_DISTANCE = self.get_parameter('three_D_DISTANCE').get_parameter_value().double_value
         self.GRAVITY = self.get_parameter('GRAVITY').get_parameter_value().double_value
-
-        # 打印参数值（调试用）
+        self.yaw = None 
+        self.odo_position = None
+        # 打印参数值（调试 用）
         self.get_logger().info(f"""
         Loaded Parameters:
         - FIELD_SIZE = {self.FIELD_SIZE}
@@ -281,14 +282,14 @@ class Real(Node):
 
         
         self.real_laser = np.array(msg.data)
+
         # self.get_logger().info(f"Real laser data: {self.real_laser}\n")
     
 
     def odo_callback(self, msg):
-        self.odo_position=[
-            msg.pose.pose.position.y + self.START_POINT[0],
-            msg.pose.pose.position.x + self.START_POINT[1]
-        ]
+        pose = [msg.pose.pose.position.x,msg.pose.pose.position.y]
+        pose = np.array(pose).reshape(2,1)
+        self.odo_position=self.transformation.transformation(pose,2)
         self.odo_quaternion=[
             msg.pose.pose.orientation.x,
             msg.pose.pose.orientation.y,
@@ -309,8 +310,8 @@ class Real(Node):
         msg.header.frame_id = 'map'
 
         #机器人坐标及姿态
-        msg.pose.position.x = self.FIELD_SIZE[0] - statement[0]
-        msg.pose.position.y = self.FIELD_SIZE[1] - statement[1]
+        msg.pose.position.x = float(self.FIELD_SIZE[0] - statement[0])
+        msg.pose.position.y = float(self.FIELD_SIZE[1] - statement[1])
         msg.pose.position.z = 0.00
 
         #将欧拉角转换成四元数
