@@ -17,6 +17,7 @@ constexpr uint16_t ERROR_FRAME_HEAD = 0xCADE;
 constexpr uint16_t HEARTBEAT_ERROR_CODE = (1 << 8); // BIT(8)
 constexpr uint8_t HEARTBEAT_REQUEST_ID = 0xFF;
 constexpr std::chrono::milliseconds HEARTBEAT_INTERVAL{3}; // 10ms
+constexpr std::chrono::milliseconds RECONNECT_DELAY{500}; // 自动重连尝试间隔
 
 constexpr size_t USB_FS_MPS = 64;
 constexpr uint16_t VID = 0x1209;

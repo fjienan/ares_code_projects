@@ -17,7 +17,7 @@
 // #define ACCEL_NODE_ID 0x1001
 // #define GYRO_NODE_ID 0x1002
 // #define QUATERNION_NODE_ID 0x1003
-#define FIVE_FUNC_ID 0x4004
+#define FIVE_FUNC_ID 0x3
 
 
 class SubscriberNode : public rclcpp::Node {
@@ -47,48 +47,6 @@ public:
         }
     
         switch(data_id) {
-            // case ACCEL_NODE_ID: {
-            //     // 假设数据格式为三个float32（12字节）
-            //     if (len < 12) {
-            //         std::cerr << "Error: Insufficient data length for acceleration" << std::endl;
-            //         return;
-            //     }
-            //     const float* float_data = reinterpret_cast<const float*>(data);
-            //     acceleration.x = float_data[0];
-            //     acceleration.y = float_data[1];
-            //     acceleration.z = float_data[2];
-            //     acceleration_flag = true;
-            //     break;
-            // }
-    
-            // case GYRO_NODE_ID: {
-            //     // 假设数据格式为三个float32（12字节）
-            //     if (len < 12) {
-            //         std::cerr << "Error: Insufficient data length for angular velocity" << std::endl;
-            //         return;
-            //     }
-            //     const float* float_data = reinterpret_cast<const float*>(data);
-            //     angular_vel.x = float_data[0];
-            //     angular_vel.y = float_data[1];
-            //     angular_vel.z = float_data[2];
-            //     angular_vel_flag = true;
-            //     break;
-            // }
-    
-            // case QUATERNION_NODE_ID: {
-            //     // 假设数据格式为四个float32（16字节）
-            //     if (len < 16) {
-            //         std::cerr << "Error: Insufficient data length for quaternion" << std::endl;
-            //         return;
-            //     }
-            //     const float* float_data = reinterpret_cast<const float*>(data);
-            //     quaternion.x = float_data[0];
-            //     quaternion.y = float_data[1];
-            //     quaternion.z = float_data[2];
-            //     quaternion.w = float_data[3];
-            //     quaternion_flag = true;
-            //     break;
-            // }
     
             default:
                 std::cerr << "Unknown DataID: " << data_id << std::endl;
@@ -109,8 +67,10 @@ public:
                       std::placeholders::_2, 
                       std::placeholders::_3));
         
-        subscription_ = this->create_subscription<geometry_msgs::msg::Twist>(
-            "/cmd_vel", 10, std::bind(&SubscriberNode::topic_callback, this, std::placeholders::_1));
+        vel_subscription_ = this->create_subscription<geometry_msgs::msg::Twist>(
+            "/cmd_vel", 10, std::bind(&SubscriberNode::vel_callback, this, std::placeholders::_1));
+        joy_subscription_ = this->create_subscription<sensor_msgs::msg::Joy>(
+            "/joy", 10, std::bind(&SubscriberNode::joy_callback, this, std::placeholders::_1));
 #ifdef CONFIG_R2
 		five_func_subscription_ = this->create_subscription<geometry_msgs::msg::Point>(
 			"/five_func", 10, std::bind(&SubscriberNode::five_func_callback, this, std::placeholders::_1));
@@ -152,7 +112,7 @@ private:
 		}
 	}
 
-    void topic_callback(const geometry_msgs::msg::Twist::SharedPtr msg) {
+    void vel_callback(const geometry_msgs::msg::Twist::SharedPtr msg) {
         // Convert double to float, then reinterpret as uint32_t
         float float_arg1 = static_cast<float>(msg->linear.x);
         float float_arg2 = -static_cast<float>(msg->linear.y);
@@ -166,7 +126,6 @@ private:
         // Send the command
         int err = this->proto.send_exec(0x1, arg1, arg2, arg3, 0x01);
         if (!err) {
-            this->proto.connect();
             std::cerr << "Failed to send Exec command: " << err << std::endl;
         }
 
@@ -191,44 +150,11 @@ private:
 		arg1 |= msg->buttons[4] << 4;
 		arg1 |= msg->buttons[5] << 5;
 		
-		int err = this->proto.send_exec(0x1, arg1, 0u, 0u, 0x01);
-		if (!err) this->proto.connect();
+		int err = this->proto.send_exec(0x2, arg1, 0u, 0u, 0x01);
 	}
 
-    // void timer_callback() {
-    //     // If prev_exec is more than 1 second ago
-    //     if (std::chrono::steady_clock::now() - prev_exec > std::chrono::seconds(1)) {
-    //         std::cerr << "No data received in the last second." << std::endl;
-    //         float farg1 = 0.0f;
-    //         float farg2 = 0.0f;
-    //         float farg3 = 0.0f;
-    //         // Send the command
-    //         uint32_t uarg1 = *reinterpret_cast<uint32_t*>(&farg1);
-    //         uint32_t uarg2 = *reinterpret_cast<uint32_t*>(&farg2);
-    //         uint32_t uarg3 = *reinterpret_cast<uint32_t*>(&farg3);
-    //         int err = this->proto.send_exec(0x1, uarg1, uarg2, uarg3, 0x01);
-    //         if (!err) {
-    //             this->proto.connect();
-    //             std::cerr << "Failed to send Exec command: " << err << std::endl;
-    //         }
-    //     }
-    //     // 发布角速度
-    //     if(angular_vel_flag){
-    //         angular_vel_pub_->publish(angular_vel);
-    //     }
-
-    //     // 发布加速度
-    //     if(acceleration_flag){
-    //         acceleration_pub_->publish(acceleration);
-    //     }
-
-    //     // 发布四元数
-    //     if(quaternion_flag){
-    //         quaternion_pub_->publish(quaternion);
-    //     }
-    // }
-
-    rclcpp::Subscription<geometry_msgs::msg::Twist>::SharedPtr subscription_;
+    rclcpp::Subscription<geometry_msgs::msg::Twist>::SharedPtr vel_subscription_;
+    rclcpp::Subscription<sensor_msgs::msg::Joy>::SharedPtr joy_subscription_;
 #ifdef CONFIG_R2
 	rclcpp::Subscription<geometry_msgs::msg::Point>::SharedPtr five_func_subscription_;
 	geometry_msgs::msg::Point five_coordinate;
