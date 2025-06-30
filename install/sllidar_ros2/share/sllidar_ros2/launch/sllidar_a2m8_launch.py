@@ -1,1 +1,0 @@
-/home/ares/ares_code_projects/src/sllidar_ros2/launch/sllidar_a2m8_launch.py
