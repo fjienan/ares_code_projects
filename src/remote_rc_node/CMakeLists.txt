@@ -100,19 +100,15 @@ target_link_libraries(udp_joy_node
   Threads::Threads
 )
 
-
-# 测试配置
-if(BUILD_TESTING)
-  find_package(ament_lint_auto REQUIRED)
-  set(ament_cmake_copyright_FOUND TRUE)
-  set(ament_cmake_cpplint_FOUND TRUE)
-  ament_lint_auto_find_test_dependencies()
-endif()
 # 安装配置
-# install(TARGETS usb_bulk_node
-#   DESTINATION lib/${PROJECT_NAME}
-# )
-install(TARGETS udp_joy_node
+install(TARGETS
+  udp_joy_node
   DESTINATION lib/${PROJECT_NAME}
 )
+
+# if(BUILD_TESTING)
+#   find_package(ament_lint_auto REQUIRED)
+#   ament_lint_auto_find_test_dependencies()
+# endif()
+
 ament_package()
