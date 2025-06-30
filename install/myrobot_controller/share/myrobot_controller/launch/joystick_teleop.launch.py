@@ -1,1 +1,0 @@
-/home/ares/ares_code_projects/src/myrobot_controller/launch/joystick_teleop.launch.py

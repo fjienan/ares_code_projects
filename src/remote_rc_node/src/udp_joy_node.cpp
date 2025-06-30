@@ -33,6 +33,11 @@ float normalize_rc_channel(int raw_value) {
     return 0.0f;
   }
   float normalized = (static_cast<float>(raw_value) - 1500.0f) / 500.0f;
+  if(normalized > 0) {
+	normalized = (normalized > 0.15) ? (normalized / 0.85) : 0.0f;
+  } else {
+	normalized = (normalized < -0.15) ? (normalized / 0.85) : 0.0f;
+  }
   return std::clamp(normalized, -1.0f, 1.0f);
 }
 

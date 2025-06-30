@@ -1,1 +1,0 @@
-/home/ares/ares_code_projects/build/laser/launch/all_nodes.launch.py

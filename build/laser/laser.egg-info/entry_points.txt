@@ -1,4 +1,0 @@
-[console_scripts]
-Real = laser.Real:main
-ros2publisher = laser.ros2publisher:main
-

@@ -95,6 +95,7 @@ private:
     std::chrono::milliseconds ms;
     std::chrono::steady_clock::time_point prev_exec;
 
+#ifdef CONFIG_R2
 	void five_func_callback(const geometry_msgs::msg::Point::SharedPtr msg) {
 		// Convert double to float, then reinterpret as uint32_t
         float float_arg1 = static_cast<float>(msg->x);
@@ -111,6 +112,7 @@ private:
 			std::cerr << "Failed to send Exec command: " << err << std::endl;
 		}
 	}
+#endif
 
     void vel_callback(const geometry_msgs::msg::Twist::SharedPtr msg) {
         // Convert double to float, then reinterpret as uint32_t
