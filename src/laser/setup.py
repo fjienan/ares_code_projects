@@ -28,7 +28,8 @@ setup(
             # 确保Real.py作为可执行节点注册
             'ros2publisher = laser.ros2publisher:main',
             'Real = laser.Real:main',
-            'initialpose_tf_publisher = laser.initialpose_tf_publisher:main'
+            'initialpose_tf_publisher = laser.initialpose_tf_publisher:main',
+            'laser_position = laser.Laser_position:main'
         ],
     },
 )

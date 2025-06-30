@@ -25,7 +25,6 @@ LASER_ANGLES = [np.deg2rad(0), np.deg2rad(72), np.deg2rad(144), np.deg2rad(216),
 
 
 class Real(Node):
-
     class EstRobot:
         def __init__(self, real):
             self.lock = threading.Lock()
@@ -262,6 +261,7 @@ class Real(Node):
         self.yaw = None 
         self.odo_position = None
         # 打印参数值（调试 用）
+
         self.get_logger().info(f"""
         Loaded Parameters:
         - FIELD_SIZE = {self.FIELD_SIZE}
@@ -370,5 +370,3 @@ def main(args=None):
 if __name__ == '__main__':
     main()  
 
-    ##Question 1 why the velocity will increase when the laser 1 is zhedanged"
-    ##Question 2 why the angle is 0 ,i think it at least will show a wrong number"

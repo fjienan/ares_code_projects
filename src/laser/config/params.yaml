@@ -9,3 +9,4 @@ laser_position_node:  # 必须与节点名称完全一致
         DELTA_DISTANCE: 0.1247 # m #激光到中心的 距离
         three_D_DISTANCE: 0.0 #3D laser到中心的 距离
         GRAVITY: 9.7887 # m/s^2
+        angle_bios : 0.0 # rad,countclockwise

@@ -36,7 +36,7 @@ def generate_launch_description():
     # Create myRreal node
     myRreal_node = Node(
         package='laser',
-        executable='Real',
+        executable='laser_position',
         # name='myRreal_node',
         output='screen',
         parameters=[params_file] # 加载参数文件
