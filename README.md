@@ -54,7 +54,24 @@ ros2 topic list ##列出所有topic
 ros2 topic echo /xxx ##输出topic消息
 ros2 topic info /xxx ##输出topic的发布者数目以及当前订阅者数目
 ```
-
+### 摇感启动
+#### Steamdeck
+和电脑连同一个wifi
+**terminal_1**
+``` terminal
+sudo openhd -g
+```
+#### 电脑
+**terminal_1**
+``` ternimal
+sudo openhd -a
+```
+```terminal
+ros2 run remote_rc_node udp_joy_node
+```
+```terminal
+ros2 run usb_bulk_node usb_bulk_node
+```
 ## ROS2 Humble tiny tricks
 ### 1.重映射：实现在不修改代码的情况下将原来的topic改在其他名称的topic上发布
 #### Terminal :
@@ -80,3 +97,4 @@ def generate_launch_description():
         )
     ])
 ```
+

@@ -11,9 +11,7 @@ decision_mpc = False
 def generate_launch_description():
     ld = LaunchDescription()
      
-    pkg_dir = get_package_share_directory('omni_mpc_controller')
-    # 指定参数文件路径
-    params_file = os.path.join(pkg_dir, 'config', 'params.yaml')
+    params_file = "/home/ares/ares_code_projects/src/config/params.yaml"
     #单点激光定位模块
     
     # pkg_dir_2 = get_package_share_directory('laser')
