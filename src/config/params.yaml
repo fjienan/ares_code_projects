@@ -1,7 +1,7 @@
 /**:                                                              # 全局参数
   ros__parameters:
     # 世界大小 [长, 宽]，单位：米
-    world_size: [15.00,8.00]
+    world_size: [13.36,7.14]
     # 消息发布频率，单位：秒
     frequency: 1.0
     # 初始机器人 坐标
@@ -45,6 +45,8 @@ car_controller:                                                   ##避障的参
     max_history_length: 10.0
     # 预测时域长度，用于轨迹规划
     prediction_horizon: 5
+    # 2D激光到中心的 距离
+    Two_D_position: [19.92,-25.04] 
 
 laser_position_node:                                              # 定位的参数
     ros__parameters:
@@ -56,7 +58,9 @@ laser_position_node:                                              # 定位的参
       measurement_noise_std: [0.01,0.5,0.1] 
     # 激光到中心的 距离
       DELTA_DISTANCE: 0.1247 
-    # 3D laser到中心的 距离
-      three_D_DISTANCE: 0.0 
-    # 激光角度偏移
-      angle_bios : 0.0 
+    # 激光角度偏移 角度
+      angle_bios : 180.0
+    # 3D laser到中心的 坐标 m
+      three_D_position: [0.1992,0.2504] 
+    # 3D 雷达的坐标系的x轴转角 度
+      three_d_angle : -90.0

@@ -117,7 +117,7 @@ class CarController(Node):
         self.declare_parameters(
             namespace='',
             parameters=[
-                ('dt', 0.00),
+                ('frequency', 0.00),
                 ('max_speed', 0.0),
                 ('max_accel', 0.0),
                 ('weight_goal', 00.0),
@@ -141,7 +141,7 @@ class CarController(Node):
         
         self.vx = 0.0
         self.vy = 0.0
-        self.dt = self.get_parameter('dt').get_parameter_value().double_value
+        self.dt = self.get_parameter('frequency').get_parameter_value().double_value
         self.max_speed = self.get_parameter('max_speed').get_parameter_value().double_value
         self.acceleration = self.get_parameter('max_accel').get_parameter_value().double_value # This parameter is not currently used by the MPC logic, which commands acceleration directly
         self.trajectory = []
@@ -1023,7 +1023,7 @@ class CarController(Node):
         msg.linear.x = u_flat[0]
         msg.linear.y = u_flat[1]
         msg.angular.z = 0.0
-        msg.angular.x = float(self.angular_cmd)
+        msg.angular.z = float(self.angular_cmd)
         self.publisher_.publish(msg)
 
 

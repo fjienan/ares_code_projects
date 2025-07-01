@@ -3,17 +3,18 @@ from rclpy.node import Node
 from geometry_msgs.msg import PoseStamped
 from nav_msgs.msg import Odometry
 import numpy as np
-import threading
 from scipy.optimize import fsolve
 from tf_transformations import euler_from_quaternion
 from tf_transformations import quaternion_from_euler
 from std_msgs.msg import Float32MultiArray
+from laser.transformation import Transformation
 
 class Laser_position(Node):
     def __init__(self):
         super().__init__('laser_position_node')
         self.get_logger().info('----start initializing the laser_position node----')
-        
+        self.START_POINT = []
+        self.tag = False
         self.declare_parameters(
             namespace='',
             parameters=[
@@ -24,36 +25,43 @@ class Laser_position(Node):
                 ('LASER_ALLOWED_NOISE', 1.0),
                 ('frequency', 0.2),
                 ('DELTA_DISTANCE', 0.1247),
-                ('three_D_DISTANCE',0.0),
-                ('angle_bios',0.0)
+                ('angle_bios',0.0),
+                ('three_D_position',[0.0,0.0])
+                ('three_d_angle',0.0)
             ]   
         )
         self.FIELD_SIZE = self.get_parameter('world_size').get_parameter_value().double_array_value
         self.three_D_noise_std = self.get_parameter('three_D_noise_std').get_parameter_value().double_array_value
         self.measurement_noise_std = self.get_parameter('measurement_noise_std').get_parameter_value().double_array_value
-        self.START_POINT = self.get_parameter('START_POINT').get_parameter_value().double_array_value
+        self.START_POINT_1 = self.get_parameter('START_POINT').get_parameter_value().double_array_value
         self.LASER_ALLOWED_NOISE = self.get_parameter('LASER_ALLOWED_NOISE').get_parameter_value().double_value
         self.FREQUENCY = self.get_parameter('frequency').get_parameter_value().double_value
         self.DELTA_DISTANCE = self.get_parameter('DELTA_DISTANCE').get_parameter_value().double_value
-        self.three_D_DISTANCE = self.get_parameter('three_D_DISTANCE').get_parameter_value().double_value
         self.angle_bios = self.get_parameter('angle_bios').get_parameter_value().double_value
+        self.three_D_position = self.get_parameter('three_D_position').get_parameter_value().double_array_value
+        self.three_d_angle = self.get_parameter('three_d_angle').get_parameter_value().double_value
+        
         self.get_logger().info(f"""
         Loaded Parameters:
         - FIELD_SIZE = {self.FIELD_SIZE}
         - three_D_noise_std = {self.three_D_noise_std}
         - measurement_noise_std = {self.measurement_noise_std}
-        - START_POINT = {self.START_POINT}
         - LASER_ALLOWED_NOISE = {self.LASER_ALLOWED_NOISE}
         - FREQUENCY = {self.FREQUENCY}
         - DELTA_DISTANCE = {self.DELTA_DISTANCE}
-        - three_D_DISTANCE = {self.three_D_DISTANCE}
         - angle_bios = {self.angle_bios}
+        - START_POINT = {self.START_POINT_1}
+        - three_D_position = {self.three_D_position}
+        - three_d_angle = {self.three_d_angle}
         """) ##确认参数是否正确加载
-        self.laser_angel_list = [np.deg2rad(0)+self.angle_bios,np.deg2rad(72)+self.angle_bios,np.deg2rad(144)+self.angle_bios,np.deg2rad(216)+self.angle_bios,np.deg2rad(288)+self.angle_bios]
-        self.yaw = np.deg2rad(160.7)
-        self.odo_position = np.array([6.2,3.4]).reshape(2,1)
+        self.laser_angel_list = [np.deg2rad(0)+np.deg2rad(self.angle_bios),np.deg2rad(72)+np.deg2rad(self.angle_bios),np.deg2rad(144)+np.deg2rad(self.angle_bios),np.deg2rad(216)+np.deg2rad(self.angle_bios),np.deg2rad(288)+np.deg2rad(self.angle_bios)]
+        # self.yaw = np.deg2rad(160.7)
+        # self.odo_position = np.array([6.2,3.4]).reshape(2,1)
         # self.laser_data=[-1] * len(self.laser_angel_list)
-        self.laser_data = [6.6,4.3,4.2,9.2,4.6]
+        # self.laser_data = [6.6,4.3,4.2,9.2,4.6]
+        self.yaw = 0.0
+        self.laser_data = [-1] * len(self.laser_angel_list)
+        self.odo_position = []
         self.angle_1 = None
         self.angle_2 = None
         self.angle_3 = None
@@ -64,6 +72,7 @@ class Laser_position(Node):
         self.side_4_laser_data = []
         self.position = None
         self.laser_position_flag = True
+        
         self.create_subscription(
             Float32MultiArray,
             '/sensor_data',
@@ -79,33 +88,43 @@ class Laser_position(Node):
         )
         #订阅imu/odom，队列长度为10，订阅的数据类型为Odometry，Odometry是自定义的数据类型
         self.publisher_=self.create_publisher(PoseStamped,'/laser_position',10)#发布激光位置数据，发布到/laser_position，队列长度为10，发布的数据类型为LaserPosition，LaserPosition是自定义的数据类型
-
-
+        
         self.timer=self.create_timer(float(self.FREQUENCY),self.timer_callback)
+        self.transformation = Transformation(np.deg2rad(self.three_d_angle), True, 2)
+    
     def laser_callback(self,msg):
         self.laser_data = np.array(msg.data)
-         # if self.laser_data != [-1,-1,-1,-1,-1]:
-        #     self.laser_position_flag = True
-        # else:
-        #     self.laser_position_flag = False
+        for i in range(len(self.laser_data)):
+            self.laser_data[i] = self.laser_data[i] + self.DELTA_DISTANCE
+        if not self.tag:
+            self.criteria(self.START_POINT_1)
+            self.classify_laser_data(self.laser_data)
+            self.START_POINT = self.calculate_laser_position()
+            self.tag = True
+            self.get_logger().info(f"---START_POINT: {self.START_POINT}")
+         
     def odo_callback(self, msg):
         # self.odo_position = np.array([msg.pose.pose.position.y,msg.pose.pose.position.x]).reshape(2,1)
-        self.odo_position = np.array(self.START_POINT).reshape(2,1)
+        pose = []
+        pose = self.transformation.transformation(np.array([msg.pose.pose.position.x,msg.pose.pose.position.y]).reshape(2,1),2)
+        self.odo_position = np.array([self.START_POINT_1[0] + pose[0] ,self.START_POINT_1[1] + pose[1] ]).reshape(2,1)
         self.odo_quaternion = [
             msg.pose.pose.orientation.x,
             msg.pose.pose.orientation.y,
             msg.pose.pose.orientation.z,
             msg.pose.pose.orientation.w
         ]
-       
+        self.yaw = euler_from_quaternion(self.odo_quaternion)[2]
         self.get_logger().info(f"position: {self.odo_position}")
         self.get_logger().info(f"yaw: {self.yaw}")
+
     def criteria(self,estimate_position):
         self.angle_1 = np.arctan((self.FIELD_SIZE[1]- estimate_position[1]) / (self.FIELD_SIZE[0]-estimate_position[0])) 
         self.angle_2 = np.pi/2 + np.arctan(estimate_position[0] / (self.FIELD_SIZE[1] - estimate_position[1]))  
         self.angle_3 = np.pi + np.arctan((estimate_position[1] / estimate_position[1]))
         self.angle_4 = np.pi*3/2 + np.arctan((self.FIELD_SIZE[0] - estimate_position[0]) / estimate_position[1])
         self.get_logger().info(f"angle_1: {np.rad2deg(self.angle_1)}, angle_2: {np.rad2deg(self.angle_2)}, angle_3: {np.rad2deg(self.angle_3)}, angle_4: {np.rad2deg(self.angle_4)}")
+
     def classify_laser_data(self,laser_data):
         # 清空前一次计算的数据
         self.side_1_laser_data = []
@@ -113,7 +132,7 @@ class Laser_position(Node):
         self.side_3_laser_data = []
         self.side_4_laser_data = []
         
-        self.criteria(self.odo_position)
+        
         for i in range(len(laser_data)):
             if 0 <= (self.laser_angel_list[i] + self.yaw)%(np.pi*2) < self.angle_1 or self.angle_4 <= (self.laser_angel_list[i] + self.yaw)%(np.pi*2)< np.pi*2:
                 self.side_1_laser_data.append([laser_data[i],i])
@@ -207,12 +226,13 @@ class Laser_position(Node):
         self.get_logger().info(f"laser_data: {self.laser_data}, yaw:{self.yaw}, odo_position:{self.odo_position}")
         self.get_logger().info(f"laser_position__: {x}, {y}, angle:{angle}")
         return [x, y, angle]
+
     def information_combination(self):
         self.position = self.calculate_laser_position()
         def calculate_noise(three_D_noise,measurement_noise):
             coefficient = []
             for i in range(3):
-                coefficient.append([three_D_noise[i]/(three_D_noise[i] + measurement_noise[i]),measurement_noise[i]/(three_D_noise[i] + measurement_noise[i])])
+                coefficient.append([measurement_noise[i]/(three_D_noise[i] + measurement_noise[i]), three_D_noise[i]/(three_D_noise[i] + measurement_noise[i])])
             return coefficient
         coefficient = calculate_noise(self.three_D_noise_std,self.measurement_noise_std)
         if self.laser_position_flag:
@@ -228,6 +248,7 @@ class Laser_position(Node):
         return self.position
 
     def timer_callback(self):
+        self.criteria(self.odo_position)
         state = self.information_combination()
         msg = PoseStamped()
         msg.header.stamp = self.get_clock().now().to_msg()
@@ -244,11 +265,13 @@ class Laser_position(Node):
         msg.pose.orientation.z = q[2]
         msg.pose.orientation.w = q[3]
         self.publisher_.publish(msg)
+
 def main(args=None):
     rclpy.init(args=args)
     laser_position = Laser_position()
     rclpy.spin(laser_position)
     laser_position.destroy_node()
     rclpy.shutdown()
+
 if __name__ == '__main__':
     main()
