@@ -5,7 +5,7 @@ from launch_ros.actions import Node
 from ament_index_python.packages import get_package_share_directory, PackageNotFoundError
 import os
 
-decision_mpc = False
+decision_mpc = True
 
 
 def generate_launch_description():
@@ -30,7 +30,7 @@ def generate_launch_description():
             package = 'omni_mpc_controller',
             executable = 'MPC',
             remappings=[
-                ('/mpc_decision','/cmd_vell')
+                ('/mpc_decision','/cmd_vel')
             ],
             output = 'screen',
             parameters = [params_file]

@@ -228,7 +228,7 @@ class CarController(Node):
             #self.get_logger().info("--------------------------------Laser scan received--------------------------------")
             i = 0
             for distance in msg.ranges:
-                if distance < 0.0 or distance == np.inf or distance == np.nan or (i > 1360 and i < 2450):
+                if distance < 0.5 or distance == np.inf or distance == np.nan or (i > 1360 and i < 2450):
                     self.laser.append(1000000)
                     i += 1
                 else:
@@ -528,6 +528,7 @@ class CarController(Node):
         clusters = dbscan.fit_predict(self.scan_points_for_plot)
         
         clustered_points_map = {}
+        
         for i, label in enumerate(clusters):
             if label != -1: # Ignore noise points (-1)
                 if label not in clustered_points_map:
@@ -542,7 +543,7 @@ class CarController(Node):
             # 计算障碍物中心点与小车的距离
             dist_to_car = np.linalg.norm(center - car_pos)
             # 只保留距离大于1米的障碍物
-            if dist_to_car >= 0.4:
+            if dist_to_car >= 0.4 and dist_to_car <1.5:
                 obstacle_centers.append(center)
         
         #self.get_logger().info(f"障碍物中心点: {obstacle_centers}")    
@@ -1020,8 +1021,8 @@ class CarController(Node):
         commanded_vy = u_flat[1] * self.dt + self.vy_initial
         self.vx_initial = commanded_vx
         self.vy_initial = commanded_vy 
-        msg.linear.x = u_flat[0]
-        msg.linear.y = u_flat[1]
+        msg.linear.x = commanded_vx
+        msg.linear.y = commanded_vy
         msg.angular.z = 0.0
         msg.angular.z = float(self.angular_cmd)
         self.publisher_.publish(msg)

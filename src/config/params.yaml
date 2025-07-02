@@ -1,11 +1,11 @@
 /**:                                                              # 全局参数
   ros__parameters:
     # 世界大小 [长, 宽]，单位：米
-    world_size: [13.36,7.14]
+    world_size: [12.00,7.00]
     # 消息发布频率，单位：秒
-    frequency: 1.0
+    frequency: 0.2
     # 初始机器人 坐标
-    START_POINT: [6.068,3.57]
+    START_POINT: [0.30,0.30]
 car_controller:                                                   ##避障的参数
   ros__parameters:
     # 最大速度限制，单位：米/秒
@@ -19,9 +19,9 @@ car_controller:                                                   ##避障的参
     # 加速度平滑权重，值越大加速度变化越平滑
     weight_accel: 1.0
     # 障碍物避障权重，值越大越倾向于远离障碍物
-    weight_obstacle: 80.0
+    weight_obstacle: 1.0
     # 边界避障权重，值越大越倾向于远离边界
-    weight_boundary: 50.0
+    weight_boundary: 1.0
     # 车辆半径，用于碰撞检测，单位：米
     car_radius: 0.5
     obstacle_visual_radius: 0.3
@@ -61,6 +61,6 @@ laser_position_node:                                              # 定位的参
     # 激光角度偏移 角度
       angle_bios : 180.0
     # 3D laser到中心的 坐标 m
-      three_D_position: [0.1992,0.2504] 
+      three_D_position: [0.0,0.0] 
     # 3D 雷达的坐标系的x轴转角 度
       three_d_angle : -90.0
