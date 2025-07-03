@@ -29,6 +29,7 @@ def generate_launch_description():
     #     # output='screen'
     # )
     # ld.add_action(ros2publisher_node)
+    
     params_file = "/home/ares/ares_code_projects/src/config/params.yaml"
     
     # 指定参数文件路径

@@ -3,7 +3,7 @@ from rclpy.node import Node
 from geometry_msgs.msg import PoseStamped
 from nav_msgs.msg import Odometry
 import numpy as np
-from scipy.optimize import fsolve
+from scipy.optimize import fsolve, root
 from tf_transformations import euler_from_quaternion
 from tf_transformations import quaternion_from_euler
 from std_msgs.msg import Float32MultiArray
@@ -14,8 +14,9 @@ class Laser_position(Node):
         super().__init__('laser_position_node')
         self.get_logger().info('----start initializing the laser_position node----')
         self.START_POINT = []
+        self.START_ANGLE = 0.0
         self.tag = False
-        self.declare_parameters(
+        self.declare_parameters(                   
             namespace='',
             parameters=[
                 ('world_size', [15.00, 8.00]),
@@ -26,7 +27,7 @@ class Laser_position(Node):
                 ('frequency', 0.2),
                 ('DELTA_DISTANCE', 0.1247),
                 ('angle_bios',0.0),
-                ('three_D_position',[0.0,0.0])
+                ('three_D_position',[0.0,0.0]),
                 ('three_d_angle',0.0)
             ]   
         )
@@ -55,10 +56,9 @@ class Laser_position(Node):
         - three_d_angle = {self.three_d_angle}
         """) ##确认参数是否正确加载
         self.laser_angel_list = [np.deg2rad(0)+np.deg2rad(self.angle_bios),np.deg2rad(72)+np.deg2rad(self.angle_bios),np.deg2rad(144)+np.deg2rad(self.angle_bios),np.deg2rad(216)+np.deg2rad(self.angle_bios),np.deg2rad(288)+np.deg2rad(self.angle_bios)]
-        # self.yaw = np.deg2rad(160.7)
-        # self.odo_position = np.array([6.2,3.4]).reshape(2,1)
-        # self.laser_data=[-1] * len(self.laser_angel_list)
-        # self.laser_data = [6.6,4.3,4.2,9.2,4.6]
+        # self.yaw = np.deg2rad(160.68267)
+        # self.odo_position = np.array([7.93983,3.52614]).reshape(2,1)
+        # self.laser_data = [8.4135,5.62544,5.44056,7.3704,3.52707]
         self.yaw = 0.0
         self.laser_data = [-1] * len(self.laser_angel_list)
         self.odo_position = []
@@ -100,6 +100,7 @@ class Laser_position(Node):
             self.criteria(self.START_POINT_1)
             self.classify_laser_data(self.laser_data)
             self.START_POINT = self.calculate_laser_position()
+            self.START_ANGLE = self.START_POINT[2]
             self.tag = True
             self.get_logger().info(f"---START_POINT: {self.START_POINT}")
          
@@ -107,21 +108,21 @@ class Laser_position(Node):
         # self.odo_position = np.array([msg.pose.pose.position.y,msg.pose.pose.position.x]).reshape(2,1)
         pose = []
         pose = self.transformation.transformation(np.array([msg.pose.pose.position.x,msg.pose.pose.position.y]).reshape(2,1),2)
-        self.odo_position = np.array([self.START_POINT_1[0] + pose[0] ,self.START_POINT_1[1] + pose[1] ]).reshape(2,1)
+        self.odo_position = np.array([self.START_POINT[0] + pose[0] ,self.START_POINT[1] + pose[1] ]).reshape(2,1)
         self.odo_quaternion = [
             msg.pose.pose.orientation.x,
             msg.pose.pose.orientation.y,
             msg.pose.pose.orientation.z,
             msg.pose.pose.orientation.w
         ]
-        self.yaw = euler_from_quaternion(self.odo_quaternion)[2]
+        self.yaw = euler_from_quaternion(self.odo_quaternion)[2] + self.START_ANGLE
         self.get_logger().info(f"position: {self.odo_position}")
         self.get_logger().info(f"yaw: {self.yaw}")
 
     def criteria(self,estimate_position):
         self.angle_1 = np.arctan((self.FIELD_SIZE[1]- estimate_position[1]) / (self.FIELD_SIZE[0]-estimate_position[0])) 
         self.angle_2 = np.pi/2 + np.arctan(estimate_position[0] / (self.FIELD_SIZE[1] - estimate_position[1]))  
-        self.angle_3 = np.pi + np.arctan((estimate_position[1] / estimate_position[1]))
+        self.angle_3 = np.pi + np.arctan((estimate_position[1] / estimate_position[0]))
         self.angle_4 = np.pi*3/2 + np.arctan((self.FIELD_SIZE[0] - estimate_position[0]) / estimate_position[1])
         self.get_logger().info(f"angle_1: {np.rad2deg(self.angle_1)}, angle_2: {np.rad2deg(self.angle_2)}, angle_3: {np.rad2deg(self.angle_3)}, angle_4: {np.rad2deg(self.angle_4)}")
 
@@ -151,46 +152,22 @@ class Laser_position(Node):
         self.get_logger().info(f"side_2_data: {self.side_2_laser_data}")
         self.get_logger().info(f"side_3_data: {self.side_3_laser_data}")
         self.get_logger().info(f"side_4_data: {self.side_4_laser_data}")
-        
-        def equation(angle):
-            # 每次调用时重新计算，避免数据累积
-            list_2 = []
-            list_4 = []
-            for dis,id in self.side_2_laser_data:
-                list_2.append(abs(dis*np.sin(self.laser_angel_list[id]+angle)))
-            for dis,id in self.side_4_laser_data:
-                list_4.append(abs(dis*np.sin(self.laser_angel_list[id]+angle)))
-            
-            # 处理空数组情况
-            lenth_2 = np.mean(list_2) if list_2 else 0.0 
-            lenth_4 = np.mean(list_4) if list_4 else 0.0
-            
-            # 改进方程：使用更稳定的约束
-            error = abs(lenth_2 + lenth_4 - self.FIELD_SIZE[1])
-            self.get_logger().debug(f"angle: {np.rad2deg(angle)}, lenth_2: {lenth_2}, lenth_4: {lenth_4}, error: {error}")
-            return error
-        
-        # 尝试多个初始值求解
-        initial_guesses = [self.yaw, self.yaw + np.pi/4, self.yaw - np.pi/4, 0, np.pi/2]
-        best_angle = self.yaw
-        min_error = float('inf')
-        
-        for guess in initial_guesses:
-            try:
-                result = fsolve(equation, guess, full_output=True)
-                if result[2] == 1:  # 求解成功
-                    angle = result[0][0]
-                    error = equation(angle)
-                    if error < min_error:
-                        min_error = error
-                        best_angle = angle
-                        self.get_logger().info(f"找到更好的解: {np.rad2deg(angle)}°, 误差: {error}")
-            except Exception as e:
-                self.get_logger().warn(f"初始值 {np.rad2deg(guess)}° 求解失败: {e}")
-        
-        angle = best_angle
-        
+
+        # 放弃让计算机解方程，选择人手求出解析解
+        a = 0
+        b = 0
+        c = self.FIELD_SIZE[1]
+        for dis,id in self.side_2_laser_data:
+            a += dis*np.cos(self.laser_angel_list[id])/len(self.side_2_laser_data)
+            b += dis*np.sin(self.laser_angel_list[id])/len(self.side_2_laser_data)
+        for dis,id in self.side_4_laser_data:
+            a -= dis*np.cos(self.laser_angel_list[id])/len(self.side_4_laser_data)
+            b -= dis*np.sin(self.laser_angel_list[id])/len(self.side_4_laser_data)
+        # asin(x) + bcos(x) = c
+        angle = np.arcsin(c/np.sqrt(a**2+b**2)) - np.arctan(b/a)
+        self.get_logger().info(f"angle: {angle}")
         # 用解出的角度重新计算位置
+
         list_1 = []
         list_2 = []
         list_3 = []
