@@ -56,12 +56,12 @@ class Laser_position(Node):
         - three_d_angle = {self.three_d_angle}
         """) ##确认参数是否正确加载
         self.laser_angel_list = [np.deg2rad(0)+np.deg2rad(self.angle_bios),np.deg2rad(72)+np.deg2rad(self.angle_bios),np.deg2rad(144)+np.deg2rad(self.angle_bios),np.deg2rad(216)+np.deg2rad(self.angle_bios),np.deg2rad(288)+np.deg2rad(self.angle_bios)]
-        # self.yaw = np.deg2rad(160.68267)
-        # self.odo_position = np.array([7.93983,3.52614]).reshape(2,1)
-        # self.laser_data = [8.4135,5.62544,5.44056,7.3704,3.52707]
-        self.yaw = 0.0
-        self.laser_data = [-1] * len(self.laser_angel_list)
-        self.odo_position = []
+        self.yaw = np.deg2rad(318.03751)
+        self.odo_position = np.array([9.3965,8-3.93917]).reshape(2,1)
+        self.laser_data = [6.07323, 6.47281, 4.02774, 9.44761 ,4.44383]
+        # self.yaw = 0.0
+        # self.laser_data = [-1] * len(self.laser_angel_list)
+        # self.odo_position = []
         self.angle_1 = None
         self.angle_2 = None
         self.angle_3 = None
@@ -164,8 +164,20 @@ class Laser_position(Node):
             a -= dis*np.cos(self.laser_angel_list[id])/len(self.side_4_laser_data)
             b -= dis*np.sin(self.laser_angel_list[id])/len(self.side_4_laser_data)
         # asin(x) + bcos(x) = c
+        if  np.pi/2 <= self.yaw < np.pi*3/2:
+            c = self.FIELD_SIZE[1]
+        else: 
+            c = - self.FIELD_SIZE[1]
         angle = np.arcsin(c/np.sqrt(a**2+b**2)) - np.arctan(b/a)
+        if np.pi/2 <= self.yaw < np.pi*3/2:
+            angle = angle + np.pi
+        else:
+            if angle < 0:
+                angle = angle + np.pi*2
+            else:
+                angle = angle
         self.get_logger().info(f"angle: {angle}")
+        self.get_logger().info(f"yaw: {self.yaw}")
         # 用解出的角度重新计算位置
 
         list_1 = []
