@@ -114,6 +114,13 @@ class CarController(Node):
             10
         )
 
+        # 新增速度可视化发布者
+        self.speed_pub = self.create_publisher(
+            Marker,
+            '/visualization/car_speed',
+            10
+        )
+
         self.declare_parameters(
             namespace='',
             parameters=[
@@ -179,6 +186,13 @@ class CarController(Node):
         self.goal = None
         self.speed_1 = [0.0 ,0.0]
         self.angular_cmd = 0
+
+        # 新增变量用于记录小车定位点和时间戳
+        self.position_history = []
+        self.timestamp_history = []
+        self.speed_vector = [0.0, 0.0]
+        # 新增变量用于记录上一时刻的速度
+        self.last_speed = [0.0, 0.0]
         
         self.get_logger().info(f"""
         dt: {self.dt}
@@ -211,6 +225,7 @@ class CarController(Node):
             10
         )
 
+        
     def speed_callback(self,msg):
         self.speed_1[0] = msg.linear.y
         self.speed_1[1] = msg.linear.x
@@ -307,9 +322,8 @@ class CarController(Node):
         
         return marker        
 
-
     def create_acceleration_marker(self, ax, ay):
-        """创建加速度向量可视化标记"""                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+        """创建加速度向量可视化标记"""
         marker = Marker()
         marker.header.frame_id = "map"
         marker.header.stamp = self.get_clock().now().to_msg()
@@ -353,6 +367,51 @@ class CarController(Node):
         
         return marker
 
+    def create_speed_marker(self):
+        """创建速度向量可视化标记"""
+        marker = Marker()
+        marker.header.frame_id = "map"
+        marker.header.stamp = self.get_clock().now().to_msg()
+        marker.ns = "car_speed"
+        marker.id = 0
+        marker.type = Marker.ARROW
+        marker.action = Marker.ADD
+        
+        # 设置起点为小车当前位置
+        start_point = Point()
+        start_point.x = float(self.x)
+        start_point.y = float(self.y)
+        start_point.z = 0.0
+        
+        # 设置终点为速度向量末端位置，添加缩放因子使箭头长度适中
+        end_point = Point()
+        speed_scale = 0.5  # 缩放因子
+        end_point.x = float(self.x + self.speed_vector[0] * speed_scale)
+        end_point.y = float(self.y + self.speed_vector[1] * speed_scale)
+        end_point.z = 0.0
+        
+        marker.points.append(start_point)
+        marker.points.append(end_point)
+        
+        # 设置箭头样式
+        marker.scale.x = 0.1  # 箭头轴直径
+        marker.scale.y = 0.2  # 箭头头直径
+        marker.scale.z = 0.0  # 不使用
+        
+        # 设置颜色 (黄色)
+        marker.color = ColorRGBA()
+        marker.color.r = 1.0
+        marker.color.g = 1.0
+        marker.color.b = 0.0
+        marker.color.a = 1.0
+        
+        # 设置持续时间
+        duration = Duration()
+        duration.sec = 0
+        duration.nanosec = int(0.1 * 1e9)  # 0.1秒
+        marker.lifetime = duration
+        
+        return marker
 
     def create_obstacle_trajectory_markers(self):
         marker_array = MarkerArray()
@@ -484,10 +543,20 @@ class CarController(Node):
             msg.pose.orientation.w
         ]
         self.theta = euler_from_quaternion(quaternion)[2]
-    
+
+        # 记录当前时间戳和位置
+        current_time = self.get_clock().now().nanoseconds
+        self.position_history.append([self.x, self.y])
+        self.timestamp_history.append(current_time)
+
+        # 移除超过10秒的历史数据
+        ten_seconds_ago = current_time - 10 * 1e9
+        while self.timestamp_history and self.timestamp_history[0] < ten_seconds_ago:
+            self.timestamp_history.pop(0)
+            self.position_history.pop(0)
+
     def goal_callback(self, msg):
-        self.goal[0] = msg.x
-        self.goal[1] = msg.y
+        self.goal = [msg.x, msg.y]
 
     def convert_polar_to_cartesian(self, angle_deg_relative, distance, car_x, car_y, car_theta_rad):
         """将相对于小车的极坐标点 (角度(度), 距离) 转换为世界坐标系的 (x, y)。"""
@@ -870,7 +939,6 @@ class CarController(Node):
 
 
             # 4. Boundary Avoidance Cost (Standard weight)
-            # Penalize getting too close to the world boundaries
             boundary_cost_step = 0.0
             # Calculate distance to each boundary
             dist_left = state[0] - (-self.world_size[0])
@@ -992,14 +1060,47 @@ class CarController(Node):
             return np.zeros(self.prediction_horizon * 2) # Return zero control for all steps
         
 
+    def estimate_speed(self):
+        """根据最近10秒的定位点估算小车速度"""
+        if len(self.position_history) < 2:
+            return [0.0, 0.0]
+
+        # 计算时间差（单位：秒）
+        time_diff = (self.timestamp_history[-1] - self.timestamp_history[0]) / 1e9
+        if time_diff <= 0:
+            return [0.0, 0.0]
+
+        # 计算位置差
+        pos_diff = np.array(self.position_history[-1]) - np.array(self.position_history[0])
+
+        # 计算速度
+        speed_now = (pos_diff / time_diff).tolist()
+        # 限制速度大小不超过2米每秒
+        speed_magnitude = math.sqrt(speed_now[0]**2 + speed_now[1]**2)
+        if speed_magnitude > 2.0:
+            scale = 2.0 / speed_magnitude
+            speed_now = [speed_now[0] * scale, speed_now[1] * scale]
+
+        #如果上一时刻的速度与计算出的速度差值过大，就取两个速度的中间值
+        if abs(speed_now[0] - self.last_speed[0]) > 1:
+            speed_now[0] = (speed_now[0] + self.last_speed[0]) / 2
+        if abs(speed_now[1] - self.last_speed[1]) > 1:
+            speed_now[1] = (speed_now[1] + self.last_speed[1]) / 2
+    
+
+        return speed_now
+
     def time_callback(self):
-        
         self.obstacle_centers = self.cluster_scan_points()
         self.track_obstacles(self.obstacle_centers, self.dt)
         self.vx = (self.x - self.x_initial) / self.dt
         self.vy = (self.y - self.y_initial) / self.dt
         self.x_initial = self.x
         self.y_initial = self.y
+
+        # 估算小车速度
+        self.speed_vector = self.estimate_speed()
+
         # Calculate the distance from the car to the nearest currently *tracked* obstacle
         car_pos_np = np.array([self.x, self.y])
         d_min = float('inf') # Initialize min distance to infinity
@@ -1017,18 +1118,23 @@ class CarController(Node):
         #发送数据到决策节点，其中消息类型需要根据需求进行修改
         msg = Twist()
         self.get_logger().info(f"{u_flat[0],u_flat[1]}")
-        commanded_vx = u_flat[0] * self.dt + self.vx_initial
-        commanded_vy = u_flat[1] * self.dt + self.vy_initial
-        self.vx_initial = commanded_vx
-        self.vy_initial = commanded_vy 
-        msg.linear.x = commanded_vx
-        msg.linear.y = commanded_vy
+        # 如果接受到了遥控器的速度，msg的速度就为遥控器的速度加上mpc计算的加速度乘以dt
+        if self.speed_1[0] != 0 and self.speed_1[1] != 0:
+            msg.linear.x = u_flat[0]*self.dt + self.speed_1[1]
+            msg.linear.y = u_flat[1]*self.dt + self.speed_1[0]
+        else:
+            if (u_flat[0]**2 + u_flat[1]**2)**0.5 > 0.05:
+                msg.linear.x = self.speed_vector[1]*0.90
+                msg.linear.y = self.speed_vector[0]*0.90
+            else:
+                msg.linear.x = u_flat[0]*self.dt + self.speed_vector[1]
+                msg.linear.y = u_flat[1]*self.dt + self.speed_vector[0]
+        
         msg.angular.z = 0.0
         msg.angular.z = float(self.angular_cmd)
         self.publisher_.publish(msg)
 
-
-                # 发布障碍物可视化
+        # 发布障碍物可视化
         obstacle_markers = self.create_obstacle_markers()
         self.obstacle_pub.publish(obstacle_markers)
 
@@ -1049,7 +1155,11 @@ class CarController(Node):
         self.obstacle_trajectory_pub.publish(obstacle_traj_markers)        
 
         acceleration_marker = self.create_acceleration_marker(u_flat[0], u_flat[1])
-        self.acceleration_pub.publish(acceleration_marker)    
+        self.acceleration_pub.publish(acceleration_marker)
+
+        # 发布小车速度可视化
+        speed_marker = self.create_speed_marker()
+        self.speed_pub.publish(speed_marker)
 
 def main(args=None):
     rclpy.init(args=args)
@@ -1060,9 +1170,3 @@ def main(args=None):
     
 if __name__ == '__main__':
     main()
-
-
-
-
-
-
