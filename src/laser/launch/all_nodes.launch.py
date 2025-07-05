@@ -21,14 +21,14 @@ def generate_launch_description():
     #     # Add warning if package is not found
     #     ld.add_action(LogInfo(msg="Warning: livox_ros_driver2 package not found. Skipping livox launch."))
     
-    # # Create ros2publisher node
-    # ros2publisher_node = Node(
-    #     package='laser',
-    #     executable='ros2publisher',
-    #     name='modbus_sensor_node',
-    #     # output='screen'
-    # )
-    # ld.add_action(ros2publisher_node)
+    # Create ros2publisher node
+    ros2publisher_node = Node(
+        package='laser',
+        executable='ros2publisher',
+        name='modbus_sensor_node',
+        # output='screen'
+    )
+    ld.add_action(ros2publisher_node)
     
     params_file = "/home/ares/ares_code_projects/src/config/params.yaml"
     

@@ -16,11 +16,11 @@ class KeyboardCoordinatePublisher(Node):
         self.declare_parameters(
             namespace = '',
             parameters = [
-                ('dt', 0.0),
+                ('frequency', 0.0),
                 ('world_size',[0.0,0.0])
             ]
         )
-        self.dt = self.get_parameter('dt').get_parameter_value().double_value
+        self.dt = self.get_parameter('frequency').get_parameter_value().double_value
         self.world_size = self.get_parameter('world_size').get_parameter_value().double_array_value
 
         self.get_logger().info(f"""

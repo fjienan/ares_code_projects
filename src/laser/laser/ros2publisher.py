@@ -8,9 +8,9 @@ from std_msgs.msg import Float32MultiArray
 # 设备配置
 DEVICE_MAP = [
     {'port': '/dev/ttyCH9344USB0', 'address': 5},
-    {'port': '/dev/ttyCH9344USB2', 'address': 2},
+    # {'port': '/dev/ttyCH9344USB2', 'address': 2},
     {'port': '/dev/ttyCH9344USB4', 'address': 4},
-    {'port': '/dev/ttyCH9344USB1', 'address': 3},
+    # {'port': '/dev/ttyCH9344USB1', 'address': 3},
     {'port': '/dev/ttyCH9344USB3', 'address': 1}
 ]
 

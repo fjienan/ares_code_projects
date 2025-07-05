@@ -7,7 +7,7 @@ from scipy.optimize import fsolve, root
 from tf_transformations import euler_from_quaternion
 from tf_transformations import quaternion_from_euler
 from std_msgs.msg import Float32MultiArray
-from laser.transformation import Transformation
+from transformation import Transformation
 
 class Laser_position(Node):
     def __init__(self):
@@ -116,8 +116,8 @@ class Laser_position(Node):
             msg.pose.pose.orientation.w
         ]
         self.yaw = euler_from_quaternion(self.odo_quaternion)[2] + self.START_ANGLE
-        self.get_logger().info(f"position: {self.odo_position}")
-        self.get_logger().info(f"yaw: {self.yaw}")
+        # self.get_logger().info(f"position: {self.odo_position}")
+        # self.get_logger().info(f"yaw: {self.yaw}")
 
     def criteria(self,estimate_position):
         self.angle_1 = np.arctan((self.FIELD_SIZE[1]- estimate_position[1]) / (self.FIELD_SIZE[0]-estimate_position[0])) 
@@ -176,8 +176,9 @@ class Laser_position(Node):
                 angle = angle + np.pi*2
             else:
                 angle = angle
-        self.get_logger().info(f"angle: {angle}")
-        self.get_logger().info(f"yaw: {self.yaw}")
+        self.get_logger().info(f"angle_after_calculate: {angle}")
+        self.get_logger().info(f"yaw_real_3D: {self.yaw}")
+        self.get_logger().info(f"delta:{(abs(self.yaw-angle))}")
         # 用解出的角度重新计算位置
 
         list_1 = []

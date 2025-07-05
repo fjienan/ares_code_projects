@@ -98,3 +98,14 @@ def generate_launch_description():
     ])
 ```
 
+ros2 run omni_mpc_controller keyboard_control --ros-args --param-file /home/furry/ares_code_projects/src/config/params.yaml
+
+## laser
+1 初始化3d雷达
+```
+zsh
+map
+```
+```
+ros2 launch laser all_nodes.launch.py
+```
