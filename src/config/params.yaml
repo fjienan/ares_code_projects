@@ -64,3 +64,5 @@ laser_position_node:                                              # 定位的参
       three_D_position: [0.0,0.0] 
     # 3D 雷达的坐标系的x轴转角 度
       three_d_angle : -90.0
+    # 单点激光的角度分布 角度
+      laser_angle_distribution : [0.0,72.0,144.0,216.0,288.0]
