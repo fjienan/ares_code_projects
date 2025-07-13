@@ -195,7 +195,7 @@ void Protocol::on_receive_internal(const uint8_t* buf, size_t len) {
                 const auto* frame = reinterpret_cast<const SyncFrame*>(buf);
                 if (sync_cb_) {
                     try {
-                        sync_cb_(ntohs(frame->data_id), frame->data, len - offsetof(SyncFrame, data));
+                        sync_cb_(frame->data_id, frame->data, len - offsetof(SyncFrame, data));
                     } catch (const std::exception& e) {
                         std::cerr << get_current_timestamp() << " Exception in sync_cb_: " << e.what() << std::endl;
                     } catch (...) {
@@ -212,7 +212,7 @@ void Protocol::on_receive_internal(const uint8_t* buf, size_t len) {
                 const auto* frame = reinterpret_cast<const ExecFrame*>(buf);
                 if (frame->request_id != HEARTBEAT_REQUEST_ID && exec_cb_) {
                     try {
-                        exec_cb_(ntohs(frame->func_id), frame->arg1, frame->arg2, frame->arg3, frame->request_id);
+                        exec_cb_(frame->func_id, frame->arg1, frame->arg2, frame->arg3, frame->request_id);
                     } catch (const std::exception& e) {
                         std::cerr << get_current_timestamp() << " Exception in exec_cb_: " << e.what() << std::endl;
                     } catch (...) {
@@ -229,7 +229,7 @@ void Protocol::on_receive_internal(const uint8_t* buf, size_t len) {
                 const auto* frame = reinterpret_cast<const ExecReplyFrame*>(buf);
                 if (frame->request_id != HEARTBEAT_REQUEST_ID && exec_reply_cb_) {
                     try {
-                        exec_reply_cb_(ntohs(frame->func_id), frame->value, frame->request_id);
+                        exec_reply_cb_(frame->func_id, frame->value, frame->request_id);
                     } catch (const std::exception& e) {
                         std::cerr << get_current_timestamp() << " Exception in exec_reply_cb_: " << e.what() << std::endl;
                     } catch (...) {
@@ -246,7 +246,7 @@ void Protocol::on_receive_internal(const uint8_t* buf, size_t len) {
                 const auto* frame = reinterpret_cast<const ErrorFrame*>(buf);
                 if (frame->request_id != HEARTBEAT_REQUEST_ID && error_cb_) {
                     try {
-                        error_cb_(frame->request_id, ntohs(frame->error_code));
+                        error_cb_(frame->request_id, frame->error_code);
                     } catch (const std::exception& e) {
                         std::cerr << get_current_timestamp() << " Exception in error_cb_: " << e.what() << std::endl;
                     } catch (...) {
@@ -267,7 +267,7 @@ void Protocol::on_receive_internal(const uint8_t* buf, size_t len) {
 bool Protocol::send_exec(uint16_t func_id, uint32_t arg1, uint32_t arg2, uint32_t arg3, uint8_t request_id) {
     ExecFrame frame_to_send;
     frame_to_send.head = htons(EXEC_FRAME_HEAD);
-    frame_to_send.func_id = htons(func_id);
+    frame_to_send.func_id = func_id;
     frame_to_send.arg1 = arg1;
     frame_to_send.arg2 = arg2;
     frame_to_send.arg3 = arg3;
@@ -285,7 +285,7 @@ bool Protocol::send_sync(uint16_t data_id, const uint8_t* data, size_t len) {
     std::vector<uint8_t> buffer(sync_header_size + len);
     auto* frame = reinterpret_cast<SyncFrame*>(buffer.data());
     frame->head = htons(SYNC_FRAME_HEAD);
-    frame->data_id = htons(data_id);
+    frame->data_id = data_id;
     memcpy(frame->data, data, len);
     return usb_write(buffer.data(), buffer.size());
 }
@@ -298,7 +298,7 @@ void Protocol::heartbeat_loop() {
             heartbeat_frame.head = htons(ERROR_FRAME_HEAD);
             heartbeat_frame.request_id = HEARTBEAT_REQUEST_ID;
             heartbeat_frame.reserved = 0;
-            heartbeat_frame.error_code = htons(HEARTBEAT_ERROR_CODE);
+            heartbeat_frame.error_code = HEARTBEAT_ERROR_CODE;
 
             if (!usb_write(reinterpret_cast<uint8_t*>(&heartbeat_frame), sizeof(heartbeat_frame))) {
                 std::cerr << get_current_timestamp() << " Failed to send heartbeat. Connection might be lost." << std::endl;
