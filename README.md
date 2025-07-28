@@ -109,3 +109,7 @@ map
 ```
 ros2 launch laser all_nodes.launch.py
 ```
+
+## USB
+拨杆: 在 /shoot_btn 发布 std_msgs::msg::Bool 类型，在拨杆被拨动的时候发布 data=true 的消息，其他时候不发布
+发射：在 /shoot_rpm 接收 geometry_msgs::msg::Vector3 类型，三个float，分别为下同步带，右上同步带，左上同步带转速。转换为int发送到下位机
