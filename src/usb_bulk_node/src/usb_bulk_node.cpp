@@ -126,9 +126,9 @@ private:
 
     void vel_callback(const geometry_msgs::msg::Twist::SharedPtr msg) {
         // Convert double to float, then reinterpret as uint32_t
-        float float_arg1 = static_cast<float>(msg->linear.x);
-        float float_arg2 = -static_cast<float>(msg->linear.y);
-        float float_arg3 = -static_cast<float>(msg->angular.x);
+        float float_arg2 = -static_cast<float>(msg->linear.x);
+        float float_arg1 = static_cast<float>(msg->linear.y);
+        float float_arg3 = static_cast<float>(msg->angular.z);
 
         // Reinterpret the float's binary representation as uint32_t
         uint32_t arg1 = *reinterpret_cast<uint32_t*>(&float_arg1);
