@@ -10,9 +10,9 @@ option(R1 "Build for R1 configuration" OFF)
 option(R2 "Build for R2 configuration" OFF)
 
 # 如果 FOR_R1 和 FOR_R2 都未被选中，则报错
-if((NOT R1 AND NOT R2) OR (R1 AND R2))
-  message(FATAL_ERROR "Must select one of the build configurations (R1 or R2)!")
-endif()
+# if((NOT R1 AND NOT R2) OR (R1 AND R2))
+#   message(FATAL_ERROR "Must select one of the build configurations (R1 or R2)!")
+# endif()
 
 if(R1)
   add_compile_definitions(CONFIG_R1)
