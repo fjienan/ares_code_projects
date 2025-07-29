@@ -14,7 +14,7 @@ setup(
         # 安装config目录
         (os.path.join('share', package_name, 'config'), glob('config/*.yaml')),
         # 安装launch目录
-        (os.path.join('share', package_name, 'launch'), glob('launch/*.py')),
+        (os.path.join('share', package_name, 'launch'), glob('launch/*launch.py')),
     ],
     install_requires=['setuptools'],
     zip_safe=True,
@@ -27,8 +27,8 @@ setup(
         'console_scripts': [
             # 确保Real.py作为可执行节点注册
             'ros2publisher = laser.ros2publisher:main',
-            'Real = laser.Real:main',
-            'initialpose_tf_publisher = laser.initialpose_tf_publisher:main',
+            # 'Real = laser.Real:main',
+            # 'initialpose_tf_publisher = laser.initialpose_tf_publisher:main',
             'laser_position = laser.Laser_position:main'
         ],
     },

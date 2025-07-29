@@ -6,6 +6,23 @@
     frequency: 0.2
     # 初始机器人 坐标
     START_POINT: [0.30,0.30]
+
+visual_location_node:
+  ros__parameters:
+    # 相机高度，单位：毫米
+    camera_height: 960.0
+    # 篮筐高度，单位：毫米
+    hoop_height: 3050.0
+    # 相机内参
+    fx: 978.884521484375
+    fy: 978.8125  
+    cx: 1019.759765625
+    cy: 783.3111572265625
+    # 相机俯仰角
+    pitch: 0.0
+    # 相机频率
+    camera_frequency: 0.1
+
 car_controller:                                                   ##避障的参数
   ros__parameters:
     # 最大速度限制，单位：米/秒
