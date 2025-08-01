@@ -61,13 +61,19 @@ int main() {
 		// }
 		// std::this_thread::sleep_for(std::chrono::milliseconds(100)); // 等待一下
 
-        float k_p;
-        std::cout << "K_P: (float)";
-        std::cin >> k_p;
-        std::cout << std::endl << "K_P: " << k_p << std::endl;
-        uint32_t k_p_buf;
+        float k_p[3];
+        std::cout << "K_P1: (float)";
+        std::cin >> k_p[0];
+        std::cout << std::endl << "K_P1: " << k_p[0] << std::endl;
+        std::cout << "K_P2: (float)";
+        std::cin >> k_p[1];
+        std::cout << std::endl << "K_P2: " << k_p[1] << std::endl;
+        std::cout << "K_P3: (float)";
+        std::cin >> k_p[2];
+        std::cout << std::endl << "K_P3: " << k_p[2] << std::endl;
+        uint32_t k_p_buf[3];
         memcpy(&k_p_buf, &k_p, sizeof(k_p_buf));
-        if (!proto.send_exec(0x4, k_p_buf, 0, 0, 0x01)) {
+        if (!proto.send_exec(0x4, k_p_buf[0], k_p_buf[1], k_p_buf[2], 0x01)) {
             std::cerr << "Failed to send Exec command." << std::endl;
         }
 	}
