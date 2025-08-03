@@ -30,9 +30,14 @@ public:
 
     unsigned int exec_handler(uint16_t func_id, uint32_t arg1, uint32_t arg2, uint32_t arg3, uint8_t request_id) {
         if (func_id == 0x123) {
+            float distance_offset = 0.0f;
+            memcpy(&distance_offset, &arg2, sizeof(float));
             std_msgs::msg::Bool msg;
+            std_msgs::msg::Float32 distance_offset_msg;
             msg.data = true;
+            distance_offset_msg.data = distance_offset;
             std::cout << "Shoot button pressed" << std::endl;
+            distance_offset_pub_->publish(distance_offset_msg);
             shoot_btn_pub_->publish(msg);
             return 0;
         }
@@ -105,8 +110,9 @@ public:
         // angular_vel_pub_ = create_publisher<geometry_msgs::msg::Vector3>("/imu/angular_velocity", 10);
         // acceleration_pub_ = create_publisher<geometry_msgs::msg::Vector3>("/imu/acceleration", 10);
         // quaternion_pub_ = create_publisher<geometry_msgs::msg::Quaternion>("/imu/quaternion", 10);
+        distance_offset_pub_ = create_publisher<std_msgs::msg::Float32>("/distance_offset", 10);
         shoot_btn_pub_ = create_publisher<std_msgs::msg::Bool>("/shoot_btn", 10);
-        
+
         // timer_ = create_wall_timer(
         //     std::chrono::milliseconds(5),
         //     std::bind(&SubscriberNode::timer_callback, this)
@@ -181,6 +187,7 @@ private:
     // rclcpp::Publisher<geometry_msgs::msg::Vector3>::SharedPtr acceleration_pub_;
     // rclcpp::Publisher<geometry_msgs::msg::Quaternion>::SharedPtr quaternion_pub_;
     rclcpp::Publisher<std_msgs::msg::Bool>::SharedPtr shoot_btn_pub_;
+    rclcpp::Publisher<std_msgs::msg::Float32>::SharedPtr distance_offset_pub_;
     rclcpp::Subscription<geometry_msgs::msg::Vector3>::SharedPtr shoot_subscription_;
     // bool angular_vel_flag = false;
     // bool acceleration_flag = false;
