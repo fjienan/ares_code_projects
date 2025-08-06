@@ -7,6 +7,7 @@
 #include <geometry_msgs/msg/vector3.hpp>         // 角速度和加速度
 #include <geometry_msgs/msg/quaternion.hpp>      // 四元数
 #include <geometry_msgs/msg/point.hpp>           // 五点坐标
+#include <std_msgs/msg/float32.hpp>
 
 #include "ares_protocol.hpp"
 #include <iostream>
